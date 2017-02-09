@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Admin;
 use App\Products;
+use App\Tables;
 use DB;
 
 class AdminController extends Controller
@@ -21,6 +22,13 @@ class AdminController extends Controller
     public function products(Products $products){
         if (filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
             return view("admin.produse",["items"=>$products->getAllItems()]);
+        }else{
+            return redirect("/admin/login");
+        }
+    }
+    public function tables(Tables $tables){
+        if (filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
+            return view("admin.tabele",["tabele"=>$tables->getAllTables()]);
         }else{
             return redirect("/admin/login");
         }

@@ -36,9 +36,18 @@ Route::post('/admin/addItem','Admin\ProductsController@addItem');
 Route::post('/admin/modificaItem','Admin\ProductsController@modificaItem');
 Route::post('/admin/deleteItem','Admin\ProductsController@deleteItem');
 Route::post("/admin/upload","Admin\ProductsController@upload");
-Route::post('/admin/deleteImage','Admin\SettingController@deleteImage');
-Route::post('/admin/deleteAllImages','Admin\SettingController@deleteAllImages');
-Route::post('/admin/defaultImage','Admin\SettingController@defaultImage');
+Route::post('/admin/deleteImage','Admin\ProductsController@deleteImage');
+Route::post('/admin/deleteAllImages','Admin\ProductsController@deleteAllImages');
+Route::post('/admin/defaultImage','Admin\ProductsController@defaultImage');
+
+/*Tabele routes*/
+Route::get('/admin/tables','Admin\AdminController@tables');
+Route::post('/admin/getTabele','Admin\TablesController@getTabele');
+
+Route::post('/admin/saveTable','Admin\TablesController@saveTable');
+Route::post('/admin/addGroup','Admin\TablesController@addGroup');
+Route::post('/admin/modificaColoana','Admin\TablesController@modificaColoana');
+Route::post('/admin/deleteColoana','Admin\TablesController@deleteColoana');
 
 
 Route::get('/admin/actiune/{tip}','Admin\SettingController@actiune');
@@ -47,12 +56,8 @@ Route::post('/admin/addelement/{table}','Admin\SettingController@addElement');
 Route::post('/admin/modelement/{element}','Admin\SettingController@modElement');
 
 
-Route::post('/admin/getTabele','Admin\SettingController@getTabele');
-/*Tabele*/
-Route::post('/admin/saveTable','Admin\SettingController@saveTable');
-Route::post('/admin/addGroup','Admin\SettingController@addGroup');
-Route::post('/admin/modificaColoana','Admin\SettingController@modificaColoana');
-Route::post('/admin/deleteColoana','Admin\SettingController@deleteColoana');
+
+
 
 
 
