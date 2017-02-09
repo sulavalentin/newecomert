@@ -31,6 +31,34 @@ class HomeController extends Controller
                                "url"=>""]);
         }
     }
+    public function oneprodus(ItemsSubMenu $item , $id_item)
+    {
+        return view("article",["item"=>$item->getItem($id_item),
+                               "link"=>$item->getDenumireItems($id_item),
+                               "images"=>$item->getImages($id_item),
+                               "asemanatoare"=>$item->getAsemanatoare($id_item)
+                ]);
+    }
+    public function menu($id)
+    {
+        $response=DB::table("submenu")
+                ->where("menu_id",$id)
+                ->get();
+        $name=DB::table("menu")
+                ->where("id",$id)
+                ->value("menu_name");
+        return view('menuSubmenu',["response"=>$response,"name"=>$name]);
+    }
+    public function submenu($id)
+    {
+        $response=DB::table("itemssubmenu")
+                ->where("submenu_id",$id)
+                ->get();
+        $name=DB::table("submenu")
+                ->where("id",$id)
+                ->value("submenu_name");
+        return view('menuItems',["response"=>$response,"name"=>$name]);
+    }
     public function test()
     {
         DB::select("INSERT INTO `admin` (`id`, `name`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES

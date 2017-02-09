@@ -11,7 +11,7 @@
                         </li>
                         <ul>
                             @foreach($itemssubmenu as $i)
-                            <a href="{{URL("admin/getproducts/".$i->id)}}"/>
+                            <a href="{{URL("admin/products/".$i->id)}}"/>
                                 <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
                                     @if(!empty($i->item_image))
                                         <img src="{{ asset($i->item_image) }}" class="img-responsive"/>

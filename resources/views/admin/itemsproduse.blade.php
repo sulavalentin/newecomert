@@ -122,7 +122,7 @@
                         @if(!empty($i->address))
                             <img src="{{ asset($i->address) }}" class="imaginetable"/>
                         @else
-                            <img src="{{ asset('img/products/default.jpg') }}" class="imaginetable"/>
+                            <img src="{{ asset('img/system/default.jpg') }}" class="imaginetable"/>
                         @endif
                     </td>
                     <td id="name{{$i->id}}" >
@@ -285,7 +285,7 @@ $(document).ready(function (e) {
         lfade();
         $.ajax({  
             type: 'POST',  
-            url: "{{URL('/admin/getelement/oneadd')}}", 
+            url: "{{URL('/admin/getoneadd')}}", 
             data: 
                 {
                   table:table
@@ -307,7 +307,7 @@ $(document).ready(function (e) {
         lfade();
         $.ajax({  
             type: 'POST',  
-            url: "{{URL('/admin/getelement/oneitem')}}", 
+            url: "{{URL('/admin/getoneitem')}}", 
             data: 
                 { element:id,
                   table:table
