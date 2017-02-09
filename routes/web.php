@@ -11,7 +11,7 @@
 |
 */
 /*Generale*/
-Route::get('/','Controller@home');
+Route::get('/','HomeController@home');
 Route::get('/test','Controller@test');
 Route::get('/menu/{id}','Controller@menu');
 Route::get('/submenu/{id}','Controller@submenu');
