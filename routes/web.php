@@ -12,10 +12,10 @@
 */
 /*Generale*/
 Route::get('/','HomeController@home');
-Route::get('/test','Controller@test');
+Route::get('/test','HomeController@test');
 Route::get('/menu/{id}','Controller@menu');
 Route::get('/submenu/{id}','Controller@submenu');
-Route::get('/sort={sort}/[{id_submenu}]-{numeitem}/page={pag}','Controller@produse');
+Route::get('/sort={sort}/[{id_submenu}]-{numeitem}/page={pag}','HomeController@produse');
 Route::get('/product/{id_item}','Controller@oneprodus');
 Route::get('/cart','CartController@cart');
 /*Cos*/
