@@ -1,5 +1,5 @@
 APP_ENV=local
-APP_KEY=base64:hy3nRKIB6oiyUQmeNARs4+FkmxwMRMve1ryWXATN+Rg=
+APP_KEY=base64:eNi7HUxc7KIKHuu+AHfGtrOoZIPcUPGYgnem/JxmzWw=
 APP_DEBUG=true
 APP_LOG_LEVEL=debug
 APP_URL=http://localhost
@@ -31,10 +31,10 @@ PUSHER_APP_ID=
 PUSHER_KEY=
 PUSHER_SECRET=
 
-FACEBOOK_CLIENT_ID=1293360460727145
-FACEBOOK_CLIENT_SECRET=6af815c1d71fbdf6f20472250e714603
-CALLBACK_URL=http://localhost/eComert/public/index.php
+FACEBOOK_CLIENT_ID=1848330918781951
+FACEBOOK_CLIENT_SECRET=5061d4eb1810963a96f8b2c62832cc25
+CALLBACK_URL=http://localhost/newecomert/public/index.php
 
-GOOGLE_APP_ID=747744891472-mivkigh0qpb9scfgcdir9n05glfgjlav.apps.googleusercontent.com
-GOOGLE_APP_SECRET=jTDhHk522L4Oc5eqwI69FdXM
-GOOGLE_REDIRECT=http://localhost/eComert/public/index.php
+GOOGLE_APP_ID=454874659558-iuq3qek6bobmskannn6ga6h2sdto1g1s.apps.googleusercontent.com
+GOOGLE_APP_SECRET=PvZAkmpWJDhzElx1_nS150y4
+GOOGLE_REDIRECT=http://localhost/newecomert/public/index.php
