@@ -2,12 +2,12 @@
     {{App\Menu::menu()}}
     @if(!empty(Session('menu')))
         <div class="dropdown">
-            <span class="produse dropdown-toggle" data-toggle="dropdown">
-                <button class="btn btn-default" style="outline:0">
-                    <span class="fa fa-bars" style="font-size:23px;"></span>
-                    <span class="glyphicon glyphicon-chevron-down"></span>
-                    Meniu
-                </button>
+            <span class="produse dropdown-toggle" data-toggle="dropdown" aria-expanded="false" >
+                <div class="menubutton">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
             </span>
             <div class="dropdown-menu">
                 <ul class="first_menu" id="first_menu">
@@ -60,17 +60,19 @@
 </div>
 <script>
     $("#menu").on("click",function(){
-        $(".sub-menu").removeClass("active");
+        $(".sub-menu").css("display","none");
+        $(".sub-menu .secundary_menu").css("right","-250px");
     });
     $('li[name=back]').on("click",function()
     {
-        $(".sub-menu").removeClass("active");
+        $(".sub-menu").fadeOut().find("ul").animate({"right":-250}, 200);
     });
     $('.component_first').on("click",function()
     { 
         var id=$(this).attr("id");
-        $(".sub-menu").removeClass("active");
-        $("#"+id+"s").addClass("active");
+        $(".sub-menu").fadeOut().find("ul").animate({"right":-250}, 200);
+        $("#"+id+"s").fadeIn().find("ul").animate({"right":-220}, 200);
+        
     });
     
     $(document).ready(function(){

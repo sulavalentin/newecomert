@@ -28,7 +28,7 @@
     .homelistinline li{
         color:#333;
         float: left;
-        margin-left: 20px;
+        margin-left: 25px;
     }
     .homelistinline li:hover{
         text-decoration: underline;
@@ -73,7 +73,7 @@
                                 <ul class="allproducts list" id="products">
                                     <?php $count=0 ?>
                                     @foreach($i1[0] as $k)
-                                        <li class="col-lg-3 col-md-3 col-sm-4 col-xs-6"> 
+                                        <li class="col-lg-3 col-md-3 col-sm-3 col-xs-6"> 
                                             <div class="continut_product">
                                                 <div class="continut_image">
                                                     <a href="{{URL("/product/".$k->id)}}">
@@ -107,13 +107,10 @@
                                         </li>
                                         <?php $count++ ?>
                                         @if($count % 2==0)
-                                            <div class="clearfix visible-xs"></div>
-                                        @endif
-                                        @if($count % 3==0)
-                                            <div class="clearfix visible-sm"></div>
+                                            <div class="clearfix visible-xs "></div>
                                         @endif
                                         @if($count % 4==0)
-                                            <div class="clearfix visible-md visible-lg"></div>
+                                            <div class="clearfix visible-sm visible-md visible-lg"></div>
                                         @endif
                                     @endforeach
                                 </ul>
