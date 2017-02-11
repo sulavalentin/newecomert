@@ -1,5 +1,11 @@
 @extends("admin.base")
 @section("content")
+<style>
+    .tabeleadmin span:hover{
+        cursor: pointer;
+        color:red;
+    }
+</style>
 <div class="content">
     @if(!empty($tabele))
         <div class="table-responsive">

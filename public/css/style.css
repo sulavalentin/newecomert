@@ -73,6 +73,45 @@ header {
     transition: 0.4s;
 }
 /*endbutton*/
+/*Homepage*/
+.homekey{
+    text-align: center;
+    margin: 10px 0px 0px 0px;
+}
+.subhomekey{
+    margin-top: 0px;
+}
+.col-md-12 {
+    width: 100%;
+    float:left;
+}
+.homeleft{
+    float:left;
+}
+.homelistblock{
+    padding-left:15px;
+}
+.homelistblock li{
+    color:#333;
+}
+.homelistblock li:hover{
+    color:red;
+}
+.homelistinline{
+    padding-left:0px;
+}
+.homelistinline li{
+    color:#333;
+    float: left;
+    margin-left: 25px;
+}
+.homelistinline li:hover{
+    color:red;
+}
+.homelistinline li:hover{
+    text-decoration: underline;
+}
+/*Endhomepage*/
 #menu{
     outline:none;
     height: 100%;

@@ -1,47 +1,13 @@
 @extends('base')
 @section('content')
-<style>
-    .homekey{
-        text-align: center;
-        margin: 10px 0px 0px 0px;
-    }
-    .subhomekey{
-        margin-top: 0px;
-    }
-    .col-md-12 {
-        width: 100%;
-        float:left;
-        margin-top:10px;
-    }
-    .homeleft{
-        float:left;
-    }
-    .homelistblock{
-        padding-left:15px;
-    }
-    .homelistblock li{
-        color:#333;
-    }
-    .homelistinline{
-        padding-left:0px;
-    }
-    .homelistinline li{
-        color:#333;
-        float: left;
-        margin-left: 25px;
-    }
-    .homelistinline li:hover{
-        text-decoration: underline;
-    }
-</style>
 @if(!empty($post))
     @foreach($post as $key=>$i)
-        <div class="col-md-12" style="border:1px solid #ccc; padding-bottom: 10px;">
+        <div class="col-md-12" style="padding-bottom: 10px; margin: 10px 0px 0px 0px;box-shadow: 1px 1px 5px grey;">
             @if(!empty($i) && count($i) >0)
-            <h1 class='homekey'>{{$key}}</h1>
-            <div class="col-md-12" style="padding: 0px;margin: 0px;">
+            <h1 class='homekey calibri'>{{$key}}</h1>
+            <div class="col-md-12" style="padding: 0px;margin:0px;">
                 @foreach($i as $key1=>$i1)
-                    <div class='col-md-12' style="border-top:1px solid #ccc; padding-top: 10px;">
+                    <div class='col-md-12' style="border-top: 3px solid #808080; padding-top: 10px;margin-top:10px;">
                         @if(!empty($i1[0]))
                             <div class="col-md-3 homeleft">
                         @else

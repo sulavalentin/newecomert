@@ -374,6 +374,7 @@ $(document).ready(function (e) {
         }
         if(istrue===true){
            $("#saveMod").button("loading");
+           $("#addMod").button("loading");
            $.ajax({  
                 type: 'POST',  
                 url: url, 
@@ -387,6 +388,7 @@ $(document).ready(function (e) {
                 success: function() {
                     location.reload();
                     $("#close").click();
+                    $("#addMod").button("reset");
                     $("#saveMod").button("reset");
                 }
             });
