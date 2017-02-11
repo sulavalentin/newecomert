@@ -27,11 +27,6 @@
                             <span class="glyphicon glyphicon-cog"></span>
                             Modifica
                         </a>  
-                        
-                        <a class="sterge"> 
-                            <span class="glyphicon glyphicon-minus"></span>
-                            Sterge
-                        </a>  
                     </td>
                 </tr>
                 <tr class="coloanedintabele" id="col{{$i->id}}">

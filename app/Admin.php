@@ -16,4 +16,21 @@ class Admin extends Model
                 "counttabele"=>$counttabele,
             ];
     }
+    public function getAdmins(){
+        $return=DB::table("admin")
+                ->where("id","<>",session("idAdmin"))
+                ->get();
+        return $return;
+    }
+    public function getEmail($email){
+        $este=DB::table('admin')->where('email',  $email)->value('email');
+        if(empty($este))
+        {
+            return false; 
+        }
+        else
+        {
+            return true; 
+        }
+    }
 }

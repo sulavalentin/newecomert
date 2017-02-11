@@ -16,7 +16,7 @@
                     <li><a href="{{URL("/admin/tables")}}">Tabele</a></li>
                     <li><a href="{{URL("/admin/menu")}}">Meniu</a></li>
                     <li><a href="#">Utilizatori</a></li>
-                    <li><a href="{{URL("/admin/actiune/admins")}}">Admini</a></li>
+                    <li><a href="{{URL("/admin/admins")}}">Admini</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
                         <ul class="dropdown-menu">

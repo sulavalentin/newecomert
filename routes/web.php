@@ -17,15 +17,17 @@ Route::get('/admin/login','Admin\AdminController@getLogin');
 Route::post('/admin/login','Admin\RegisterController@login');
 Route::post('/admin/register','Admin\RegisterController@register');
 Route::get('/exitadmin','Admin\RegisterController@exitadmin');
-Route::post('/admin/deleteadmin','Admin\SettingController@deleteadmin');
 Route::post('/admin/registerother','Admin\RegisterController@registerother');
 Route::get('/admin/confirm/{email}-{token}','Admin\RegisterController@comfirmadmin');
-Route::post('/admin/modificarol','Admin\SettingController@modificarol');
 Route::get('/admin/reset','Admin\AdminController@reset');
 Route::post('/admin/reset','Admin\RegisterController@sendemail');
 Route::post('/admin/setcode','Admin\RegisterController@setcode');
 Route::post('/admin/newpass','Admin\RegisterController@newpass');
 
+/*Admins*/
+Route::get('/admin/admins','Admin\AdminController@admins');
+Route::post('/admin/modificarol','Admin\AdminController@modificarol');
+Route::post('/admin/deleteadmin','Admin\AdminController@deleteadmin');
 /*Products routes*/
 Route::get('/admin/products','Admin\AdminController@products');
 Route::get('/admin/products/{id}','Admin\ProductsController@getProducts');

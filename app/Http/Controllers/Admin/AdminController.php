@@ -13,33 +13,35 @@ use DB;
 class AdminController extends Controller
 {
     public function base(Admin $admin){
-        if (filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
-            $count=$admin->getHomepage();
-            return view("admin.home",$count);
-        }else{
+        if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
             return redirect("/admin/login");
         }
+        $count=$admin->getHomepage();
+        return view("admin.home",$count);
     }
     public function products(Products $products){
-        if (filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
-            return view("admin.produse",["items"=>$products->getAllItems()]);
-        }else{
+        if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
             return redirect("/admin/login");
         }
+        return view("admin.produse",["items"=>$products->getAllItems()]);
     }
     public function tables(Tables $tables){
-        if (filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
-            return view("admin.tabele",["tabele"=>$tables->getAllTables()]);
-        }else{
+        if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
             return redirect("/admin/login");
         }
+        return view("admin.tabele",["tabele"=>$tables->getAllTables()]);
     }
     public function menu(Menu $menu){
-        if (filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
-            return view("admin.menu",["menu"=>$menu->getMenu()]); 
-        }else{
-            return redirect("/admin/login");
+        if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
+           return redirect("/admin/login");
         }
+         return view("admin.menu",["menu"=>$menu->getMenu()]); 
+    }
+    public function Admins(Admin $admin){
+        if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
+           return redirect("/admin/login");
+        }
+        return view("admin.admins",["admins"=>$admin->getAdmins()]);
     }
     public function getLogin(){
         $first=DB::table("admin")->where("confirmed",1)->count();
@@ -54,5 +56,35 @@ class AdminController extends Controller
     }
     public function reset(){
         return view("admin.partials.reset");
+    }
+    /*Admini*/
+    public function deleteadmin(Request $request){
+        if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
+           return redirect("/admin/login");
+        }
+        $id=$request->id;
+        $permision=DB::table("admin")->min("id");
+        $session=session("idAdmin");
+        if($permision==$session){
+            DB::table("admin")->where("id",$id)->delete();
+            return response()->json(true);
+        }else{
+            return response()->json(false);
+        }
+    }
+    public function modificarol(Request $request){
+        if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
+           return redirect("/admin/login");
+        }
+        $id=$request->id;
+        $role=$request->role;
+        $permision=DB::table("admin")->min("id");
+        $session=session("idAdmin");
+        if($permision==$session){
+            DB::table("admin")->where("id",$id)->update(["role"=>$role]);
+            return response()->json(true);
+        }else{
+            return response()->json(false);
+        }
     }
 }
