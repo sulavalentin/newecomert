@@ -298,7 +298,7 @@
         if (name.length>0 && name.length<30){
             $.ajax({  
                 type: 'POST',  
-                url: "{{URL('/admin/addelement/menu')}}", 
+                url: "{{URL('/admin/addMenu')}}", 
                 data: 
                     {
                       name:name
@@ -320,7 +320,7 @@
             var form=new FormData($(this)[0]);
             form.append("id",submenu);
             $.ajax({
-                url:"{{URL('/admin/addelement/submenu')}}",
+                url:"{{URL('/admin/addSubmenu')}}",
                 data:form,
                 dataType:'json',
                 async:false,
@@ -349,7 +349,7 @@
             var form=new FormData($(this)[0]);
             form.append("id",items);
             $.ajax({
-                url:"{{URL('/admin/addelement/items')}}",
+                url:"{{URL('/admin/addItemssubmenu')}}",
                 data:form,
                 dataType:'json',
                 async:false,
@@ -378,7 +378,7 @@
         if (name.length>0 && name.length<30){
             $.ajax({  
                 type: 'POST',  
-                url: "{{URL('/admin/modelement/menu')}}", 
+                url: "{{URL('/admin/modMenu')}}", 
                 data: 
                     { id:menu,
                       name:name,
@@ -402,7 +402,7 @@
             var form=new FormData($(this)[0]);
             form.append("id",submenu);
             $.ajax({
-                url:"{{URL('/admin/modelement/submenu')}}",
+                url:"{{URL('/admin/modSubmenu')}}",
                 data:form,
                 dataType:'json',
                 async:false,
@@ -433,7 +433,7 @@
                 var form=new FormData($(this)[0]);
                 form.append("id",items);
                 $.ajax({
-                    url:"{{URL('/admin/modelement/itemmenu')}}", 
+                    url:"{{URL('/admin/modItemssubmenu')}}", 
                     data:form,
                     dataType:'json',
                     async:false,
@@ -477,7 +477,7 @@
         menu=$(this).attr("id").replace('mod','');
         $.ajax({  
             type: 'POST',  
-            url: "{{URL('/admin/getelement/onemenu')}}", 
+            url: "{{URL('/admin/getOnemenu')}}", 
             data: 
                 { id:menu
                 },
@@ -492,7 +492,7 @@
         submenu=$(this).attr("id").replace('mod','');
         $.ajax({  
             type: 'POST',  
-            url: "{{URL('/admin/getelement/onesubmenu')}}", 
+            url: "{{URL('/admin/getOnesubmenu')}}", 
             data: 
                 { id:submenu
                 },
@@ -511,7 +511,7 @@
         $("select[name=subparinteItem] option").hide();
         $.ajax({  
             type: 'POST',  
-            url: "{{URL('/admin/getelement/oneitemmenu')}}", 
+            url: "{{URL('/admin/getOneitemssubmenu')}}", 
             data: 
                 { id:items
                 },

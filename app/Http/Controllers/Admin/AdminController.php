@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Admin;
 use App\Products;
 use App\Tables;
+use App\Menu;
 use DB;
 
 class AdminController extends Controller
@@ -29,6 +30,13 @@ class AdminController extends Controller
     public function tables(Tables $tables){
         if (filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
             return view("admin.tabele",["tabele"=>$tables->getAllTables()]);
+        }else{
+            return redirect("/admin/login");
+        }
+    }
+    public function menu(Menu $menu){
+        if (filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
+            return view("admin.menu",["menu"=>$menu->getMenu()]); 
         }else{
             return redirect("/admin/login");
         }

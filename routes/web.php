@@ -31,7 +31,7 @@ Route::get('/admin/products','Admin\AdminController@products');
 Route::get('/admin/products/{id}','Admin\ProductsController@getProducts');
 Route::post('/admin/getoneadd','Admin\ProductsController@getoneadd');
 Route::post('/admin/getoneitem','Admin\ProductsController@getoneitem');
-                /*Iteme*/
+    /*Iteme*/
 Route::post('/admin/addItem','Admin\ProductsController@addItem');
 Route::post('/admin/modificaItem','Admin\ProductsController@modificaItem');
 Route::post('/admin/deleteItem','Admin\ProductsController@deleteItem');
@@ -49,7 +49,20 @@ Route::post('/admin/addGroup','Admin\TablesController@addGroup');
 Route::post('/admin/modificaColoana','Admin\TablesController@modificaColoana');
 Route::post('/admin/deleteColoana','Admin\TablesController@deleteColoana');
 
+/*Menu rutes*/
+Route::get('/admin/menu','Admin\AdminController@menu');
+Route::post('/admin/getOnemenu','Admin\MenuController@getOnemenu');
+Route::post('/admin/getOnesubmenu','Admin\MenuController@getOnesubmenu');
+Route::post('/admin/getOneitemssubmenu','Admin\MenuController@getOneitemssubmenu');
 
+Route::post('/admin/addMenu','Admin\MenuController@addMenu');
+Route::post('/admin/addSubmenu','Admin\MenuController@addSubmenu');
+Route::post('/admin/addItemssubmenu','Admin\MenuController@addItemssubmenu');
+Route::post('/admin/modMenu','Admin\MenuController@modMenu');
+Route::post('/admin/modSubmenu','Admin\MenuController@modSubmenu');
+Route::post('/admin/modItemssubmenu','Admin\MenuController@modItemssubmenu');
+
+/**/
 Route::get('/admin/actiune/{tip}','Admin\SettingController@actiune');
 Route::post('/admin/getelement/{element}','Admin\SettingController@getElement');
 Route::post('/admin/addelement/{table}','Admin\SettingController@addElement');
