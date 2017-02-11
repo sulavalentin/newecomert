@@ -5,14 +5,33 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Itemssubmenu;
+use App\Products;
 
 class HomeController extends Controller
 {
-    public function home()
+    public function home(Products $products)
     {
-        return view('home');
+        $homepage=DB::table('itemssubmenu')
+                ->select('itemssubmenu.*', 'submenu.submenu_name','menu.menu_name' )
+                ->leftJoin("submenu",function($join){
+                    $join->on('submenu.id', '=', 'itemssubmenu.submenu_id');
+                })
+                ->leftJoin("menu",function($join){
+                    $join->on('menu.id', '=', 'submenu.menu_id');
+                })
+                ->get();
+        $arr=[];
+        foreach($homepage as $key => $item)
+        {
+            $arr[$item->menu_name][$item->submenu_name][$item->item_name] = $item->id;
+            $return=$products->getLimit($item->submenu_id);
+            if(count($return) > 1){
+                $arr[$item->menu_name][$item->submenu_name][0]=$products->getLimit($item->submenu_id);
+            }
+        }
+        return view('home',["post"=>$arr]);
     }
-    public function produse(Request $request,ItemsSubMenu $item,$ordon, $id_submenu , $den , $pag )
+    public function produse(Request $request,Itemssubmenu $item,$ordon, $id_submenu , $den , $pag )
     {
         $input = $request->all();
         if(count($input)>=1){
@@ -31,7 +50,7 @@ class HomeController extends Controller
                                "url"=>""]);
         }
     }
-    public function oneprodus(ItemsSubMenu $item , $id_item)
+    public function oneprodus(Itemssubmenu $item , $id_item)
     {
         return view("article",["item"=>$item->getItem($id_item),
                                "link"=>$item->getDenumireItems($id_item),

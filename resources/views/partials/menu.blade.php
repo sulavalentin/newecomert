@@ -22,7 +22,7 @@
                                         <li name="back">
                                             <b style="color:red;">
                                                 <span class="glyphicon glyphicon-arrow-left"></span>
-                                                Inapoi la {{$i->menu_name}}
+                                                {{$i->menu_name}}
                                             </b>
                                         </li>
                                     </a>

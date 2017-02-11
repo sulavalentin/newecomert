@@ -8,6 +8,19 @@ use App\Specifications;
 
 class Products extends Model
 {
+    public function getLimit($id){
+        $tables=DB::table("itemssubmenu")->where("submenu_id",$id)->pluck("id");
+        return DB::table("products")
+                ->select('products.*', 'images.address')
+                ->leftJoin("images",function($join){
+                    $join->on('products.id', '=', 'images.product_id');
+                    $join->where('images.default','1');
+                })
+                ->whereIn("table_id",$tables)
+                ->orderBy("views","desc")
+                ->take(4)
+                ->get();
+    }
     public function getAllItems(){
         $items=DB::table('itemsSubMenu')
                     ->select('itemsSubMenu.*','submenu.submenu_name','submenu.submenu_image','submenu.menu_id','menu.menu_name')

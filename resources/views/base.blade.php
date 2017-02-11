@@ -108,40 +108,19 @@
                 </div> 
             </div>
         </div>
-        <div class="container" style="border-top: 1px solid #ccc;margin-top: 10px;"> 
+            
+        <div class='container' style="border-top: 1px solid #ccc;margin-top: 10px;">
             <div class="row">
-                <!-- Pentru telefon meniu-->
-                <!--pentru a inchide pagina pe orice apasare -->
-                
-                <!--<div class="hidden-lg hidden-md hidden-sm" style="width: 150px;float:left;">
-                    <div id="allpage" onclick="closeMenu()"> </div>
-                    <span style="font-size:30px;cursor:pointer" onclick="openMenu()">&#9776; open</span>
-                    <div id="mySidenav" class="sidenav">
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
-                        <a href="#">About</a>
-                        <a href="#">Services</a>
-                        <a href="#">Clients</a>
-                        <a href="#">Contact</a>
-                    </div>
-                </div>-->
-            <!-- Pentru desktop meniu-->
-            
+                @yield('content')
+            </div>  
         </div>
-    </div>
-            
-    </header>
-    <div class='container'>
-        <div class="row">
-            @yield('content')
-        </div>  
-    </div>
-    <div class="fullpageload" id="fullpageload">
-        <div class="imgload">
-            <img src="{{asset("img/system/spin.gif")}}"/>
+        <div class="fullpageload" id="fullpageload">
+            <div class="imgload">
+                <img src="{{asset("img/system/spin.gif")}}"/>
+            </div>
         </div>
-    </div>
-    <footer style="height: 100px;">
-        
-    </footer>
+        <footer style="height: 100px;">
+
+        </footer>
     </body>
 </html>
