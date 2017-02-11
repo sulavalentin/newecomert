@@ -9,7 +9,8 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "~5.0",
-        "intervention/image": "dev-master"
+        "intervention/image": "dev-master",
+        "laravel/socialite": "~3.0.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -34,5 +34,17 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID',null),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET',null),
+        'redirect' => env('CALLBACK_URL',null).'/login-back/facebook',
+    ],
+    
+    'google' => [
+        'client_id' => env('GOOGLE_APP_ID',null),
+        'client_secret' => env('GOOGLE_APP_SECRET',null),
+        'redirect' => env('GOOGLE_REDIRECT',null).'/login-back/google',
+    ],
 
 ];

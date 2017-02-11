@@ -62,12 +62,6 @@ Route::post('/admin/modMenu','Admin\MenuController@modMenu');
 Route::post('/admin/modSubmenu','Admin\MenuController@modSubmenu');
 Route::post('/admin/modItemssubmenu','Admin\MenuController@modItemssubmenu');
 
-/**/
-Route::get('/admin/actiune/{tip}','Admin\SettingController@actiune');
-Route::post('/admin/getelement/{element}','Admin\SettingController@getElement');
-Route::post('/admin/addelement/{table}','Admin\SettingController@addElement');
-Route::post('/admin/modelement/{element}','Admin\SettingController@modElement');
-
 
 
 
