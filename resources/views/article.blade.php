@@ -71,7 +71,7 @@
                         Adauga in cos
                     </button>
                     <br>
-                    <button class="favorite calibri">
+                    <button class="favorite calibri" name="addfavorite" prod="{{$item[0]->id}}">
                         <span class="icon-heart-empty"></span>
                         Adauga la favorite
                     </button>
@@ -197,6 +197,7 @@
         </div>
     </div>
     @include('partials.addcart')
+    @include('partials.scriptcart')
     @else
         <h1 class="text-center">Nu exista acest produs</h1>
     @endif
@@ -214,27 +215,5 @@
                 height=0;
             }
         });
-        $("button[name=addcart]").on("click",function(){
-                var idprod=$(this).attr("prod");
-                $("button[name=addcart]").prop('disabled', true);
-                $("#fullpageload").show();
-                $.ajax({  
-                    type: 'POST',  
-                    url: "{{URL('/addcart')}}", 
-                    data: 
-                        { 
-                          id:idprod
-                        },
-                    success: function(data) {
-                        $("button[name=addcart]").removeAttr('disabled');
-                        $("#carcount").html(data[0]);
-                        $("#nameCart").html(data[1].originalname+data[1].name);
-                        $("#imgcart").attr("src","{{asset('/')}}"+data[1].address);
-                        $("#fullpageload").hide();
-                        $("#cosAdded").modal();
-                        
-                    }
-                });
-            });
     </script>
 @endsection

@@ -77,11 +77,14 @@
                                     ,{{str_replace("0.","",(string)number_format(round($i->price - (int)$i->price,2),2))}}
                                 </sup>
                                 <span>Lei</span>
-                                <span class="icon-heart-empty love" name="addfavorite" prod="{{$i->id}}"></span>
                             </p>
                             <button class="addcart" name="addcart" prod="{{$i->id}}">
                                 <span class="glyphicon glyphicon-shopping-cart"></span>
                                 Adauga in cos
+                            </button>
+                            <button class="favorite calibri" name="addfavorite" prod="{{$i->id}}">
+                                <span class="icon-heart-empty"></span>
+                                Adauga la favorite
                             </button>
                         </div>
                     </li>
@@ -101,6 +104,7 @@
         @include('partials.paginare')
     </div>
     @include('partials.addcart')
+    @include('partials.scriptcart')
     @else
         <h1>Nu sunt produse</h1>
     @endif
@@ -119,28 +123,6 @@
                     window.location = url;
                 }
                 return false;
-            });
-            $("button[name=addcart]").on("click",function(){
-                $("#fullpageload").show();
-                var idprod=$(this).attr("prod");
-                $("button[name=addcart]").prop('disabled', true);
-                $.ajax({  
-                    type: 'POST',  
-                    url: "{{URL('/addcart')}}", 
-                    data: 
-                        { 
-                          id:idprod
-                        },
-                    success: function(data) {
-                        $("button[name=addcart]").removeAttr('disabled');
-                        $("#carcount").html(data[0]);
-                        $("#nameCart").html(data[1].originalname+data[1].name);
-                        $("#imgcart").attr("src","{{asset('/')}}"+data[1].address);
-                        $("#fullpageload").hide();
-                        $("#cosAdded").modal();
-                        
-                    }
-                });
             });
         });
         /*Sortarea*/

@@ -6,20 +6,7 @@
                 Cos
             </span>
             <span class="badge countproducts" id="carcount">
-                <script>
-                    function countcart(){
-                           $.ajax({  
-                                type: 'POST',  
-                                url: "{{URL('/getCountCart')}}", 
-                                success: function(data) {
-                                    $("#carcount").html(data);
-                                }
-                            }); 
-                        }
-                    $(window).on("load", function() {
-                        countcart();
-                    });
-                </script>
+                0
             </span>
         </li>
     </a>
@@ -29,7 +16,7 @@
                 <img src="{{asset("img/system/favorite.png")}}"/><br>
                 Favorite
             </span>
-            <span class="badge countproducts" id="favcount">
+            <span class="badge countproducts" id="favoritecount">
                 0
             </span>
         </li>
@@ -41,3 +28,27 @@
         </span>
     </li>
 </ul>
+<script>
+    function countcart(){
+        $.ajax({  
+            type: 'POST',  
+            url: "{{URL('/getCountCart')}}", 
+            success: function(data) {
+                $("#carcount").html(data);
+            }
+        }); 
+    }
+    function countfavorite(){
+        $.ajax({  
+            type: 'POST',  
+            url: "{{URL('/getCountFavorite')}}", 
+            success: function(data) {
+                $("#favoritecount").html(data);
+            }
+        });
+    }
+    $(window).on("load", function() {
+        countcart();
+        countfavorite();
+    });
+</script>

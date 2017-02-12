@@ -83,6 +83,8 @@ Route::get('/sort={sort}/[{id_submenu}]-{numeitem}/page={pag}','HomeController@p
 Route::get('/product/{id_item}','HomeController@oneprodus');
 /*Favorite*/
 Route::get('/favorite','FavoriteController@favorite');
+Route::post('/addfavorite','FavoriteController@addfavorite');
+Route::post('/getCountFavorite','FavoriteController@getCountFavorite');
 /*Cos*/
 Route::get('/cart','CartController@cart');
 Route::post('/addcart','CartController@addcart');
