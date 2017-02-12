@@ -12,20 +12,24 @@ class HomeController extends Controller
     public function home(Products $products)
     {
         $homepage=DB::table('itemssubmenu')
-                ->select('itemssubmenu.*', 'submenu.submenu_name','menu.menu_name' )
+                ->select('itemssubmenu.*', 'submenu.submenu_name','menu.menu_name',DB::raw('COUNT(products.id) as count'))
                 ->leftJoin("submenu",function($join){
                     $join->on('submenu.id', '=', 'itemssubmenu.submenu_id');
                 })
                 ->leftJoin("menu",function($join){
                     $join->on('menu.id', '=', 'submenu.menu_id');
                 })
+                ->leftJoin("products",function($join){
+                    $join->on('itemssubmenu.id', '=', 'products.table_id');
+                })
+                ->groupBy("itemssubmenu.id")
                 ->get();
         $arr=[];
         foreach($homepage as $key => $item)
         {
-            $arr[$item->menu_name][$item->submenu_name][$item->item_name] = $item->id;
+            $arr[$item->menu_name][$item->submenu_name][$item->item_name] = ["id"=>$item->id,"count"=>$item->count];
             $return=$products->getLimit($item->submenu_id);
-            if(count($return) > 1){
+            if(count($return) > 0){
                 $arr[$item->menu_name][$item->submenu_name][0]=$products->getLimit($item->submenu_id);
             }
         }

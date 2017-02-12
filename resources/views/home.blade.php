@@ -26,8 +26,8 @@
                                 >
                                     @foreach($i1 as $key2=>$i2)
                                         @if($key2!==0)
-                                            <a href="{{URL("sort=priceUp/[".$i2."]-".$key2."/page=1")}}">
-                                                <li>{{$key2}}</li>
+                                            <a href="{{URL("sort=priceUp/[".$i2["id"]."]-".$key2."/page=1")}}">
+                                                <li>{{$key2}} ({{$i2["count"]}})</li>
                                             </a>
                                         @endif
                                     @endforeach
