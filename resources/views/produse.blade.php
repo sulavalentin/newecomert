@@ -12,47 +12,9 @@
     </div>
     @if(!empty($produse) && count($produse)>0)
     <div class="content">
-        <div class="sortare col-lg-3 col-md-3 col-sm-12 col-xs-12">
-            @if(!empty($link))
-                <form id="sortare" action="{{URL("sort=".$link["sort"]."/[".$link["2"]["address"]."]-".$link["2"]["name"]."/page=1")}}">
-                    @if(!empty($sortare["selected"]) && !empty($link))
-                        <p><b>Filtre alese:</b></p>
-                        @foreach($sortare["selected"] as $key => $sort)
-                                <p style="color:gray;margin-top: 10px;"><b>{{$key}}</b></p>
-                                @foreach($sort as $i)
-                                    <label for="sort{{$i->value}}" class="noselect sortlabel">
-                                        <input type="checkbox" id="sort{{$i->value}}" 
-                                               class="compara" 
-                                               value="{{$i->idspec}}" 
-                                               name="{{$i->id}}"
-                                               checked/>
-                                        <span>{{$i->value}}</span>
-                                    </label>
-                                    <br>
-                                @endforeach
-                        @endforeach
-                        <hr style="margin: 10px 0px;">
-                    @endif
-                    @if(!empty($sortare["noselected"]))
-                        @foreach($sortare["noselected"] as $key => $sort)
-                            <div class="sort_group">
-                               <p><b>{{$key}}</b></p>
-                               @foreach($sort as $i)
-                                   <label for="sort{{$i->value}}" class="noselect sortlabel">
-                                        <input type="checkbox" id="sort{{$i->value}}" 
-                                               class="compara" 
-                                               value="{{$i->idspec}}" 
-                                               name="{{$i->id}}"/>
-                                        <span>{{$i->value}}</span>
-                                    </label>
-                                   <br>
-                               @endforeach
-                            </div>
-                        @endforeach
-                    @endif
-                </form>
-            @endif
-        </div>
+        <!--Sortarea include -->
+        @include('partials.sortare')
+        
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" id="allproducts">
             <div class="content sortare_name">
                 @if(!empty($link))
@@ -115,7 +77,7 @@
                                     ,{{str_replace("0.","",(string)number_format(round($i->price - (int)$i->price,2),2))}}
                                 </sup>
                                 <span>Lei</span>
-                                <span class="icon-heart-empty love"></span>
+                                <span class="icon-heart-empty love" name="addfavorite" prod="{{$i->id}}"></span>
                             </p>
                             <button class="addcart" name="addcart" prod="{{$i->id}}">
                                 <span class="glyphicon glyphicon-shopping-cart"></span>
@@ -143,25 +105,7 @@
         <h1>Nu sunt produse</h1>
     @endif
     <script>
-        var link=window.location.pathname;
-        link=link.split("/");
-        for(var i=0;i<link.length;i++){
-            var pozitia=link[i].indexOf("=");
-            if(link[i].substring(0,pozitia)==="sort"){
-                var select=link[i].substring(pozitia+1);
-                var key="";
-                switch(select){
-                    case "priceUp":{key=0;  break;}
-                    case "priceDown":{key=1;  break;}
-                    case "nameUp":{key=2;  break;}
-                    case "nameDown":{key=3; break;}
-                    case "created":{key=4; break;}
-                    default:key=false;
-                }
-                $("#sortall")[0].selectedIndex=key;
-                break;
-            }
-        }
+        
         $(window).on("load", function() {
             $("#products").height($("#products").height());
         });
@@ -199,5 +143,25 @@
                 });
             });
         });
+        /*Sortarea*/
+        var link=window.location.pathname;
+        link=link.split("/");
+        for(var i=0;i<link.length;i++){
+            var pozitia=link[i].indexOf("=");
+            if(link[i].substring(0,pozitia)==="sort"){
+                var select=link[i].substring(pozitia+1);
+                var key="";
+                switch(select){
+                    case "priceUp":{key=0;  break;}
+                    case "priceDown":{key=1;  break;}
+                    case "nameUp":{key=2;  break;}
+                    case "nameDown":{key=3; break;}
+                    case "created":{key=4; break;}
+                    default:key=false;
+                }
+                $("#sortall")[0].selectedIndex=key;
+                break;
+            }
+        }
     </script>
 @endsection

@@ -257,7 +257,6 @@ header {
     text-align: center;
 }
 .allproducts .continut_product:hover .name{
-    height: auto;
     max-height:77px;
 }
 .allproducts .continut_image{
@@ -659,6 +658,9 @@ header {
     cursor:pointer;
     font-size:13px;
     overflow: hidden;
+}
+.cos a{
+    color:#333;
 }
 .cos li:hover{
     border-radius:3px;

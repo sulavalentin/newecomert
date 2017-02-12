@@ -86,38 +86,38 @@
                 
             </div>
         </div>
-        </style>
-        <div class="col-lg-12 detalii" id="detalii">
-            @if(!empty($item[1]))
-            <h1 class="text-center calibri" style="margin: 0px 0px 15px 0px;">Caracteristici</h1>
-                @foreach($item[1] as $key => $spec)
-                    <div class="desSearch" name="desSearch">
-                        <div class="specification">
-                            <p class="denumire">{{$key}}</p>
-                            <div class="spec_value">
-                               @foreach($spec as $i)
-                                    <div style="width:100%; float:left">
-                                        <p class="value_spec">{{$i->specification_name}}:</p>
-                                        <p class="value_spec">{{$i->value}}</p> 
-                                    </div>
-                                    @if($i->addsearch==1 || $i->addname==1)
-                                        <script>
-                                            addinname("{{$i->specification_name}}","{{$i->value}}");
-                                        </script>
-                                    @endif
-                                @endforeach
+        @if(!empty($item[1]))
+            <div class="col-lg-12 detalii" id="detalii">
+                <h1 class="text-center calibri" style="margin: 0px 0px 15px 0px;">Caracteristici</h1>
+                    @foreach($item[1] as $key => $spec)
+                        <div class="desSearch" name="desSearch">
+                            <div class="specification">
+                                <p class="denumire">{{$key}}</p>
+                                <div class="spec_value">
+                                   @foreach($spec as $i)
+                                        <div style="width:100%; float:left">
+                                            <p class="value_spec">{{$i->specification_name}}:</p>
+                                            <p class="value_spec">{{$i->value}}</p> 
+                                        </div>
+                                        @if($i->addsearch==1 || $i->addname==1)
+                                            <script>
+                                                addinname("{{$i->specification_name}}","{{$i->value}}");
+                                            </script>
+                                        @endif
+                                    @endforeach
+                                </div>
                             </div>
-                        </div>
-                    </div> 
-                @endforeach        
-            @endif
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="left" style="float:left">
-                
+                        </div> 
+                    @endforeach        
+
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="left" style="float:left">
+
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="right" style="float:right">
+
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="right" style="float:right">
-                
-            </div>
-        </div>
+        @endif
         @if(!empty($asemanatoare) && count($asemanatoare)>0)
             <div class="col-md-12 produse_asemanatoare">
                 <p><b>Produse asemanatoare</b></p>

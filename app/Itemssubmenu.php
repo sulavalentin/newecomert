@@ -100,13 +100,13 @@ class Itemssubmenu extends Model
                     })
                 ->where("table_id",$id)
                 ->where("addsearch",1)
-                ->groupBy('specifications.value')
+                
                 ->orderBy(DB::raw('LENGTH(value), value'))
                 ->get();
         $arr=[];
         foreach($sort as $key => $item)
         {
-            $arr[$item->specification_name][$key] = $item;
+            $arr[$item->specification_name][$item->value] = $item;
         }
         return ["noselected"=>$arr];
     }
@@ -134,12 +134,12 @@ class Itemssubmenu extends Model
                 ->whereIn("specifications.id",$val)
                 ->where("table_id",$id_submenu)
                 ->where("addsearch",1)
-                ->groupBy('specifications.value')
+                            
                 ->orderBy(DB::raw('LENGTH(value), value'))
                 ->get();
         foreach($sort as $key => $item)
         {
-            $selected[$item->specification_name][$key] = $item;
+            $selected[$item->specification_name][$item->value] = $item;
         }
         /*selecte where sort is not selected*/
         $prod=ItemsSubMenu::getValorsWithParameters($input,$id_submenu);
@@ -158,7 +158,7 @@ class Itemssubmenu extends Model
                 ->get();
         foreach($sort as $key => $item)
         { 
-            $noselected[$item->specification_name][$key] = $item;
+            $noselected[$item->specification_name][$item->value] = $item;
         }
         return ["selected"=>$selected,
                 "noselected"=>$noselected];

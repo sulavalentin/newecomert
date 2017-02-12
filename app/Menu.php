@@ -7,6 +7,7 @@ use DB;
 use session;
 use Image;
 use File;
+use Carbon\Carbon;
 
 class Menu extends Model
 {
@@ -68,7 +69,8 @@ class Menu extends Model
                                           "submenu_active"=>$request->activSubadd,
                                           "menu_id"=>$request->parinteSubadd,
                                         ]);
-                        $name="sub".$id;
+                        $date=Carbon::now();
+                        $name=$date->format("ymdhis");
                         $path="img/submenu/";
                         if($request->file('imageSubadd')->move($path,$name.".".$ext)){
                             $filename=$path.$name.".".$ext;
@@ -101,7 +103,8 @@ class Menu extends Model
                 $ext=strtolower($files->getClientOriginalExtension());
                 if(in_array($ext, $extensii)){
                     if(filesize($files)<6000000){
-                        $name="sub".$request->id;
+                        $date=Carbon::now();
+                        $name=$date->format("ymdhis");
                         $path="img/submenu/";
                         File::delete(DB::table("submenu")->where("id",$request->id)->value("submenu_image"));
                         if($request->file('imageSub')->move($path,$name.".".$ext)){
@@ -151,7 +154,8 @@ class Menu extends Model
                                           "item_active"=>$request->activItemadd,
                                           "submenu_id"=>$request->subparinteItemadd,
                                         ]);
-                        $name="item".$id;
+                        $date=Carbon::now();
+                        $name=$date->format("ymdhis");
                         $path="img/itemssubmenu/";
                         if($request->file('imageItemadd')->move($path,$name.".".$ext)){
                             $filename=$path.$name.".".$ext;
@@ -184,7 +188,8 @@ class Menu extends Model
                 $ext=strtolower($files->getClientOriginalExtension());
                 if(in_array($ext, $extensii)){
                     if(filesize($files)<6000000){
-                        $name="item".$request->id;
+                        $date=Carbon::now();
+                        $name=$date->format("ymdhis");
                         $path="img/itemssubmenu/";
                         File::delete(DB::table("itemssubmenu")->where("id",$request->id)->value("item_image"));
                         if($request->file('imageItem')->move($path,$name.".".$ext)){

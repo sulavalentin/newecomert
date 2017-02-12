@@ -81,8 +81,10 @@ Route::get('/menu/{id}','HomeController@menu');
 Route::get('/submenu/{id}','HomeController@submenu');
 Route::get('/sort={sort}/[{id_submenu}]-{numeitem}/page={pag}','HomeController@produse');
 Route::get('/product/{id_item}','HomeController@oneprodus');
-Route::get('/cart','CartController@cart');
+/*Favorite*/
+Route::get('/favorite','FavoriteController@favorite');
 /*Cos*/
+Route::get('/cart','CartController@cart');
 Route::post('/addcart','CartController@addcart');
 Route::post('/delcart','CartController@delcart');
 Route::post('/updatecart','CartController@updatecart');

@@ -112,7 +112,8 @@ class ProductsController extends Controller
                     $ext=strtolower($file->getClientOriginalExtension());
                     if(in_array($ext, $extensii)){
                         if(filesize($file)<6000000){
-                            $name=DB::table("images")->orderby("id","desc")->value('id')+1;
+                            $date=Carbon::now();
+                            $name=$date->format("ymdhis").DB::table("images")->orderby("id","desc")->value('id')+1;
                             $path="img/products/items/";
                             if($file->move($path,$name.".".$ext)){
                                 $filename=$path.$name.".".$ext;

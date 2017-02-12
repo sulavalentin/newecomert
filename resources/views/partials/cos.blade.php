@@ -23,15 +23,17 @@
             </span>
         </li>
     </a>
-    <li class="col-md-4">
-        <span>
-            <img src="{{asset("img/system/favorite.png")}}"/><br>
-            Favorite
-        </span>
-        <span class="badge countproducts" id="favcount">
-            0
-        </span>
-    </li>
+    <a href="{{URL("/favorite")}}">
+        <li class="col-md-4">
+            <span>
+                <img src="{{asset("img/system/favorite.png")}}"/><br>
+                Favorite
+            </span>
+            <span class="badge countproducts" id="favcount">
+                0
+            </span>
+        </li>
+    </a>
     <li class="col-md-4">
         <span>
             <img src="{{asset("img/system/compare.png")}}"/><br>
