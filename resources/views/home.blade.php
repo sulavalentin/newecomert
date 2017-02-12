@@ -39,14 +39,14 @@
                                 <ul class="allproducts list" id="products">
                                     <?php $count=0 ?>
                                     @foreach($i1[0] as $k)
-                                        <li class="col-lg-3 col-md-3 col-sm-3 col-xs-6"> 
+                                        <li class="col-lg-3 col-md-3 col-sm-4 col-xs-6"> 
                                             <div class="continut_product">
                                                 <div class="continut_image">
                                                     <a href="{{URL("/product/".$k->id)}}">
                                                         @if(\File::exists($k->address))
                                                             <img  src="{{asset($k->address)}}" class="img-responsive"/>
                                                         @else
-                                                            <img src="{{ asset('img/products/default.jpg') }}" class="img-responsive"/>
+                                                            <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive"/>
                                                         @endif
                                                     </a>
                                                 </div>
@@ -63,11 +63,18 @@
                                                         ,{{str_replace("0.","",(string)number_format(round($k->price - (int)$k->price,2),2))}}
                                                     </sup>
                                                     <span>Lei</span>
-                                                    <span class="icon-heart-empty love"></span>
                                                 </p>
                                                 <button class="addcart" name="addcart" prod="{{$k->id}}">
                                                     <span class="glyphicon glyphicon-shopping-cart"></span>
                                                     Adauga in cos
+                                                </button>
+                                                <button class="favorite calibri" name="addfavorite" prod="{{$k->id}}">
+                                                    @if(is_null($k->idfavorite))
+                                                        <span class="icon-heart-empty"></span>
+                                                    @else
+                                                        <span class="icon-heart"></span>
+                                                    @endif
+                                                    Adauga la favorite
                                                 </button>
                                             </div>
                                         </li>
@@ -88,5 +95,9 @@
             @endif
         </div>
     @endforeach
+    
+    @include('partials.addcart')
+    @include('partials.scriptcart')
 @endif
+
 @endsection

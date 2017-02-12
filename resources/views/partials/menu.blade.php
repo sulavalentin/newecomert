@@ -19,7 +19,7 @@
                             @if(!empty(Session('submenu')))
                                 <ul class="secundary_menu">
                                     <a>
-                                        <li name="back">
+                                        <li name="back" class="nopadding">
                                             <b style="color:red;">
                                                 <span class="glyphicon glyphicon-arrow-left"></span>
                                                 {{$i->menu_name}}
@@ -28,11 +28,11 @@
                                     </a>
                                     @foreach(Session('submenu') as $j)
                                         @if($j->menu_id==$i->id)
-                                            <li>
-                                                <a href="{{URL("/submenu/".$j->id)}}">
+                                            <a href="{{URL("/submenu/".$j->id)}}">
+                                                <li class="nopadding">
                                                     <b>{{$j->submenu_name}}</b>
-                                                </a>
-                                            </li>
+                                                </li>
+                                            </a>
                                         @if(Session('items'))
                                                 @foreach(Session('items') as $k)
                                                     @if($j->id==$k->submenu_id)

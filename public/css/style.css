@@ -154,6 +154,18 @@ header {
     overflow-y: auto;
     margin: 0px 0px 0px 10px;
 }
+#menu .secundary_menu a{
+    color:#333;
+}
+#menu .secundary_menu b{
+    color:black;
+}
+#menu .secundary_menu .nopadding{
+    padding-left:5px;
+}
+#menu .secundary_menu li{
+    padding-left:15px;
+}
 #menu .secundary_menu a:hover{
     color:red;
     text-decoration:underline;
@@ -161,9 +173,6 @@ header {
 #menu li{
     cursor: pointer;
     padding-left: 5px;
-}
-#menu li:hover{
-    
 }
 #menu li a{
     color:black;
@@ -180,7 +189,11 @@ header {
     color: black;
 }
 .first_menu .component_first{
-    border-top: 1px dotted #b1acac;
+    border-top: 1px solid #b1acac;
+    padding:1px 0px;
+}
+.first_menu .component_first:hover{
+    background-color: #ccc;
 }
 /*alt css*/
 .reglog{
@@ -245,9 +258,7 @@ header {
 }
 .allproducts .continut_product:hover{
     z-index: 2; 
-    position: absolute;
     box-shadow: 0px 1px 5px #2b2c2d;
-    margin-right: 3px;
 }
 .allproducts .continut_product .name{
     overflow: hidden;
@@ -515,21 +526,24 @@ header {
     float: left;
 }
 .ProducteImagine .item_margin .favorite{
-    cursor: pointer;
+    background-color: white;
+    color: #333;
+    border-bottom: 1px solid #800908;
+    border-left: 1px solid gray;
+    border-top: 1px solid gray;
+    border-radius: 3px;
     text-decoration: none;
+    padding: 2px 10px;
+    margin-top: 5px;
     width: 200px;
     height: 40px;
     font-size: 17px;
-    background-color: white;
-    color: #ef0000;
-    border-radius: 5px;
-    border: 1px solid #800908;
     margin-bottom: 10px;
-    outline: none;
 }
 .ProducteImagine .item_margin .favorite span{
-    font-size: 25px;
-    float: left;
+    font-size:25px;
+    float:left;
+    color:red;
 }
 .ProducteImagine .info{
     padding:0px;

@@ -18,15 +18,20 @@ class Itemssubmenu extends Model
             case "created":{$key="created_at"; $value="asc"; break;}
             default:{$key="price"; $value="asc";}
         }
-        return DB::table('products')
-                ->select('products.*', 'images.address')
+        $return=DB::table('products')
+                ->select('products.*', 'images.address','favorite.id as idfavorite')
                 ->leftJoin("images",function($join){
                             $join->on('products.id', '=', 'images.product_id');
                             $join->where('images.default','1');
                         })
+                ->leftJoin("favorite",function($join){
+                    $join->on('products.id', '=', 'favorite.product_id');
+                    $join->where('favorite.user_id',session('id'));
+                })
                 ->where('table_id',$id)
                 ->orderby($key,$value)
-                ->skip(($pag-1)*$nrPePag)->take($nrPePag)->get();   
+                ->skip(($pag-1)*$nrPePag)->take($nrPePag)->get(); 
+        return $return;
     }
     public function getValorsWithParameters($input,$id_submenu){
         $id=0;$val=[];
@@ -57,11 +62,15 @@ class Itemssubmenu extends Model
             default:{$key="price"; $value="asc";}
         }
             return  DB::table('products')
-                            ->select('products.*', 'images.address')
+                            ->select('products.*', 'images.address','favorite.id as idfavorite')
                             ->leftJoin("images",function($join){
                                         $join->on('products.id', '=', 'images.product_id');
                                         $join->where('images.default','1');
                                     })
+                            ->leftJoin("favorite",function($join){
+                                    $join->on('products.id', '=', 'favorite.product_id');
+                                    $join->where('favorite.user_id',session('id'));
+                                })
                             ->where('table_id',$id_submenu)
                             ->whereIn("products.id",$res)
                             ->orderby($key,$value)
@@ -94,13 +103,12 @@ class Itemssubmenu extends Model
     public function getSortare($id){
         $sort=DB::table("specificationname")
                 ->distinct()
-                ->select("specificationname.*","specifications.value",DB::raw('(specifications.id) as idspec'))
+                ->select("specificationname.*","specifications.value",'specifications.id as idspec')
                 ->leftJoin("specifications",function($join){
                         $join->on('specifications.specification_id', '=', 'specificationname.id');
                     })
                 ->where("table_id",$id)
                 ->where("addsearch",1)
-                
                 ->orderBy(DB::raw('LENGTH(value), value'))
                 ->get();
         $arr=[];
@@ -126,7 +134,7 @@ class Itemssubmenu extends Model
         /*selecte where sort is  selected*/
         $sort=DB::table("specificationname")
                 ->distinct()
-                ->select("specificationname.*","specifications.value",DB::raw('(specifications.id) as idspec'))
+                ->select("specificationname.*","specifications.value",'specifications.id as idspec')
                 ->leftJoin("specifications",function($join){
                         $join->on('specifications.specification_id', '=', 'specificationname.id');
                     })
@@ -145,7 +153,7 @@ class Itemssubmenu extends Model
         $prod=ItemsSubMenu::getValorsWithParameters($input,$id_submenu);
         $sort=DB::table("specificationname")
                 ->distinct()
-                ->select("specificationname.*","specifications.value",DB::raw('(specifications.id) as idspec'))
+                ->select("specificationname.*","specifications.value",'specifications.id as idspec')
                 ->leftJoin("specifications",function($join){
                         $join->on('specifications.specification_id', '=', 'specificationname.id');
                     })
@@ -227,20 +235,24 @@ class Itemssubmenu extends Model
     }  
     public function getItem($id_item){
         if(!isset($_COOKIE['views'])) {
-            setcookie("views", $id_item, time()+30);
+            setcookie("views", $id_item, time()+60);
             DB::table("products")->where("id",$id_item)->increment('views');
         }else{
             if($_COOKIE['views']!=$id_item){
-                setcookie("views", $id_item, time()+30);
+                setcookie("views", $id_item, time()+60);
                 DB::table("products")->where("id",$id_item)->increment('views');
             }
         }
         $c=DB::table('products')
-                ->select('products.*', 'images.address')
-                 ->leftJoin("images",function($join){
-                     $join->on('products.id', '=', 'images.product_id');
-                     $join->where('images.default','1');
-                 })
+                ->select('products.*', 'images.address','favorite.id as idfavorite')
+                ->leftJoin("images",function($join){
+                    $join->on('products.id', '=', 'images.product_id');
+                    $join->where('images.default','1');
+                })
+                ->leftJoin("favorite",function($join){
+                    $join->on('products.id', '=', 'favorite.product_id');
+                    $join->where('favorite.user_id',session('id'));
+                })
                 ->where('products.id',$id_item)
                 ->get();
         $c[1]=DB::table('specifications')
@@ -281,11 +293,15 @@ class Itemssubmenu extends Model
     public function getAsemanatoare($id){
         $val=DB::table('products')->where("id",$id)->value("table_id");
         return DB::table('products')
-                ->select('products.*', 'images.address')
+                ->select('products.*', 'images.address','favorite.id as idfavorite')
                 ->leftJoin("images",function($join){
                             $join->on('products.id', '=', 'images.product_id');
                             $join->where('images.default','1');
                         })
+                ->leftJoin("favorite",function($join){
+                    $join->on('products.id', '=', 'favorite.product_id');
+                    $join->where('favorite.user_id',session('id'));
+                })
                 ->where('table_id',$val)
                 ->where("products.id","!=",$id)
                 ->inRandomOrder()

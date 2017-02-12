@@ -60,7 +60,7 @@
                                     @if(\File::exists($i->address))
                                         <img  src="{{asset($i->address)}}" class="img-responsive"/>
                                     @else
-                                        <img src="{{ asset('img/products/default.jpg') }}" class="img-responsive"/>
+                                        <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive"/>
                                     @endif
                                 </a>
                             </div>
@@ -83,7 +83,11 @@
                                 Adauga in cos
                             </button>
                             <button class="favorite calibri" name="addfavorite" prod="{{$i->id}}">
-                                <span class="icon-heart-empty"></span>
+                                @if(is_null($i->idfavorite))
+                                    <span class="icon-heart-empty"></span>
+                                @else
+                                    <span class="icon-heart"></span>
+                                @endif
                                 Adauga la favorite
                             </button>
                         </div>
@@ -109,10 +113,6 @@
         <h1>Nu sunt produse</h1>
     @endif
     <script>
-        
-        $(window).on("load", function() {
-            $("#products").height($("#products").height());
-        });
         $(document).ready(function() {
             $("#sortare").on("change", function() {
                 $("#sortare").submit();

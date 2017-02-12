@@ -11,13 +11,17 @@ class Products extends Model
     public function getLimit($id){
         $tables=DB::table("itemssubmenu")->where("submenu_id",$id)->pluck("id");
         return DB::table("products")
-                ->select('products.*', 'images.address')
+                ->select('products.*', 'images.address','favorite.id as idfavorite')
                 ->leftJoin("images",function($join){
                     $join->on('products.id', '=', 'images.product_id');
                     $join->where('images.default','1');
                 })
+                ->leftJoin("favorite",function($join){
+                    $join->on('products.id', '=', 'favorite.product_id');
+                    $join->where('favorite.user_id',session('id'));
+                })
                 ->whereIn("table_id",$tables)
-                ->orderBy("views","desc")
+                ->orderBy(DB::raw('RAND()'))
                 ->take(4)
                 ->get();
     }

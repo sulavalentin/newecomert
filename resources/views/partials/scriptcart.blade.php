@@ -41,6 +41,7 @@ $(document).ready(function() {
                     if(data===0){
                         $("#fullpageload").hide();
                         thisspan.removeClass("icon-heart").addClass("icon-heart-empty");
+                        $("#favoritecount").html($("#favoritecount").html()-1);
                     }else{
                         $("#favoritecount").html(data[0]);
                         $("#nameFavorite").html(data[1].originalname+data[1].name);

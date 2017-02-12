@@ -26,6 +26,7 @@ class FavoriteController extends Controller
                                     $join->on('products.id', '=', 'images.product_id');
                                     $join->where('images.default','1');
                                 })
+                                ->where("products.id",$id)
                                 ->first();
                 return response()->json($return);
             }else{

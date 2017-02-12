@@ -32,7 +32,7 @@
                         @if(\File::exists($item[0]->address))
                             <img src="{{ asset($item[0]->address) }}" class="img-responsive" id="default"/>
                         @else
-                            <img src="{{ asset('img/products/default.jpg') }}" class="img-responsive" id="default"/>
+                            <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive" id="default"/>
                         @endif
                     </div>
                     @if(count($images)>1)
@@ -72,7 +72,11 @@
                     </button>
                     <br>
                     <button class="favorite calibri" name="addfavorite" prod="{{$item[0]->id}}">
-                        <span class="icon-heart-empty"></span>
+                        @if(is_null($item[0]->idfavorite))
+                            <span class="icon-heart-empty"></span>
+                        @else
+                            <span class="icon-heart"></span>
+                        @endif
                         Adauga la favorite
                     </button>
                     <br>
@@ -131,7 +135,7 @@
                                         @if(\File::exists($i->address))
                                             <img  src="{{asset($i->address)}}" class="img-responsive"/>
                                         @else
-                                            <img src="{{ asset('img/products/default.jpg') }}" class="img-responsive"/>
+                                            <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive"/>
                                         @endif
                                     </a>
                                 </div>
@@ -148,11 +152,18 @@
                                         ,{{str_replace("0.","",(string)number_format(round($i->price - (int)$i->price,2),2))}}
                                     </sup>
                                     <span>Lei</span>
-                                    <span class="icon-heart-empty love"></span>
                                 </p>
                                 <button class="addcart" name="addcart" prod="{{$i->id}}">
                                     <span class="glyphicon glyphicon-shopping-cart"></span>
                                     Adauga in cos
+                                </button>
+                                <button class="favorite calibri" name="addfavorite" prod="{{$i->id}}">
+                                    @if(is_null($i->idfavorite))
+                                        <span class="icon-heart-empty"></span>
+                                    @else
+                                        <span class="icon-heart"></span>
+                                    @endif
+                                    Adauga la favorite
                                 </button>
                             </div>
                         </li>
