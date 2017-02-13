@@ -10,7 +10,17 @@ use Carbon\Carbon;
 class FavoriteController extends Controller
 {
     public function favorite(){
-        $favorite=DB::table("favorite")->where("id",session("id"))->get();
+        $favorite=DB::table("favorite")
+                ->select("products.*","images.address","favorite.created_at as created_at","favorite.id as favorite_id")
+                ->leftJoin("products",function($join){
+                    $join->on("products.id","=","favorite.product_id");
+                })
+                ->leftJoin("images",function($join){
+                    $join->on('products.id', '=', 'images.product_id');
+                    $join->where('images.default','1');
+                })
+                ->where("favorite.user_id",session("id"))
+                ->get();
         return view("favorite",["favorite"=>$favorite]);
     }
     public function addfavorite(Request $request){
@@ -37,6 +47,12 @@ class FavoriteController extends Controller
         }else{
             return response()->json(false);
         }
+    }
+    public function deletefavorite(Request $request){
+        DB::table("favorite")
+                ->where("user_id",session("id"))
+                ->where("id",$request->id)
+                ->delete();
     }
     public function getCountFavorite()
     {

@@ -46,26 +46,35 @@
                             <span>Lei</span>
                         </td>
                         <td class="actions">
-                            <button class="btn btn-info btn-sm">
+                            <button class="cumpara_acum">
                                 Cumpara acum
                             </button>
                             <button class="btn btn-link btn-sm" del="{{$i->id}}" name="delfromcart">
-                                <span class="glyphicon glyphicon-trash"></span>
-                                Sterge din cos
+                                <span class="text-danger">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                    Sterge din cos
+                                </span>
                             </button>								
                         </td>
                     </tr>
                 @endforeach
             </tbody>
             <tfoot>
-                <tr class="visible-xs">
-                    <td class="text-center"><strong>Total 1.99</strong></td>
-                </tr>
                 <tr>
-                    <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                    <td>
+                        <a href="{{URL("/")}}" class="btn btn-warning">
+                            <i class="fa fa-angle-left"></i> 
+                            Continua cumparaturile
+                        </a>
+                    </td>
                     <td colspan="2" class="hidden-xs"></td>
-                    <td class="hidden-xs text-center"><strong>Total: <span id="total"></span> Lei</strong></td>
-                    <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+                    <td class="text-center"><strong>Total: <span id="total"></span> Lei</strong></td>
+                    <td>
+                        <a href="#" class="btn btn-success btn-block">
+                            Cumpara 
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </td>
                 </tr>
             </tfoot>
         </table>

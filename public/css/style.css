@@ -308,7 +308,7 @@ header {
 .allproducts .continut_product p span{
     font-size:15px;
 }
-.allproducts .continut_product .addcart{
+.addcart{
     background: #f7dea2; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#f7dea2, #f7dea2); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#f94e4b, yellow); /* For Opera 11.1 to 12.0 */
@@ -321,11 +321,11 @@ header {
     padding: 6px 10px;
     width: 100%;
 }
-.allproducts .continut_product .addcart span{
+.addcart span{
     margin-top: 2px;
     float:left;
 }
-.allproducts .continut_product .addcart:hover{
+.addcart:hover{
     background: #f0c351; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#f0c351, #f7dea2); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#f0c351, #f7dea2); /* For Opera 11.1 to 12.0 */
@@ -735,6 +735,71 @@ header {
 }
 .actions .btn-info{
     margin-bottom: 5px;
+}
+.cumpara_acum {
+	-moz-box-shadow:inset 0px 1px 0px 0px #fff6af;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fff6af;
+	box-shadow:inset 0px 1px 0px 0px #fff6af;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #ffab23));
+	background:-moz-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background:-webkit-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background:-o-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background:-ms-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+	background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#ffab23',GradientType=0);
+	background-color:#ffec64;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #ffaa22;
+	color:#333333;
+	font-family:Trebuchet MS;
+	font-weight:bold;
+	padding:4px 7px;
+        outline:0;
+	text-shadow:0px 1px 0px #ffee66;
+        margin-bottom: 15px;
+}
+.cumpara_acum:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64));
+	background:-moz-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+	background:-webkit-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+	background:-o-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+	background:-ms-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+	background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64',GradientType=0);
+	background-color:#ffab23;
+}
+.cumpara_acum:active {
+	position:relative;
+	top:1px;
+}
+/*Favorite Css*/
+.favoriteclass{
+    width: 100%;
+    float:left;
+    margin-top: 15px;
+    padding: 10px 0px 10px 0px;
+    border: 1px dotted gray;
+}
+.favoriteclass .favoritename{
+    height: 57px;
+    overflow: hidden;
+}
+.favoriteclass .contentfavorite a{
+    color:#333;
+}
+.favoriteclass .pretfavorite{
+    color:red;
+    font-weight: bold;
+    font-size: 25px;
+}
+.favoriteclass .favoriteadaugat{
+    color:gray;
+    font-size: 15px;
+    font-style: italic;
+    margin-bottom: 0px;
+    text-align: right;
 }
 @media screen and (max-width: 600px) {
     table#cart tbody td .form-control{

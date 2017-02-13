@@ -84,6 +84,7 @@ Route::get('/product/{id_item}','HomeController@oneprodus');
 /*Favorite*/
 Route::get('/favorite','FavoriteController@favorite');
 Route::post('/addfavorite','FavoriteController@addfavorite');
+Route::post('/deletefavorite','FavoriteController@deletefavorite');
 Route::post('/getCountFavorite','FavoriteController@getCountFavorite');
 /*Cos*/
 Route::get('/cart','CartController@cart');
