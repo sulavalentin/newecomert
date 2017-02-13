@@ -8,6 +8,7 @@ use DB;
 use App\Products;
 use Image;
 use File;
+use Carbon\Carbon;
 
 class ProductsController extends Controller
 {
@@ -113,7 +114,7 @@ class ProductsController extends Controller
                     if(in_array($ext, $extensii)){
                         if(filesize($file)<6000000){
                             $date=Carbon::now();
-                            $name=$date->format("ymdhis").DB::table("images")->orderby("id","desc")->value('id')+1;
+                            $name=$date->format("ymdhis")+DB::table("images")->orderby("id","desc")->value('id')+1;
                             $path="img/products/items/";
                             if($file->move($path,$name.".".$ext)){
                                 $filename=$path.$name.".".$ext;
