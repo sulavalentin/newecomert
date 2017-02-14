@@ -322,3 +322,9 @@
 .menuitems .col-xs-12{
     margin: 10px 0px;
 }
+/*Slideshow*/
+.imageslideshow{
+    max-height: 400px;
+    overflow: hidden;
+    margin-top:15px;
+}

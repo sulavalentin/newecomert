@@ -1,5 +1,8 @@
 @extends('base')
 @section('content')
+
+@include('partials.carosel')
+
 @if(!empty($post))
     @foreach($post as $key=>$i)
         <div class="col-md-12" style="padding-bottom: 10px; margin: 10px 0px 0px 0px;box-shadow: 1px 1px 5px grey;">

@@ -126,7 +126,6 @@
             <div class="col-md-12 produse_asemanatoare">
                 <p><b>Produse asemanatoare</b></p>
                 <ul class="allproducts list">
-                    <?php $count=0 ?>
                     @foreach($asemanatoare as $i)
                         <li class="col-lg-2 col-md-2 col-sm-4 col-xs-6"> 
                             <div class="continut_product">
@@ -167,16 +166,6 @@
                                 </button>
                             </div>
                         </li>
-                        <?php $count++ ?>
-                        @if($count % 2==0)
-                            <div class="clearfix visible-xs"></div>
-                        @endif
-                        @if($count % 3==0)
-                            <div class="clearfix visible-sm"></div>
-                        @endif
-                        @if($count % 6==0)
-                            <div class="clearfix visible-md visible-lg"></div>
-                        @endif
                     @endforeach
                 </ul>
             </div>

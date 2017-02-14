@@ -13,6 +13,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li><a href="{{URL("/admin/products")}}">Produse</a></li>
+                    <li><a href="{{URL("/admin/slideshow")}}">Slideshow</a></li>
                     <li><a href="{{URL("/admin/tables")}}">Tabele</a></li>
                     <li><a href="{{URL("/admin/menu")}}">Meniu</a></li>
                     <li><a href="#">Utilizatori</a></li>
@@ -36,11 +37,14 @@
 <div class="container">
     @yield("content")
 </div>
+<footer style="height: 100px;">
+    
+</footer>
 <script>
     $(document).ready(function(){
-            $('.dropdown-menu').click(function (e) {
-                e.stopPropagation();
-            });
+        $('.dropdown-menu').click(function (e) {
+            e.stopPropagation();
         });
+    });
 </script>
 @endsection

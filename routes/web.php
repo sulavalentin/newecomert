@@ -64,7 +64,10 @@ Route::post('/admin/modMenu','Admin\MenuController@modMenu');
 Route::post('/admin/modSubmenu','Admin\MenuController@modSubmenu');
 Route::post('/admin/modItemssubmenu','Admin\MenuController@modItemssubmenu');
 
-
+/*Slideshow rutes*/
+Route::get('/admin/slideshow','Admin\AdminController@slideshow');
+Route::post('/admin/addslideshow','Admin\SlideshowController@addslideshow');
+Route::post('/admin/delslideshow','Admin\SlideshowController@delslideshow');
 
 
 

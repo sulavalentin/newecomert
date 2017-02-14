@@ -8,6 +8,7 @@ use App\Admin;
 use App\Products;
 use App\Tables;
 use App\Menu;
+use App\Slideshow;
 use DB;
 
 class AdminController extends Controller
@@ -37,7 +38,13 @@ class AdminController extends Controller
         }
          return view("admin.menu",["menu"=>$menu->getMenu()]); 
     }
-    public function Admins(Admin $admin){
+    public function slideshow(Slideshow $slideshow){
+        if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
+           return redirect("/admin/login");
+        }
+        return view("admin.slideshow",["slideshow"=>$slideshow->getSlideshow()]);
+    }
+    public function admins(Admin $admin){
         if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
            return redirect("/admin/login");
         }
@@ -50,9 +57,6 @@ class AdminController extends Controller
         }else{
             return view("admin.partials.register");
         }
-    }
-    public function getRegister(){
-        return view('admin.partials.register');
     }
     public function reset(){
         return view("admin.partials.reset");

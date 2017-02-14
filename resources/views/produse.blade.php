@@ -51,7 +51,6 @@
                 </div>
             </div>
             <ul class="allproducts list" id="products">
-                <?php $count=0 ?>
                 @foreach($produse as $i)
                     <li class="col-lg-3 col-md-3 col-sm-4 col-xs-6"> 
                         <div class="continut_product">
@@ -92,16 +91,6 @@
                             </button>
                         </div>
                     </li>
-                    <?php $count++ ?>
-                    @if($count % 2==0)
-                        <div class="clearfix visible-xs"></div>
-                    @endif
-                    @if($count % 3==0)
-                        <div class="clearfix visible-sm"></div>
-                    @endif
-                    @if($count % 4==0)
-                        <div class="clearfix visible-md visible-lg"></div>
-                    @endif
                 @endforeach
             </ul>
         </div>
