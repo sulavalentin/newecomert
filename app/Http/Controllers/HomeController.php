@@ -6,24 +6,13 @@ use Illuminate\Http\Request;
 use DB;
 use App\Itemssubmenu;
 use App\Products;
+use App\Slideshow;
 
 class HomeController extends Controller
 {
-    public function home(Products $products)
+    public function home(Products $products,  Slideshow $slideshow)
     {
-        $homepage=DB::table('itemssubmenu')
-                ->select('itemssubmenu.*', 'submenu.submenu_name','menu.menu_name',DB::raw('COUNT(products.id) as count'))
-                ->leftJoin("submenu",function($join){
-                    $join->on('submenu.id', '=', 'itemssubmenu.submenu_id');
-                })
-                ->leftJoin("menu",function($join){
-                    $join->on('menu.id', '=', 'submenu.menu_id');
-                })
-                ->leftJoin("products",function($join){
-                    $join->on('itemssubmenu.id', '=', 'products.table_id');
-                })
-                ->groupBy("itemssubmenu.id")
-                ->get();
+        $homepage=$products->getHomeproducts();
         $arr=[];
         foreach($homepage as $key => $item)
         {
@@ -33,7 +22,9 @@ class HomeController extends Controller
                 $arr[$item->menu_name][$item->submenu_name][0]=$products->getLimit($item->submenu_id);
             }
         }
-        return view('home',["post"=>$arr]);
+        return view('home',["post"=>$arr,
+                            "slideshow"=>$slideshow->getSlideshow(),
+                            ]);
     }
     public function produse(Request $request,Itemssubmenu $item,$ordon, $id_submenu , $den , $pag )
     {

@@ -1,38 +1,45 @@
-<style>
-    .item{
-        max-height: 400px;
-    }
-</style>
-<div class="container">
-    <div class="row">
-        <div id="carousel" class="carousel slide">
-        <!--indicatore a slaidurilor -->
-            <ol class="carousel-indicators">
-                <li class="active" data-target="#carousel" data-slide-to="0"></li>
-                <li data-target="#carousel" data-slide-to="1"></li>
-                <li data-target="#carousel" data-slide-to="2"></li>
-                <li data-target="#carousel" data-slide-to="3"></li>
-            </ol>
-            <!--Slaiduri-->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img src="http://www.cumpar.net/wp-content/uploads/2016/05/procesor-1.jpg" alt="Imaginea lipseste">
+@if(!empty($slideshow) && count($slideshow)>0)
+    <style>
+        .item{
+            max-height: 400px;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div id="carousel" class="carousel slide">
+            <!--indicatore a slaidurilor -->
+                <ol class="carousel-indicators">
+                    <li class="active" data-target="#carousel" data-slide-to="0"></li>
+                    @for($i=1;$i < count($slideshow);$i++)
+                        <li data-target="#carousel" data-slide-to="{{$i}}"></li>
+                    @endfor	
+                </ol>
+                <!--Slaiduri-->
+                <div class="carousel-inner">
+                    @foreach($slideshow as $i)
+                        @if($i->id==$slideshow[0]->id)
+                            <div class="item active">
+                                <a href="{{$i->link}}">
+                                    <img src="{{asset($i->image)}}" alt="Imaginea lipseste" >
+                                </a>
+                            </div>
+                        @else
+                            <div class="item">
+                                <a href="{{$i->link}}">
+                                    <img src="{{asset($i->image)}}" alt="Imaginea lipseste" >
+                                </a>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
-                @for($i=0;$i<=2;$i++)
-                    <div class="item">
-                        <a href="#">
-                            <img src="http://www.cumpar.net/wp-content/uploads/2016/05/procesor-1.jpg" alt="Imaginea lipseste" >
-                        </a>
-                    </div>
-                @endfor
+                <!--Sagetile de pornire a slaidului -->
+                <a href="#carousel" class="left carousel-control" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>	
+                </a>
+                <a href="#carousel" class="right carousel-control" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
             </div>
-            <!--Sagetile de pornire a slaidului -->
-            <a href="#carousel" class="left carousel-control" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>	
-            </a>
-            <a href="#carousel" class="right carousel-control" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
         </div>
     </div>
-</div>
+@endif

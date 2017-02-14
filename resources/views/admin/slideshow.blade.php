@@ -15,24 +15,24 @@
             </button>
         </form>
     </div>
-    
-    @if(!empty($slideshow) && count($slideshow)>0)
         <div class="col-md-12">
             <div class="row" id="sliders">
-                @foreach($slideshow as $i)
-                    <div class="col-md-12 imageslideshow" id="slide{{$i->id}}">
-                        <p>
-                            <a href="{{$i->link}}" target="_blank">
-                                {{$i->link}}
-                            </a>
-                            <button class="btn btn-danger btn-sm" id="{{$i->id}}" name="delslideshow" style="float:right; margin-bottom:10px;">
-                                <span class="glyphicon glyphicon-arrow-down"></span>
-                                Sterge
-                            </button>
-                        </p>
-                        <img class="img-responsive" src="{{asset($i->image)}}" />
-                    </div>
-                @endforeach
+                @if(!empty($slideshow) && count($slideshow)>0)
+                    @foreach($slideshow as $i)
+                        <div class="col-md-12 imageslideshow" id="slide{{$i->id}}">
+                            <p>
+                                <a href="{{$i->link}}" target="_blank">
+                                    {{$i->link}}
+                                </a>
+                                <button class="btn btn-danger btn-sm" id="{{$i->id}}" name="delslideshow" style="float:right; margin-bottom:10px;">
+                                    <span class="glyphicon glyphicon-arrow-down"></span>
+                                    Sterge
+                                </button>
+                            </p>
+                            <img class="img-responsive" src="{{asset($i->image)}}" />
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
         <div class="modal fade" id="comfirm_delete_slideshow" role="dialog">
@@ -51,7 +51,7 @@
               </div>
             </div>
         </div>
-    @endif
+    
     
     <script>
         $("body").on("click","button[name=delslideshow]",function(){
@@ -92,7 +92,9 @@
                     processData: false,
                     success:function(data){
                         if(data.succes===true){
-                            $("#sliders").prepend("<div class='col-md-12 imageslideshow'>\n\
+                            $("#upload")[0].reset();
+                            $("input[name=link]").val("");
+                            $("#sliders").prepend("<div class='col-md-12 imageslideshow' id='slide"+data.link.id+"'>\n\
                                                         <p>\n\
                                                             <a href='"+data.link.link+"' target='_blank'>\n\
                                                                 "+data.link.link+"\n\

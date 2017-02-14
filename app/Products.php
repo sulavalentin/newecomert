@@ -8,6 +8,21 @@ use App\Specifications;
 
 class Products extends Model
 {
+    public function getHomeproducts(){
+        return DB::table('itemssubmenu')
+                ->select('itemssubmenu.*', 'submenu.submenu_name','menu.menu_name',DB::raw('COUNT(products.id) as count'))
+                ->leftJoin("submenu",function($join){
+                    $join->on('submenu.id', '=', 'itemssubmenu.submenu_id');
+                })
+                ->leftJoin("menu",function($join){
+                    $join->on('menu.id', '=', 'submenu.menu_id');
+                })
+                ->leftJoin("products",function($join){
+                    $join->on('itemssubmenu.id', '=', 'products.table_id');
+                })
+                ->groupBy("itemssubmenu.id")
+                ->get();
+    }
     public function getLimit($id){
         $tables=DB::table("itemssubmenu")->where("submenu_id",$id)->pluck("id");
         return DB::table("products")
