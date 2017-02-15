@@ -21,7 +21,7 @@
                                         @if(\File::exists($i->address))
                                             <img  src="{{asset($i->address)}}" class="img-responsive"/>
                                         @else
-                                            <img src="{{ asset('img/products/default.jpg') }}" class="img-responsive"/>
+                                            <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive"/>
                                         @endif
                                     </a>
                                 </div>
