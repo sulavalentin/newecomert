@@ -28,7 +28,7 @@
                 Compara
             </span>
             <span class="badge countproducts" id="comparecount">
-                0
+                {{count(session('idcompare'))}}
             </span>
         </li>
     </a>

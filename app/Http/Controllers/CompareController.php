@@ -8,7 +8,8 @@ use DB;
 class CompareController extends Controller
 {
     public function compare(){
-        return view("compare");
+        $return=DB::table("products")->whereIn("id",session("idcompare"))->get();
+        return view("compare",["compare"=>$return]);
     }
     public function addcompare(Request $request){
         $id=$request->id;

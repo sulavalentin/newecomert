@@ -65,7 +65,7 @@
                             </div>
                             <div class="name">
                                 <a class="NumeProduct" href="{{URL("/product/".$i->id)}}">
-                                    <p>
+                                    <p title="{{$i->originalname}}{{$i->name}}">
                                         {{$i->originalname}}{{$i->name}}
                                     </p>
                                 </a>

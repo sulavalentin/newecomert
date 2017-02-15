@@ -78,12 +78,13 @@ $(document).ready(function() {
                 }
                 if(data===1){
                     $("#mesagecompare").html("Produsul este deja in comparare");
-                    $("#mesagecompare").css("color","#333");
+                    $("#mesagecompare").css("color","red");
                 }
                 if(data===2){
                     $("#mesagecompare").html("Toate produsele trebuie sa fie la fel !");
                     $("#mesagecompare").css("color","red");
                 }
+                $("#comparecount").html("{{count(session('idcompare'))}}");
                 $("button[name=addcompare]").removeAttr('disabled');
                 $("#fullpageload").hide();
                 $("#compareAdded").modal();

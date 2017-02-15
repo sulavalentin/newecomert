@@ -55,7 +55,7 @@
                                                 </div>
                                                 <div class="name">
                                                     <a class="NumeProduct" href="{{URL("/product/".$k->id)}}">
-                                                        <p>
+                                                        <p title="{{$k->originalname}}{{$k->name}}">
                                                             {{$k->originalname}}{{$k->name}}
                                                         </p>
                                                     </a>
@@ -78,6 +78,10 @@
                                                         <span class="icon-heart"></span>
                                                     @endif
                                                     Adauga la favorite
+                                                </button>
+                                                <button class="compare calibri" name="addcompare" prod="{{$k->id}}">
+                                                    <span class="glyphicon glyphicon-sort"></span>
+                                                    Compara
                                                 </button>
                                             </div>
                                         </li>
