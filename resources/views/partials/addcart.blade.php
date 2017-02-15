@@ -42,3 +42,22 @@
       </div>
     </div>
 </div>
+
+<div class="modal fade" id="compareAdded" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title text-center" id="mesagecompare">Produsul a fost adaugat</h3>
+        </div>
+        <div class="modal-body">
+            <div class="content">
+                <button data-dismiss="modal" class="btn btn-default">Inapoi</button>
+                <a href="{{URL("/compare")}}" class="btn btn-primary pull-right">
+                    Vezi produsele comparate
+                </a>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

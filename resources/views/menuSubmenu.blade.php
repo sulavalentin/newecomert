@@ -7,10 +7,10 @@
         @foreach($response as $i)
             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
                 <a href="{{URL("submenu/".$i->id)}}" class="name_submenu">
-                    @if(!empty($i->submenu_image))
+                    @if(\File::exists($i->submenu_image))
                         <img  src="{{asset($i->submenu_image)}}" class="img-responsive"/>
                     @else
-                        <img src="{{ asset('img/products/default.jpg') }}" class="img-responsive"/>
+                        <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive"/>
                     @endif
                     <h3 class="text-center">{{$i->submenu_name}}</h3>
                 </a>

@@ -55,5 +55,40 @@ $(document).ready(function() {
             }
         });
     });
+    
+    $("button[name=addcompare]").on("click",function(){
+        $("#fullpageload").show();
+        var idprod=$(this).attr("prod");
+        $("button[name=addcompare]").prop('disabled', true);
+        $.ajax({  
+            type: 'POST',  
+            url: "{{URL('/addcompare')}}", 
+            data: 
+                { 
+                  id:idprod
+                },
+            success: function(data) {
+                if(data===true){
+                    $("#mesagecompare").html("Produsul a fost adaugat");
+                    $("#mesagecompare").css("color","#333");
+                }
+                if(data===false){
+                    $("#mesagecompare").html("!!! Puteti compara maxim 4 produse");
+                    $("#mesagecompare").css("color","red");
+                }
+                if(data===1){
+                    $("#mesagecompare").html("Produsul este deja in comparare");
+                    $("#mesagecompare").css("color","#333");
+                }
+                if(data===2){
+                    $("#mesagecompare").html("Toate produsele trebuie sa fie la fel !");
+                    $("#mesagecompare").css("color","red");
+                }
+                $("button[name=addcompare]").removeAttr('disabled');
+                $("#fullpageload").hide();
+                $("#compareAdded").modal();
+            }
+        });
+    });
 });
 </script>

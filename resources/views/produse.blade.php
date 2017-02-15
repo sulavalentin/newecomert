@@ -89,6 +89,10 @@
                                 @endif
                                 Adauga la favorite
                             </button>
+                            <button class="compare calibri" name="addcompare" prod="{{$i->id}}">
+                                <span class="glyphicon glyphicon-sort"></span>
+                                Compara
+                            </button>
                         </div>
                     </li>
                 @endforeach

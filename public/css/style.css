@@ -348,6 +348,25 @@ header {
     float:left;
     color:red;
 }
+.compare{
+    background-color: #f5f4f4;
+    color: #333;
+    border: 1px solid white;
+    text-decoration: none;
+    outline: none;
+    padding: 2px 10px;
+    width: 100%;
+    margin-top: 5px;
+    box-shadow: 0px 0px 4px gray;
+}
+.compare:active{
+    box-shadow: 0px 0px 4px #ccc;
+}
+.compare span{
+    margin-top: 2px;
+    float:left;
+    color:gray;
+}
 .sortare_name h1{
     margin:0px;
 }
@@ -544,6 +563,32 @@ header {
     font-size:25px;
     float:left;
     color:red;
+}
+
+.ProducteImagine .item_margin .compare{
+    border-left: 1px solid gray;
+    border-top: 1px solid gray;
+    text-decoration: none;
+    padding: 2px 10px;
+    margin-top: 5px;
+    width: 200px;
+    height: 40px;
+    font-size: 17px;
+    margin-bottom: 10px;
+    background-color: #f5f4f4;
+    color: #333;
+    border: 1px solid white;
+    box-shadow: 0px 0px 5px gray;
+    
+}
+.ProducteImagine .item_margin .compare span{
+    font-size:25px;
+    margin-top: 2px;
+    float:left;
+    color:gray;
+}
+.ProducteImagine .item_margin .compare:active{
+    box-shadow: 0px 0px 5px #ccc;
 }
 .ProducteImagine .info{
     padding:0px;

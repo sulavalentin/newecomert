@@ -80,10 +80,10 @@
                         Adauga la favorite
                     </button>
                     <br>
-                    <label for="compara" style="cursor: pointer;" class="noselect">
-                        <input type="checkbox" id="compara" class="compara"/>
-                        <span>Compara</span>
-                    </label>
+                    <button class="compare calibri" name="addcompare" prod="{{$item[0]->id}}">
+                        <span class="glyphicon glyphicon-sort"></span>
+                        Compara
+                    </button>
                 </div>
            </div>
             <div id="addinname" class="calibri">

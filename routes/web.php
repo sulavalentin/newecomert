@@ -96,6 +96,9 @@ Route::post('/delcart','CartController@delcart');
 Route::post('/updatecart','CartController@updatecart');
 Route::post('/totalprice','CartController@totalprice');
 Route::post('/getCountCart','CartController@getCountCart');
+/*Compare*/
+Route::get('/compare','CompareController@compare');
+Route::post('/addcompare','CompareController@addcompare');
 /*User*/
 Route::get("/login-{facebook}", 'RegisterController@goToFacebook');
 Route::get("/login-back/{facebook}",'RegisterController@goToFacebookBack');

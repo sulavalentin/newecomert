@@ -21,12 +21,17 @@
             </span>
         </li>
     </a>
-    <li class="col-md-4">
-        <span>
-            <img src="{{asset("img/system/compare.png")}}"/><br>
-            Compara
-        </span>
-    </li>
+    <a href="{{URL("/compare")}}">
+        <li class="col-md-4">
+            <span>
+                <img src="{{asset("img/system/compare.png")}}"/><br>
+                Compara
+            </span>
+            <span class="badge countproducts" id="comparecount">
+                0
+            </span>
+        </li>
+    </a>
 </ul>
 <script>
     function countcart(){
