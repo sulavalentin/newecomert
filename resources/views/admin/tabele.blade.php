@@ -24,7 +24,11 @@
                 <tr id="t{{$i->id}}">
                     <td>{{$i->id}}</td>
                     <td class="hoverimage">
-                        <img src="{{asset($i->item_image)}}" class="imaginetable "/>
+                        @if(\File::exists($i->item_image))
+                            <img src="{{ asset($i->item_image) }}" class="img-responsive imaginetable"/>
+                        @else
+                            <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive imaginetable"/>
+                        @endif
                     </td>
                     <td>{{$i->item_name}}</td>
                     <td>{{date('d/m/Y', strtotime($i->created_at))}}</td>

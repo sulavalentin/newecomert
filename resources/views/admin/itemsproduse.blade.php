@@ -119,10 +119,10 @@
                 <tr id="{{$i->id}}">
                     <td>{{$i->id}}</td>
                     <td class="hoverimage">
-                        @if(!empty($i->address))
-                            <img src="{{ asset($i->address) }}" class="imaginetable"/>
+                        @if(\File::exists($i->address))
+                            <img src="{{ asset($i->address) }}" class="img-responsive imaginetable"/>
                         @else
-                            <img src="{{ asset('img/system/default.jpg') }}" class="imaginetable"/>
+                            <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive imaginetable"/>
                         @endif
                     </td>
                     <td id="name{{$i->id}}" >
