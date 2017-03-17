@@ -270,7 +270,7 @@ header {
 .allproducts .continut_product:hover .name{
     max-height:77px;
 }
-.allproducts .continut_image{
+.continut_image{
     width: 100%;
     margin:0 auto;
     overflow:hidden;
@@ -279,14 +279,14 @@ header {
     width: 100%;
     margin:0 auto;
 }
-.allproducts .NumeProduct{
+.NumeProduct{
     color: #555555;
     text-decoration: none;
 }
 .allproducts .continut_product p{
     margin: 0px;
 }
-.allproducts .continut_product .price{
+.price{
     font-weight: bold;
     font-size: 23px;
     color: #e03c40;

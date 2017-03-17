@@ -99,6 +99,7 @@ Route::post('/getCountCart','CartController@getCountCart');
 /*Compare*/
 Route::get('/compare','CompareController@compare');
 Route::post('/addcompare','CompareController@addcompare');
+Route::post('/deletecompare','CompareController@deletecompare');
 /*User*/
 Route::get("/login-{facebook}", 'RegisterController@goToFacebook');
 Route::get("/login-back/{facebook}",'RegisterController@goToFacebookBack');
