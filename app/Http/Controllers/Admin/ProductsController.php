@@ -61,8 +61,9 @@ class ProductsController extends Controller
         $id=$request->id;
         $item_id=$request->item_id;
         $name=DB::table("images")->where("id",$id)->select("address","default")->first();
-        File::delete($name->address);
-        DB::table("images")->where("id",$id)->orWhere("product_id",-1)->delete();
+        if(File::exists($name->address)){
+            File::delete($name->address);
+        }
         if($name->default==1){
             $check=DB::table("images")
                     ->where("product_id",$item_id)
@@ -77,12 +78,14 @@ class ProductsController extends Controller
         if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
             return redirect("/admin");
         }
-        $id=$request->id;
-        $images=DB::table("images")->where("product_id",-1)->pluck("address");
+        $images=DB::table("images")->where("product_id",-1)->get();
         foreach($images as $key){
-            File::delete($key);
+            if(File::exists($key->address)){
+                File::delete($key->address);
+            }
+            DB::table("images")->where("id",$key->id)->delete();
         }
-        DB::table("images")->where("product_id",-1)->delete();
+        
     }
     public function defaultImage(Request $request){
         if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){

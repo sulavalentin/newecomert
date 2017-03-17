@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 use App\Specifications;
+use Carbon\Carbon;
 
 class Products extends Model
 {
@@ -65,7 +66,7 @@ class Products extends Model
                             $join->where('images.default','1');
                         })
                 ->where('table_id',$id)
-                ->orderby("id","asc")
+                ->orderby("id","desc")
                 ->get();
         $a["name"]=DB::table("itemssubmenu")->where("id",$id)->value("item_name");
         $a["id"]=$id;
@@ -130,7 +131,8 @@ class Products extends Model
         $id=DB::table("products")->insertGetId(["table_id"=>$tabela,
                                       "originalname"=>ucwords($originalname),
                                       "name"=>ucwords($name),
-                                      "price"=>$request->rowvalue[1]]);
+                                      "price"=>$request->rowvalue[1],
+                                      "created_at"=>Carbon::now()]);
         for($i=2;$i<sizeof($request->rowvalue);$i++){
             DB::table("specifications")->insert(["product_id"=>$id,
                                                 "specification_id"=>$request->rowid[$i],

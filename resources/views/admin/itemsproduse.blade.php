@@ -28,6 +28,8 @@
 #error{
     width: 100%;
     float: left;
+    margin-top:5px;
+    font-weight: bold;
 }
 /*TEST*/
 .imgWrap {
@@ -91,7 +93,7 @@
 <div class="col-md-12">
     @if(!empty($article["name"]))
         <div style="width: 100%;">
-            <a href="#ModalAddMod" class="pull-right" id="AddElement" data-toggle="modal">
+            <a href="#ModalAddMod" class="pull-right btn btn-primary" id="AddElement" data-toggle="modal">
                 <span class="glyphicon glyphicon-plus"></span>
                 Add Element
             </a>
@@ -109,7 +111,7 @@
                         <th class="titluid">ID:</th>
                         <th class="titluimagine">Image:</th>
                         <th>Nume:</th>
-                        <th>Pret:</th>
+                        <th>Pret(Lei)</th>
                         <th>Vizualizat:</th>
                         <th>Creat:</th>
                         <th style="width:  220px;">Setari:</th>
@@ -130,7 +132,7 @@
                             {{$i->originalname}}{{$i->name}}
                         </a>
                     </td>
-                    <td id="price{{$i->id}}">{{$i->price}} Lei</td>
+                    <td id="price{{$i->id}}">{{$i->price}}</td>
                     <td>{{$i->views}}</td>
                     <td>{{date('d/m/Y', strtotime($i->created_at))}}</td>
                     <td>
@@ -191,7 +193,8 @@
                     </form>
                     <div id="raspuns">  
                     </div>
-                    <div id="error" class="text-danger">
+                    <div id="error" class="text-danger text-center">
+                        
                     </div>
                 </div>
                 <!--End adaugare a imaginii -->
@@ -208,11 +211,21 @@
     var id=0;
     var idsterge=0;
 </script>
-<div class='full-page'></div>
-<div class='comfirm-div'>
-    <h3>Sigur doriti sa stergeti aceast produs?</h3>
-    <button class="btn btn-default" id='yesdelete'>Da</button>
-    <button class="btn btn-primary" onclick='closecomfirm()'>Nu</button>
+<div class="modal fade" id="comfirm_delete" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center">Sterge produs</h4>
+        </div>
+        <div class="modal-body text-center">
+            <h2 class="calibri" style="margin: 0px 0px 15px 0px;">Sigur doriti sa stergeti acest produs?</h2>
+            <button class="btn btn-default" id="yesdelete">Da</button>
+            <button class="btn btn-primary" data-dismiss="modal">Nu</button>
+        </div>
+      </div>
+    </div>
 </div>
 <!--Script pentru adaugare a imaginii-->
 <script>
@@ -256,6 +269,12 @@ $(document).ready(function (e) {
                     $("#error").text(eror+" imagini sau incarcat");
                 }
                 $(".loadimage").css("opacity","0");
+                $('#upload')[0].reset();
+            },
+            error:function(){
+                $(".loadimage").css("opacity","0");
+                $("#error").text("A aparut o eroare");
+                $('#upload')[0].reset();
             }
         });
     }));
@@ -396,20 +415,20 @@ $(document).ready(function (e) {
     });
     $("body").on("click",".sterge" ,function() {
         idsterge=$(this).attr("id").replace('delete','');
-        $(".full-page,.comfirm-div").fadeIn(200);
+        $("#comfirm_delete").modal();
         $("#yesdelete").attr("name",$(this).attr("id").replace('delete',''));
     });
     $("body").on("click","#yesdelete" ,function(){
          $.ajax({  
-                type: 'POST',  
-                url: "{{URL('/admin/deleteItem')}}", 
-                data: 
-                    { id:$(this).attr("name")
-                    },
-                success: function() {
-                    location.reload();
-                }
-            });
+            type: 'POST',  
+            url: "{{URL('/admin/deleteItem')}}", 
+            data: 
+                { id:$(this).attr("name")
+                },
+            success: function() {
+                location.reload();
+            }
+        });
     });
     function sterge(ida){
         $.ajax({  
