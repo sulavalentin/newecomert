@@ -31,9 +31,7 @@ class Compare extends Model
         $arr=[];
         foreach($return as $key => $item)
         {
-            if($item->value!=null){
-                $arr[$item->name_group][$item->specification_name][$key] = $item;
-            }
+            $arr[$item->name_group][$item->specification_name][$key] = $item;
         }
         return $arr;
     }

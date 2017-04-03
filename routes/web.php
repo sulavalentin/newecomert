@@ -107,3 +107,5 @@ Route::post('/register','RegisterController@register');
 Route::post('/login','RegisterController@login');
 Route::get('/confirm/{email}-{token}','RegisterController@comfirm');
 Route::get('/exit','RegisterController@exituser');
+/*Cautare*/
+Route::get('/search','SearchController@search');

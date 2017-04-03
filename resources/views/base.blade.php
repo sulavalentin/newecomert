@@ -94,9 +94,9 @@
                     </div>
                     <!--Cauta -->
                     <div class="col-md-6">
-                        <form class="form-cauta">
-                            <input type="text" id="search" placeholder="Cauta">
-                            <input type="submit" value="GO" id="cauta">
+                        <form class="form-cauta" action="{{URL("search")}}">
+                            <input type="text" id="search" name="search" placeholder="Cauta" autocomplete="off"/>
+                            <input type="submit" value="GO" id="cauta"/>
                         </form>
                     </div>
                     <!-- cos register-->

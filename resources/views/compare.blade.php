@@ -34,7 +34,7 @@
                                 </a>
                             </div>
                             <a class="NumeProduct" href="{{URL("/product/".$i->id)}}">
-                                <p title="{{$i->originalname}}{{$i->name}}">
+                                <p title="{{$i->originalname}}{{$i->name}}" class="comparename">
                                     {{$i->originalname}}{{$i->name}}
                                 </p>
                             </a>
@@ -70,7 +70,11 @@
                                 </td>
                                 @foreach($i1 as $key2=>$i2)
                                     <td class="width calibri fontsize">
-                                        {{$i2->value}}
+                                        @if($i2->value!=null)
+                                            {{$i2->value}}
+                                        @else
+                                            -
+                                        @endif
                                     </td>
                                 @endforeach
                             </tr>

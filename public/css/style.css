@@ -367,6 +367,10 @@ header {
     float:left;
     color:#444;
 }
+.comparename{
+    height: 35px;
+    overflow: hidden;
+}
 .sortare_name h1{
     margin:0px;
 }
