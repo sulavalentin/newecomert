@@ -10,6 +10,7 @@ use DB;
 use Carbon\Carbon;
 use Mail;
 use Crypt;
+use App\Cart;
 
 class RegisterController extends Controller
 {
@@ -101,7 +102,7 @@ class RegisterController extends Controller
             Mail::send('emails.comfirm', ['email' => Crypt::encrypt($email) , 'token' => $token], function ($m) use ($email) {
                 $m->to($email)->subject('Cod comfirmare email');
             });
-            $register["salogat"]=true; 
+            $register["salogat"]=true;
         }
         return response()->json($register);
     }

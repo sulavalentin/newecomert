@@ -15,7 +15,6 @@ class CreateCartTable extends Migration
     {
         Schema::create('cart', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->nullable();
             $table->bigInteger('anonim')->nullable();
             $table->integer('product_id');
             $table->integer('cantitate')->default(1);

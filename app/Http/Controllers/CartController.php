@@ -27,6 +27,7 @@ class CartController extends Controller
                             })
                             ->where('cart.anonim',$val)
                             ->orderBy("cart.id","desc")
+                            ->distinct()
                             ->get();
         return view("cart",["products"=>$response]);
     }
