@@ -96,6 +96,7 @@ Route::post('/delcart','CartController@delcart');
 Route::post('/updatecart','CartController@updatecart');
 Route::post('/totalprice','CartController@totalprice');
 Route::post('/getCountCart','CartController@getCountCart');
+Route::post('/deleteallcart','CartController@deleteallcart');
 /*Compare*/
 Route::get('/compare','CompareController@compare');
 Route::post('/addcompare','CompareController@addcompare');

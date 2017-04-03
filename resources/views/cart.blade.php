@@ -66,6 +66,10 @@
                             <i class="fa fa-angle-left"></i> 
                             Continua cumparaturile
                         </a>
+                        <a id="golestecos" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            Goleste cosul
+                        </a>
                     </td>
                     <td colspan="2" class="hidden-xs"></td>
                     <td class="text-center"><strong>Total: <span id="total"></span> Lei</strong></td>
@@ -78,10 +82,38 @@
                 </tr>
             </tfoot>
         </table>
+        <div class="modal fade" id="comfirm_delete_cart" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title text-center">Sterge Cos</h4>
+                </div>
+                <div class="modal-body text-center">
+                    <h2 class="calibri" style="margin: 0px 0px 15px 0px;">Sigur doriti sa stergeti toate produsele din cos?</h2>
+                    <button class="btn btn-default" id="yesdelete">Da</button>
+                    <button class="btn btn-primary" data-dismiss="modal">Nu</button>
+                </div>
+              </div>
+            </div>
+        </div>
     @else
         <h1 class='text-center'>Cos gol</h1>
     @endif
     <script>
+        $("#golestecos").on("click",function(){
+            $("#comfirm_delete_cart").modal(); 
+        });
+        $("#yesdelete").on("click",function(){
+            $.ajax({  
+                type: 'POST',  
+                url: "{{URL('/deleteallcart')}}", 
+                success: function() {
+                    location.reload();
+                }
+            });
+        });
         function totalprice(){
             $.ajax({  
                 type: 'POST',  

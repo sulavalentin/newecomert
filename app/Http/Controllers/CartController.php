@@ -121,4 +121,8 @@ class CartController extends Controller
         }
         return $response;
     }
+    public function deleteallcart(){
+        $anonim=Cookie::get('cart');
+        DB::table("cart")->where("anonim",$anonim)->delete();
+    }
 }
