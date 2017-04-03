@@ -120,4 +120,6 @@
             @endif
         @endif
     @endif
+    @include('partials.addcart')
+    @include('partials.scriptcart')
 @endsection
