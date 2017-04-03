@@ -10,7 +10,7 @@ class SearchController extends Controller
     public function search(Request $request){
         $search=$request->search;
         $error="";
-        if(strlen($search)>=3){
+        if(strlen($search)>=2){
             $result=Search::getSearch($search);
             $result2=Search::getSearchInMenu($search);
             

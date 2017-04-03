@@ -2,7 +2,7 @@
 @section('content')
     @if(!empty($error))
         <div class="container">
-            <h3 class="calibri text-center text-danger">Minim 3 caractere</h3>
+            <h3 class="calibri text-center text-danger">Minim 2 caractere</h3>
         </div>
     @endif
     @if(!empty($post) && count($post)>0)
