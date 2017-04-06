@@ -46,10 +46,7 @@
                             <span>Lei</span>
                         </td>
                         <td class="actions">
-                            <button class="cumpara_acum">
-                                Cumpara acum
-                            </button>
-                            <button class="btn btn-link btn-sm" del="{{$i->id}}" name="delfromcart">
+                            <button class="btn btn-link btn-sm stergedincos" del="{{$i->id}}" name="delfromcart">
                                 <span class="text-danger">
                                     <span class="glyphicon glyphicon-trash"></span>
                                     Sterge din cos
