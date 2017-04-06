@@ -72,9 +72,13 @@
                         </a>
                     </td>
                     <td colspan="2" class="hidden-xs"></td>
-                    <td class="text-center"><strong>Total: <span id="total"></span> Lei</strong></td>
+                    <td class="text-center">
+                        <strong>Total: 
+                            <span id="total">{{number_format($total->totalprice, 2, '.', ' ')}}</span> Lei
+                        </strong>
+                    </td>
                     <td>
-                        <a href="#" class="btn btn-success btn-block">
+                        <a href="{{URL('/comanda')}}" class="btn btn-success btn-block">
                             Cumpara 
                             <i class="fa fa-angle-right"></i>
                         </a>
@@ -114,21 +118,7 @@
                 }
             });
         });
-        function totalprice(){
-            $.ajax({  
-                type: 'POST',  
-                url: "{{URL('/totalprice')}}", 
-                success: function(data) {
-                    console.log(data);
-                    $("#total").html(data);
-                    if(data==0){
-                        $("#cart").html("<h1 class='text-center'>Cos gol</h1>")
-                    }
-                }
-            });
-        }
-        totalprice();
-        $("input[name=cantitate]").on("change",function(){
+        $("input[name=cantitate]").on("blur",function(){
             var id=$(this).attr("idcant");
             var cantitate=$(this).val();
             var input=$(this);
@@ -143,7 +133,10 @@
                     },
                 success: function(data) {
                     countcart();
-                    totalprice();
+                    $("#total").html(data[1]);
+                    if(data[1]==0){
+                        $("#cart").html("<h1 class='text-center'>Cos gol</h1>")
+                    }
                     input.val(data[0].cantitate);
                     $("#priceone"+id).html(data[0].totalone)
                     $("#fullpageload").hide();
@@ -161,10 +154,13 @@
                     { 
                       id:idprod
                     },
-                success: function() {
+                success: function(data) {
                     $("#"+idprod).remove();
                     countcart();
-                    totalprice();
+                    $("#total").html(data);
+                    if(data==0){
+                        $("#cart").html("<h1 class='text-center'>Cos gol</h1>")
+                    }
                     $("#fullpageload").hide();
                 }
             });

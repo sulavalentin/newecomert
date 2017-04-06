@@ -94,7 +94,6 @@ Route::get('/cart','CartController@cart');
 Route::post('/addcart','CartController@addcart');
 Route::post('/delcart','CartController@delcart');
 Route::post('/updatecart','CartController@updatecart');
-Route::post('/totalprice','CartController@totalprice');
 Route::post('/getCountCart','CartController@getCountCart');
 Route::post('/deleteallcart','CartController@deleteallcart');
 /*Compare*/
@@ -110,3 +109,5 @@ Route::get('/confirm/{email}-{token}','RegisterController@comfirm');
 Route::get('/exit','RegisterController@exituser');
 /*Cautare*/
 Route::get('/search','SearchController@search');
+/*Comanda*/
+Route::get('/comanda','ComandaController@comanda');

@@ -207,7 +207,7 @@
     @endif
     <script>
         $(document).ready(function(){
-            $('#list_images li img').click(function () {
+            $('#list_images li img').hover(function () {
                 $("#default").attr("src",$(this).attr("src"));
             });
         });

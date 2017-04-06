@@ -15,21 +15,29 @@ class CartController extends Controller
         $val=-100;
         if( Cookie::get('cart')!==null ){
             $val=Cookie::get('cart');
-        }
-        $response=DB::table('products')
-                            ->select('products.*', 'images.address','cart.cantitate',DB::raw('(products.price*cart.cantitate) AS total'))
-                            ->leftJoin("images",function($join){
-                                        $join->on('products.id', '=', 'images.product_id');
-                                        $join->where('images.default','1');
-                                    })
-                            ->leftJoin("cart",function($join){
-                                $join->on('cart.product_id', '=', 'products.id');
+            $response=DB::table('products')
+                    ->select('products.*', 'images.address','cart.cantitate',DB::raw('(products.price*cart.cantitate) AS total'))
+                    ->leftJoin("images",function($join){
+                                $join->on('products.id', '=', 'images.product_id');
+                                $join->where('images.default','1');
                             })
-                            ->where('cart.anonim',$val)
-                            ->orderBy("cart.id","desc")
-                            ->distinct()
-                            ->get();
-        return view("cart",["products"=>$response]);
+                    ->leftJoin("cart",function($join){
+                        $join->on('cart.product_id', '=', 'products.id');
+                    })
+                    ->where('cart.anonim',$val)
+                    ->orderBy("cart.id","desc")
+                    ->distinct()
+                    ->get();
+            $total=DB::table('cart')
+                    ->select(DB::raw('sum(products.price*cart.cantitate) AS totalprice'))
+                    ->leftJoin("products",function($join){
+                        $join->on('cart.product_id', '=', 'products.id');
+                    })
+                    ->where("anonim",$val)
+                    ->first();
+            return view("cart",["products"=>$response,"total"=>$total]);
+        }
+        return view("cart");
     }
     public function addcart(Request $request , Cart $cart , ItemsSubMenu $item)
     {   
@@ -81,6 +89,19 @@ class CartController extends Controller
                        ->where("product_id",$id)
                        ->get();
             $return[0]->totalone=number_format($return[0]->totalone, 2, '.', ' ');
+            $total=DB::table('cart')
+                ->select(DB::raw('sum(products.price*cart.cantitate) AS totalprice'))
+                ->leftJoin("products",function($join){
+                    $join->on('cart.product_id', '=', 'products.id');
+                })
+                ->where("anonim",$anonim)
+                ->first();
+                if($total->totalprice>0){
+                    $return[1] = number_format($total->totalprice, 2, '.', ' ');
+                }else{
+                    $return[1] = 0;
+                } 
+        
             return $return;
         }
     }
@@ -93,12 +114,6 @@ class CartController extends Controller
                     ->where("anonim",$anonim)
                     ->where("product_id",$id)
                     ->delete();
-        }
-    }
-    public function totalprice(Request $request , Cart $cart)
-    {   
-        if( Cookie::get('cart')!==null ){
-            $anonim=Cookie::get('cart');
             $total=DB::table('cart')
                 ->select(DB::raw('sum(products.price*cart.cantitate) AS totalprice'))
                 ->leftJoin("products",function($join){
@@ -106,11 +121,11 @@ class CartController extends Controller
                 })
                 ->where("anonim",$anonim)
                 ->first();
-                if($total->totalprice>0){
-                    return number_format($total->totalprice, 2, '.', ' ');
-                }else{
-                    return 0;
-                } 
+            if($total->totalprice>0){
+                return number_format($total->totalprice, 2, '.', ' ');
+            }else{
+                return  0;
+            }
         }
     }
     public function getCountCart()
