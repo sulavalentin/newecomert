@@ -30,7 +30,6 @@ class RegisterController extends Controller
             'email' => strtolower($request->email),
             'password' => bcrypt(strtolower($request->password)),
             'token' => $token,
-            'role'=>1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             ]);
@@ -50,7 +49,6 @@ class RegisterController extends Controller
                 session(["idAdmin"=>$admin->id,
                         "nameAdmin"=>$admin->name,
                         "emailAdmin"=>$admin->email,
-                        "roleAdmin"=>$admin->role,
                        ]);
                 return redirect("/admin");
                 
@@ -96,7 +94,6 @@ class RegisterController extends Controller
                 'email' => strtolower($request->email),
                 'password' => bcrypt(strtolower($request->password)),
                 'token' => $token,
-                'role'=>$request->role,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 ]);
@@ -138,7 +135,6 @@ class RegisterController extends Controller
     public function exitadmin(){
         session()->forget('idAdmin');
         session()->forget('emailAdmin');
-        session()->forget('roleAdmin');
         session()->forget('nameAdmin');
         return redirect("/admin");
         

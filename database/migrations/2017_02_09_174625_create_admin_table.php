@@ -20,7 +20,6 @@ class CreateAdminTable extends Migration
             $table->string('password');
             $table->string('token',32)->nullable();
             $table->boolean('confirmed')->default(0);
-            $table->boolean('role');
             $table->timestamps();
         });
     }
