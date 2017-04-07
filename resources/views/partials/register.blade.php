@@ -1,4 +1,24 @@
 <!-- Login form-->
+<Script>
+    function facebook(){
+        var popup = window.open("{{ URL('/login-facebook') }}", '');
+        setInterval(checkChild, 500);
+        function checkChild() {
+            if (popup.closed) {
+                location.reload();   
+            }
+        }
+    }
+    function google(){
+        var popup = window.open("{{ URL('/login-google') }}", '');
+        setInterval(checkChild, 500);
+        function checkChild() {
+            if (popup.closed) {
+                location.reload();   
+            }
+        }
+    }
+</script>
 <li>
     <img src="{{asset("img/system/user.png")}}" class="user"/>
     <a data-toggle="modal" data-target="#login">Login</a>
@@ -27,10 +47,10 @@
                     </div>
                     <div class="social">
                         <label>Sau :</label>
-                        <a href="{{ URL("/login-facebook") }}">
+                        <a onclick="facebook()">
                             <img src="{{asset("img/system/fb.png")}}"/>
                         </a>
-                        <a href="{{ URL("/login-google") }}">
+                        <a onclick="google()">
                             <img src="{{asset("img/system/google.png")}}"/>
                         </a>
                     </div>
@@ -78,10 +98,10 @@
                 </div>
                 <div class="social">
                     <label>Sau :</label>
-                    <a href="{{ URL("/login-facebook") }}">
+                    <a onclick="facebook()">
                         <img src="{{asset("img/system/fb.png")}}"/>
                     </a>
-                    <a href="{{ URL("/login-google") }}">
+                    <a onclick="google()">
                         <img src="{{asset("img/system/google.png")}}"/>
                     </a>
                 </div>

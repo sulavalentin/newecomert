@@ -44,7 +44,7 @@ class RegisterController extends Controller
         $email=$userfb->email;
         session::put("nume",$users->getNume($email));
         session::put("id",$users->getId($email)); 
-        return redirect("/");
+        return view("partials.closeform");
     }
     public function login(Request $request,Users $users)
     {

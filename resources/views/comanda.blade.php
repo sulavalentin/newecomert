@@ -4,25 +4,32 @@
     <div style="width:100%; float:left; margin-top:20px;">
         <div class="col-md-7">
             <form id="formcomanda" method="post">
-                <div class="form-group col-md-6">
-                    <label>Nume:</label>
-                    <input type="text" class="form-control" name="nume" autocomplete="off" max="100">
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Prenume:</label>
-                    <input type="text" class="form-control" name="prenume" max="100" autocomplete="off">
-                </div>
-                <div class="form-group col-md-12">
-                    <label>Email:</label>
-                    <input type="email" class="form-control" name="email" max="100" autocomplete="off">
-                </div>
+                @if(!empty($return["profil"]) && count($return["profil"])>0)
+                    <div class="form-group col-md-12">
+                        <label>Nume:</label>
+                        <input type="text" class="form-control" name="numec" autocomplete="off" max="100" value="{{$return["profil"]->name}}">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label>Email:</label>
+                        <input type="email" class="form-control" name="emailc" autocomplete="off" value="{{$return["profil"]->email}}">
+                    </div>
+                @else
+                    <div class="form-group col-md-12">
+                        <label>Nume:</label>
+                        <input type="text" class="form-control" name="numec" autocomplete="off" max="100">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label>Email:</label>
+                        <input type="email" class="form-control" name="emailc" autocomplete="off">
+                    </div>
+                @endif
                 <div class="form-group col-md-12">
                     <label>Telefon:</label>
-                    <input type="text" class="form-control" name="telefon" max="100" autocomplete="off">
+                    <input type="text" class="form-control" name="telefonc" max="100" autocomplete="off">
                 </div>
                 <div class="form-group col-md-12">
                     <label>Adresa:</label>
-                    <input type="text" class="form-control" name="adresa" max="100" autocomplete="off">
+                    <input type="text" class="form-control" name="adresac" max="100" autocomplete="off">
                 </div>
                 <div class="form-group col-md-12">
                     <button type="submit" class="btn btn-default">
@@ -53,47 +60,40 @@
         </div>
     </div>
     <script>
-        $("input[name=telefon]").keypress(function (e) {
+        $("input[name=telefonc]").keypress(function (e) {
             if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                 return false;
             }
         });
         $("#formcomanda").on("submit",function(e){
             e.preventDefault();
-            $("input[name=nume]").css("border-color","#ccc");
-            $("input[name=prenume]").css("border-color","#ccc");
-            $("input[name=email]").css("border-color","#ccc");
-            $("input[name=telefon]").css("border-color","#ccc");
-            $("input[name=adresa]").css("border-color","#ccc");
-            var nume=$("input[name=nume]").val();
-            var prenume=$("input[name=prenume]").val();
-            var email=$("input[name=email]").val();
-            var telefon=$("input[name=telefon]").val();
-            var adresa=$("input[name=adresa]").val();
+            $("input[name=numec]").css("border-color","#ccc");
+            $("input[name=emailc]").css("border-color","#ccc");
+            $("input[name=telefonc]").css("border-color","#ccc");
+            $("input[name=adresac]").css("border-color","#ccc");
+            var nume=$("input[name=numec]").val();
+            var email=$("input[name=emailc]").val();
+            var telefon=$("input[name=telefonc]").val();
+            var adresa=$("input[name=adresac]").val();
             var trecut=true;
             if(adresa.length===0){
-                $("input[name=adresa]").css("border-color","red");
-                $("input[name=adresa]").focus();
+                $("input[name=adresac]").css("border-color","red");
+                $("input[name=adresac]").focus();
                 trecut=false;
             }
             if(telefon.length===0){
-                $("input[name=telefon]").css("border-color","red");
-                $("input[name=telefon]").focus();
+                $("input[name=telefonc]").css("border-color","red");
+                $("input[name=telefonc]").focus();
                 trecut=false;
             }
             if(email.length===0){
-                $("input[name=email]").css("border-color","red");
-                $("input[name=email]").focus();
-                trecut=false;
-            }
-            if(prenume.length===0){
-                $("input[name=prenume]").css("border-color","red");
-                $("input[name=prenume]").focus();
+                $("input[name=emailc]").css("border-color","red");
+                $("input[name=emailc]").focus();
                 trecut=false;
             }
             if(nume.length===0){
-                $("input[name=nume]").css("border-color","red");
-                $("input[name=nume]").focus();
+                $("input[name=numec]").css("border-color","red");
+                $("input[name=numec]").focus();
                 trecut=false;
             }
             if(trecut===true){

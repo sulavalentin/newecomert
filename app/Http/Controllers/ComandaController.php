@@ -32,6 +32,11 @@ class ComandaController extends Controller
                     })
                     ->where("anonim",$anonim)
                     ->value("totalprice");
+            if(session("id")>0){
+                $return["profil"]=DB::table("users")
+                        ->where("id",session("id"))
+                        ->first();
+            }
         }
         return view("comanda",["return"=>$return]);
     }
