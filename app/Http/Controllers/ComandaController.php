@@ -69,6 +69,7 @@ class ComandaController extends Controller
             foreach($produse as $i){
                 DB::table("marfuricomenzi")->insert([
                     "id_comenzi"=>$id,
+                    "id_produs"=>$i->id,
                     "originalnameprodus"=>$i->originalname,
                     "nameprodus"=>$i->name,
                     "priceprodus"=>$i->price,

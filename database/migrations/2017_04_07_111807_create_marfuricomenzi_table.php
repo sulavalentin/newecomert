@@ -15,12 +15,12 @@ class CreateMarfuricomenziTable extends Migration
     {
         Schema::create('marfuricomenzi', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_produs')->nullable();
             $table->integer("id_comenzi");
             $table->string('originalnameprodus');
             $table->string('nameprodus');
             $table->decimal('priceprodus',15,2);
             $table->integer('cantitateprodus');
-            $table->string('imagineprodus')->nullable();
         });
     }
 
