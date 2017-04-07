@@ -75,8 +75,8 @@ class HomeController extends Controller
     }
     public function test()
     {
-        DB::select("INSERT INTO `admin` (`id`, `name`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES
-                    (1, 'valentin', 'sula.valentin@gmail.com', '$2y$10$8fMGvlWC6Ku56VPJ6//BVe1wehtq4/qLIU2KvWyuKCF48Ul81oju6', 1, '2016-11-26 12:16:32', '2016-11-26 12:16:32');");
+        DB::select("INSERT INTO `admin` (`id`, `name`, `email`, `password`, `created_at`, `updated_at`) VALUES
+                    (1, 'valentin', 'sula.valentin@gmail.com', '$2y$10$8fMGvlWC6Ku56VPJ6//BVe1wehtq4/qLIU2KvWyuKCF48Ul81oju6',  '2016-11-26 12:16:32', '2016-11-26 12:16:32');");
         DB::select("INSERT INTO `images` (`id`, `address`, `product_id`, `default`) VALUES
                     (25, 'img/products/items/1.jpg', 1, 1),
                     (26, 'img/products/items/26.jpg', 1, 0),

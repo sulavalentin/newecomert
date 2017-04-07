@@ -76,19 +76,4 @@ class AdminController extends Controller
             return response()->json(false);
         }
     }
-    public function modificarol(Request $request){
-        if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
-           return redirect("/admin/login");
-        }
-        $id=$request->id;
-        $role=$request->role;
-        $permision=DB::table("admin")->min("id");
-        $session=session("idAdmin");
-        if($permision==$session){
-            DB::table("admin")->where("id",$id)->update(["role"=>$role]);
-            return response()->json(true);
-        }else{
-            return response()->json(false);
-        }
-    }
 }

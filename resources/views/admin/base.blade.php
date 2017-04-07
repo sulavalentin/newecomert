@@ -12,7 +12,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{URL("/admin/comenzi/1")}}">Comenzi</a></li>
+                    <li><a href="{{URL("/admin/comenzi")}}">Comenzi</a></li>
                     <li><a href="{{URL("/admin/products")}}">Produse</a></li>
                     <li><a href="{{URL("/admin/slideshow")}}">Slideshow</a></li>
                     <li><a href="{{URL("/admin/tables")}}">Tabele</a></li>
@@ -20,16 +20,22 @@
                     <li><a href="#">Utilizatori</a></li>
                     <li><a href="{{URL("/admin/admins")}}">Admini</a></li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" style="cursor: pointer;">
+                            Altele
+                            <span class="caret"></span>
+                        </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Page 1-1</a></li>
-                            <li><a href="#">Page 1-2</a></li>
-                            <li><a href="#">Page 1-3</a></li>
+                            <li><a href="{{URL("/admin/allcomenzi")}}">Toate comenzile</a></li>
                         </ul>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span>{{session("nameAdmin")}}</a></li>
+                    <li>
+                        <a href="{{URL('/admin/profil')}}">
+                            <span class="glyphicon glyphicon-user"></span>
+                            {{session("nameAdmin")}}
+                        </a>
+                    </li>
                     <li><a href="{{URL("/exitadmin")}}"><span class="glyphicon glyphicon-log-in"></span>Exit</a></li>
                 </ul>
             </div>

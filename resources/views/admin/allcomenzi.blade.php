@@ -5,12 +5,6 @@
         @foreach($comenzi as $i)
         <div class="comenzidiv" idmoved="{{$i["nume"]["id"]}}">
             <b style="color:gray;">#{{$i["nume"]["id"]}}</b>
-            <button class="btn btn-danger btn-xs pull-right" 
-                    style="margin-bottom:15px;" 
-                    id="{{$i["nume"]["id"]}}"
-                    name="trececomanda">
-                Trece comanda la toate comenzile
-            </button>
             <table class="table">
                 <tr>
                     <td><b>Beneficiar:</b></td>
@@ -78,46 +72,6 @@
             </table>
         </div>
         @endforeach
-        <div class="modal fade" id="comfirm_trecerea" role="dialog">
-            <div class="modal-dialog">
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title text-center">Trece comanda ca finalizata</h4>
-                </div>
-                <div class="modal-body text-center">
-                    <h3 class="calibri text-danger" style="margin: 0px 0px 15px 0px;">
-                        !Comenzile nu pot fi sterse , comanda va fi trecuta in tabela cu comenzi finalizate
-                    </h3>
-                    <h3 class="calibri">Sigur aceasta comanda a fost finalizata?</h3>
-                    <button class="btn btn-default" id="yesmove">Da</button>
-                    <button class="btn btn-primary" data-dismiss="modal">Nu</button>
-                </div>
-              </div>
-            </div>
-        </div>
-    <script>
-        $("button[name=trececomanda]").on("click",function(){
-            var id=$(this).attr("id");
-            $("#comfirm_trecerea").modal();
-            $("#yesmove").attr("move",id);
-        });
-        $("#yesmove").on("click",function(){
-            $("#comfirm_trecerea").modal("hide");
-            $("div[idmoved="+$('#yesmove').attr('move')+"]").remove();
-            $.ajax({  
-                type: 'POST',  
-                url: "{{URL('/admin/movecomanda')}}", 
-                data: 
-                    { 
-                        id:$("#yesmove").attr("move")
-                    },
-                success: function() {
-                }
-            });
-        });
-    </script>
     @else
     <h1 class="text-center calibri">Nu sunt comenzi</h1>
     @endif

@@ -11,7 +11,9 @@
 |
 */
 /*Comenzi rutes*/
-Route::get('/admin/comenzi/{page}','Admin\ComenziAdminController@comenziadmin');
+Route::get('/admin/comenzi','Admin\ComenziAdminController@comenziadmin');
+Route::get('/admin/allcomenzi','Admin\ComenziAdminController@allcomenziadmin');
+Route::post('/admin/movecomanda','Admin\ComenziAdminController@movecomanda');
 /*Admin*/
 Route::get('/admin','Admin\AdminController@base');
 Route::get('/admin/login','Admin\AdminController@getLogin');
@@ -25,9 +27,12 @@ Route::post('/admin/reset','Admin\RegisterController@sendemail');
 Route::post('/admin/setcode','Admin\RegisterController@setcode');
 Route::post('/admin/newpass','Admin\RegisterController@newpass');
 
+Route::get('/admin/profil','Admin\SettingController@profil');
+Route::post('/admin/changename','Admin\SettingController@changename');
+Route::post('/admin/profil','Admin\SettingController@changepassword');
+
 /*Admins*/
 Route::get('/admin/admins','Admin\AdminController@admins');
-Route::post('/admin/modificarol','Admin\AdminController@modificarol');
 Route::post('/admin/deleteadmin','Admin\AdminController@deleteadmin');
 /*Products routes*/
 Route::get('/admin/products','Admin\AdminController@products');
