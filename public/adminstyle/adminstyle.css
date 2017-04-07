@@ -332,3 +332,8 @@
     border-top:1px solid black;
     padding-top:10px;
 }
+.comenzidiv{
+    border: 1px solid gray;
+    padding: 15px 15px 0px 15px;
+    margin-bottom:15px;
+}

@@ -49,7 +49,7 @@ class ComandaController extends Controller
             $email=$request->email;
             $telefon=$request->telefon;
             $adresa=$request->adresa;
-            $data=Carbon::now();
+            $data=Carbon::now(3);
             $produse=DB::table('products')
                     ->select('products.*','cart.cantitate')
                     ->leftJoin("cart",function($join){

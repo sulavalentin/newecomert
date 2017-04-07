@@ -13,18 +13,36 @@ class ComenziAdminController extends Controller
             return redirect("/admin");
         }
         $return=DB::table('comenzi')
-                ->select('comenzi.*', 'marfuricomenzi.*')
+                ->select('comenzi.*', 'marfuricomenzi.*','images.address')
                 ->leftJoin("marfuricomenzi",function($join){
-                            $join->on('comenzi.id', '=', 'marfuricomenzi.id_comenzi');
-                        })
+                    $join->on('comenzi.id', '=', 'marfuricomenzi.id_comenzi');
+                })
+                ->leftJoin("images",function($join){
+                    $join->on('marfuricomenzi.id_produs', '=', 'images.product_id');
+                    $join->where('images.default','1');
+                })
                 ->orderby('comenzi.id','desc')
-                ->take(20)
                 ->get();
         $arr=[];
-        dd($return);
         foreach($return as $i){
-            
+            $arr[$i->id]["nume"]=[
+                "id"=>$i->id,
+                "data"=>$i->created_at,
+                "nume"=>$i->nume,
+                "email"=>$i->email,
+                "telefon"=>$i->telefon,
+                "adresa"=>$i->adresa
+            ];
+            $arr[$i->id]["produse"][$i->idmarfuri]=[
+                "imagine"=>$i->address,
+                "originalname"=>$i->originalnameprodus,
+                "name"=>$i->nameprodus,
+                "price"=>$i->priceprodus,
+                "cantitate"=>$i->cantitateprodus,
+                "idprodus"=>$i->id_produs,
+                "total"=>$i->cantitateprodus*$i->priceprodus
+            ];
         }
-        return view("admin.comenzi",["comenzi"=>$return]);
+        return view("admin.comenzi",["comenzi"=>$arr]);
     }
 }
