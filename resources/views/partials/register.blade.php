@@ -2,19 +2,21 @@
 <Script>
     function facebook(){
         var popup = window.open("{{ URL('/login-facebook') }}", '');
-        setInterval(checkChild, 500);
+        var time=setInterval(checkChild, 500);
         function checkChild() {
             if (popup.closed) {
-                location.reload();   
+                location.reload();  
+                clearInterval(time);
             }
         }
     }
     function google(){
         var popup = window.open("{{ URL('/login-google') }}", '');
-        setInterval(checkChild, 500);
+        var time=setInterval(checkChild, 500);
         function checkChild() {
             if (popup.closed) {
-                location.reload();   
+                location.reload(); 
+                clearInterval(time);
             }
         }
     }

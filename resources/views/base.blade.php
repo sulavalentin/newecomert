@@ -10,15 +10,13 @@
         <script src="{{ asset("js/jquery.min.js") }}"></script>
         <script src="{{ asset("js/bootstrap.min.js") }}"></script>
         
-        <script src="{{ asset("js/modernizr.custom.js") }}"></script>
-        
         <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset("css/bootstrap.min.css") }}" rel="stylesheet" >
         <link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
         <!--Icons -->
         <link rel="stylesheet" href="{{ asset("css/font-awesome.css") }}" >
-        <link rel="stylesheet" href="{{ asset("css/font-awesome.min.css") }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
         <!-- token-->
         <meta name="_token" content="{!! csrf_token() !!}"/>
         <script type="text/javascript">

@@ -32,7 +32,7 @@
                     <input type="text" class="form-control" name="adresac" max="100" autocomplete="off">
                 </div>
                 <div class="form-group col-md-12">
-                    <button type="submit" class="btn btn-default">
+                    <button type="submit" id="final" class="btn btn-default" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Se finalizeaza comanda">
                         Finalizeaza comanda
                     </button>
                 </div>
@@ -97,7 +97,7 @@
                 trecut=false;
             }
             if(trecut===true){
-                
+                $("#final").button("loading");
             }
         });
     </script>
