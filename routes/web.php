@@ -111,3 +111,5 @@ Route::get('/exit','RegisterController@exituser');
 Route::get('/search','SearchController@search');
 /*Comanda*/
 Route::get('/comanda','ComandaController@comanda');
+Route::post('/endcomanda','ComandaController@endcomanda');
+Route::get('/comandatrimisa','ComandaController@comandatrimisa');

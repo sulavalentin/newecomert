@@ -98,6 +98,20 @@
             }
             if(trecut===true){
                 $("#final").button("loading");
+                $.ajax({  
+                    type: 'POST',  
+                    url: "{{URL('/endcomanda')}}", 
+                    data: 
+                        { 
+                            nume:nume,
+                            email:email,
+                            telefon:telefon,
+                            adresa:adresa
+                        },
+                    success: function(data) {
+                        location.href = "{{URL('/comandatrimisa')}}";
+                    }
+                });
             }
         });
     </script>
