@@ -61,6 +61,7 @@ class ProductsController extends Controller
         $id=$request->id;
         $item_id=$request->item_id;
         $name=DB::table("images")->where("id",$id)->select("address","default")->first();
+        DB::table("images")->where("id",$id)->delete();
         if(File::exists($name->address)){
             File::delete($name->address);
         }
