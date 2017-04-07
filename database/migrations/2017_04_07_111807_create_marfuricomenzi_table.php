@@ -14,7 +14,7 @@ class CreateMarfuricomenziTable extends Migration
     public function up()
     {
         Schema::create('marfuricomenzi', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('idmarfuri');
             $table->integer('id_produs')->nullable();
             $table->integer("id_comenzi");
             $table->string('originalnameprodus');

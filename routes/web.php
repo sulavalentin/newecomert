@@ -10,7 +10,8 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
+/*Comenzi rutes*/
+Route::get('/admin/comenzi/{page}','Admin\ComenziAdminController@comenziadmin');
 /*Admin*/
 Route::get('/admin','Admin\AdminController@base');
 Route::get('/admin/login','Admin\AdminController@getLogin');

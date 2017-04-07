@@ -12,6 +12,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
+                    <li><a href="{{URL("/admin/comenzi/1")}}">Comenzi</a></li>
                     <li><a href="{{URL("/admin/products")}}">Produse</a></li>
                     <li><a href="{{URL("/admin/slideshow")}}">Slideshow</a></li>
                     <li><a href="{{URL("/admin/tables")}}">Tabele</a></li>
