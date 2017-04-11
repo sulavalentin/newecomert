@@ -125,6 +125,14 @@ class Products extends Model
         $arr[$k]=[asset(""),$images];
         return $arr;
     }
+    public function getDescriptionsProduct($id){
+        $return=DB::table("descriere")->where("product_id",$id)->get();
+        $product=DB::table("products")->where("id",$id)->get();
+        return ["id"=>$id,
+                "description"=>$return,
+                "product"=>$product
+                ];
+    }
     public function addItem($request,$tabela){
         $originalname=$request->rowvalue[0];
         $name=$request->name;

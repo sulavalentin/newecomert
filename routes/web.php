@@ -47,6 +47,10 @@ Route::post("/admin/upload","Admin\ProductsController@upload");
 Route::post('/admin/deleteImage','Admin\ProductsController@deleteImage');
 Route::post('/admin/deleteAllImages','Admin\ProductsController@deleteAllImages');
 Route::post('/admin/defaultImage','Admin\ProductsController@defaultImage');
+/*Iteme descriere*/
+Route::get('/admin/descriere/{id}','Admin\ProductsController@descriere');
+Route::post('/admin/uploaddescriere','Admin\ProductsController@uploaddescriere');
+Route::post('/admin/deldescriere','Admin\ProductsController@deldescriere');
 
 /*Tabele routes*/
 Route::get('/admin/tables','Admin\AdminController@tables');

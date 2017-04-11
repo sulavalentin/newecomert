@@ -143,7 +143,12 @@
                         <a class="sterge" id="delete{{$i->id}}"> 
                             <span class="glyphicon glyphicon-minus"></span>
                             Sterge
-                        </a>  
+                        </a> 
+                        <br>
+                        <a href="{{URL('/admin/descriere/'.$i->id)}}"> 
+                            <span class="glyphicon glyphicon-minus"></span>
+                            Descriere
+                        </a> 
                     </td>
                 </tr>
                 @endforeach

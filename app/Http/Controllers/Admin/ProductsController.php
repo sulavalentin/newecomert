@@ -19,8 +19,59 @@ class ProductsController extends Controller
         return view("admin.itemsproduse",["article"=>$products->getProducts($id),
                                           "items"=>$products->getAllItems()]);
     }
+    public function descriere(Products $products,$id){
+        if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
+            return redirect("/admin");
+        }
+        return view("admin.descriere",["article"=>$products->getDescriptionsProduct($id)]);
+    }
+    public function uploaddescriere(Request $request){
+        if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
+            return redirect("/admin");
+        }
+        $response=[];
+        $files=$request->file("file");
+        $prod=$request->id;
+        $extensii=["jpeg","jpg","png","svg"];
+        if ($request->hasFile('file')) {
+            foreach($files as $file){
+                if($file->isValid()){
+                    $ext=strtolower($file->getClientOriginalExtension());
+                    if(in_array($ext, $extensii)){
+                        if(filesize($file)<6000000){
+                            $date=Carbon::now();
+                            $name=$date->format("ymdhis")+DB::table("descriere")->orderby("id","desc")->value('id')+1;
+                            $path="img/products/descriere/";
+                            if($file->move($path,$name.".".$ext)){
+                                $filename=$path.$name.".".$ext;
+                                $id=DB::table("descriere")->insertGetId(["product_id"=>$prod,"image"=>$filename]);
+                                $response[]=["succes"=>true,
+                                             "image"=>asset($filename),
+                                             "id"=>$id];
+                            }
+                        }
+                    }
+                }
+            }
+            return $response;
+        }else{
+            return Response::json(array('succes'=>"notfound"));
+        }
+    }
+    public function deldescriere(Request $request){
+        if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
+            return redirect("/admin");
+        }
+        $id=$request->id;
+        $valoare=DB::table("descriere")->where("id",$id)->value("image");
+        if(File::exists($valoare)){
+            File::delete($valoare);
+        }
+        DB::table("descriere")->where("id",$id)->delete();
+        return response()->json($id);
+    }
     public function getoneadd(Request $request,  Products $products){
-       if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
+        if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
             return redirect("/admin");
         }
         return $products->getOneAdd($request->table);
