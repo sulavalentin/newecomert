@@ -311,4 +311,7 @@ class Itemssubmenu extends Model
     public function getDescription($id){
         return DB::table("descriere")->where("product_id",$id)->get();
     }
+    public function getComentarii($id){
+        return DB::table("coments")->where("product_id",$id)->orderby("id","desc")->get();
+    }
 }

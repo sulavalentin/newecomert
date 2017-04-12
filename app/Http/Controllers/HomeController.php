@@ -7,6 +7,7 @@ use DB;
 use App\Itemssubmenu;
 use App\Products;
 use App\Slideshow;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -51,8 +52,19 @@ class HomeController extends Controller
                                "link"=>$item->getDenumireItems($id_item),
                                "images"=>$item->getImages($id_item),
                                "asemanatoare"=>$item->getAsemanatoare($id_item),
-                               "descriere"=>$item->getDescription($id_item)
+                               "descriere"=>$item->getDescription($id_item),
+                               "comentarii"=>$item->getComentarii($id_item)
                 ]);
+    }
+    public function addcomentariu(Request $request){
+        DB::table("coments")->insert(
+                    [
+                        "product_id"=>$request->id,
+                        "nume"=>$request->nume,
+                        "comentariu"=>$request->comentariu,
+                        "created_at"=>carbon::now()
+                    ]);
+                
     }
     public function menu($id)
     {

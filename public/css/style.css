@@ -692,7 +692,7 @@ header {
     max-height: 400px;
     
 }
-.des_coments form input{
+.des_coments form input[type=submit]{
      margin-top: 10px;
     box-sizing: border-box;
     border: none;
@@ -707,7 +707,7 @@ header {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#62c462', endColorstr='#4e9c4e',GradientType=0 ); /* IE6-9 */  
     margin-bottom: 15px;
 }
-.des_coments form input:hover{
+.des_coments form input[type=submit]:hover{
     border: none;
     border-bottom: 1px solid black;
     box-sizing: border-box; 

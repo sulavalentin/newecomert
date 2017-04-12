@@ -184,24 +184,37 @@
         
         <!--Comentarii -->
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 des_coments">
-            <form method="post" style="margin-top:20px;">
-                <textarea name="comentariu"></textarea>
-                <input type="submit" >
+            <form method="post" style="margin-top:20px;" id="formcomentarii">
+                <div class="form-group">
+                    <label>Numele:</label>
+                    <input type="text" name="nume" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label>Comentariu:</label>
+                    <textarea name="comentariu" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="form-control"/>
+                </div>
             </form>
-            <div class="coments"  >
-                <p class="Nume_coment">Nume</p>
-                <span>Pe măsură ce trece timpul, rețelele sunt  cele ce ne conectează. Oamenii comunică online  s-ar  ce  conectează. Oamenii comunică online oriunde s-ar afla. Conversațiile din sala de clasă se răspândesc prin mesaje instant din sesiuni de chat, iar dezbaterile online continuă la școală. Noi servicii sunt dezvoltate în fiecare zi pentru a profita de rețele.</span>
-                <p class="data_coment">03.10.2016</p>
-            </div>
-             <div class="coments"  >
-                <p class="Nume_coment">Nume</p>
-                <span>Pe măsură ce trece timpul, rețelele sunt  cele ce ne conectează. Oamenii comunică online  s-ar  ce  conectează. Oamenii comunică online oriunde s-ar afla. Conversațiile din sala de clasă se răspândesc prin mesaje instant din sesiuni de chat, iar dezbaterile online continuă la școală. Noi servicii sunt dezvoltate în fiecare zi pentru a profita de rețele.</span>
-                <p class="data_coment">03.10.2016</p>
+            <div class="content" id="allcoments">
+                @if(!empty($comentarii) && count($comentarii)>0)
+                    @foreach($comentarii as $coment)
+                        <div class='coments'>
+                            <p class='Nume_coment'>{{$coment->nume}}</p>
+                            <span>{{$coment->comentariu}}</span>
+                            <p class='data_coment'>{{date('d-m-Y', strtotime($coment->created_at))}}</p>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
     @include('partials.addcart')
     @include('partials.scriptcart')
+    <script>
+        var id="{{$item[0]->id}}";
+    </script>
     @else
         <h1 class="text-center">Nu exista acest produs</h1>
     @endif
@@ -209,6 +222,37 @@
         $(document).ready(function(){
             $('#list_images li img').hover(function () {
                 $("#default").attr("src",$(this).attr("src"));
+            });
+            $("#formcomentarii").on("submit",function(e){
+                e.preventDefault();
+                $("input[name=nume]").css("border-color","#ccc");
+                $("textarea[name=comentariu]").css("border-color","#ccc");
+                var trecut=true;
+                var nume=$("input[name=nume]").val();
+                var comentariu=$("textarea[name=comentariu]").val();
+                if(nume.length<3){
+                    $("input[name=nume]").css("border-color","red");
+                    trecut=false;
+                }
+                if(comentariu.length<3){
+                    $("textarea[name=comentariu]").css("border-color","red");
+                    trecut=false;
+                }
+                if(trecut===true){
+                    $.ajax({
+                        type:"post",
+                        url:"{{URL('addcomentariu')}}",
+                        data:{
+                            id:id,
+                            nume:nume,
+                            comentariu:comentariu
+                        },
+                        success:function(){
+                            location.reload();
+                                                    
+                        }
+                    });
+                }
             });
         });
         $('div [name=desSearch]').each(function(i,e) {

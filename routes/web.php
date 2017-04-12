@@ -94,6 +94,7 @@ Route::get('/menu/{id}','HomeController@menu');
 Route::get('/submenu/{id}','HomeController@submenu');
 Route::get('/sort={sort}/[{id_submenu}]-{numeitem}/page={pag}','HomeController@produse');
 Route::get('/product/{id_item}','HomeController@oneprodus');
+Route::post('/addcomentariu','HomeController@addcomentariu');
 /*Favorite*/
 Route::get('/favorite','FavoriteController@favorite');
 Route::post('/addfavorite','FavoriteController@addfavorite');
