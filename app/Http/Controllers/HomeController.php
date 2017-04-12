@@ -50,7 +50,8 @@ class HomeController extends Controller
         return view("article",["item"=>$item->getItem($id_item),
                                "link"=>$item->getDenumireItems($id_item),
                                "images"=>$item->getImages($id_item),
-                               "asemanatoare"=>$item->getAsemanatoare($id_item)
+                               "asemanatoare"=>$item->getAsemanatoare($id_item),
+                               "descriere"=>$item->getDescription($id_item)
                 ]);
     }
     public function menu($id)

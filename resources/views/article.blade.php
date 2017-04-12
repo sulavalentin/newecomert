@@ -122,6 +122,13 @@
                 </div>
             </div>
         @endif
+        <div class="col-xs-12 info">
+            @if(!empty($descriere) && count($descriere)>0)
+                @foreach($descriere as $img)
+                    <img class="img-responsive" src="{{asset($img->image)}}"/>
+                @endforeach
+            @endif
+        </div>
         @if(!empty($asemanatoare) && count($asemanatoare)>0)
             <div class="col-md-12 produse_asemanatoare">
                 <p><b>Produse asemanatoare</b></p>
@@ -174,14 +181,7 @@
                 </ul>
             </div>
         @endif
-        <div class="col-xs-12 info">
-            <h1>Descriere</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet lorem fermentum, consequat massa commodo, rutrum augue. Pellentesque et fermentum nisi, ac rutrum arcu. Phasellus vestibulum volutpat massa ut aliquet. Cras ullamcorper eros leo, id semper ipsum ornare a. Nullam pharetra posuere nulla, at maximus diam maximus sit amet. Praesent at rutrum lorem, in euismod nisl. Donec ut laoreet felis. Nunc scelerisque condimentum posuere. Nulla vel justo volutpat, laoreet orci vel, tincidunt mi. Donec eu felis nec elit ullamcorper ornare eget at nisl. Aenean pharetra dui mi, quis facilisis lorem aliquam id. Integer magna ipsum, laoreet a ultrices sed, tempus a elit. Duis volutpat metus dui, sed euismod mauris accumsan sed. Aenean id mauris vitae purus porttitor maximus. Vestibulum quis lorem nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                Vestibulum scelerisque, dui in lobortis malesuada, diam mi faucibus augue, id porttitor ante ante a magna. Nullam mattis quam non arcu tincidunt tincidunt in vitae ante. In hac habitasse platea dictumst. Donec augue velit, egestas in leo nec, elementum viverra lectus. Sed viverra sed metus et ultrices. Quisque sed interdum risus, at ultrices ex. Pellentesque nec est ac ex sodales condimentum. Sed fringilla a ante ultrices suscipit. Nunc rutrum congue eleifend. Suspendisse viverra consectetur mauris a dignissim.
-                Pellentesque porttitor quam sed vulputate porta. Donec lacinia nibh urna, a facilisis est placerat in. Curabitur mattis, dui vel laoreet eleifend, eros diam auctor metus, et posuere ligula ante at ante. Pellentesque vel massa pharetra, suscipit dolor ac, laoreet nisi. Aenean ac consectetur ante, in consectetur ante. Maecenas gravida neque sit amet erat semper placerat. Nullam blandit pharetra tortor, sit amet volutpat ipsum auctor sed. Morbi pretium maximus neque, et imperdiet tellus placerat nec. In turpis turpis, consectetur at lacinia sagittis, dapibus eget massa. Maecenas quis turpis et metus feugiat semper. Pellentesque tincidunt ante ipsum, non ullamcorper nisl mattis non. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce eget leo eu felis cursus porttitor ac a mauris. Nulla finibus, nibh eu facilisis tempor, ex ipsum interdum risus, nec fringilla ante metus nec sapien. Quisque eu varius lectus. Nunc id volutpat elit.
-                Nulla facilisi. Nam tristique lorem quis sapien volutpat, at tristique sapien congue. Suspendisse id nisl non turpis varius elementum. Integer luctus eros at odio ornare, at vehicula est semper. Aenean vehicula turpis sed euismod lacinia. Proin sed diam finibus, convallis enim ut, vestibulum lacus. Nunc dapibus tortor vitae feugiat posuere. Maecenas commodo orci et nulla egestas, at vehicula est mollis.
-                Fusce sit amet metus pulvinar, mollis ligula non, condimentum turpis. Mauris at nulla molestie, consectetur odio id, luctus nisl. Ut dui tellus, ultrices sed dui eu, gravida viverra nunc. Praesent sagittis tempor elit at blandit. Curabitur viverra diam eget mi semper, tempor luctus ipsum feugiat. Nunc a congue erat, non venenatis turpis. Proin pretium vestibulum elit in dictum. Cras suscipit, neque sit amet dictum iaculis, est lacus consectetur diam, et molestie purus magna id nunc.</p>
-        </div>
+        
         <!--Comentarii -->
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 des_coments">
             <form method="post" style="margin-top:20px;">

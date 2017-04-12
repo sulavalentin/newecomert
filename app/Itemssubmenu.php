@@ -308,4 +308,7 @@ class Itemssubmenu extends Model
                 ->take(6)
                 ->get();    
     }
+    public function getDescription($id){
+        return DB::table("descriere")->where("product_id",$id)->get();
+    }
 }
