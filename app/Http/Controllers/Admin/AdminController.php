@@ -67,9 +67,9 @@ class AdminController extends Controller
            return redirect("/admin/login");
         }
         $id=$request->id;
-        $permision=DB::table("admin")->min("id");
+        $permision=DB::table("admin")->where("confirmed",1)->first();
         $session=session("idAdmin");
-        if($permision==$session){
+        if($permision->id==$session){
             DB::table("admin")->where("id",$id)->delete();
             return response()->json(true);
         }else{
