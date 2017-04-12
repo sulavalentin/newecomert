@@ -127,7 +127,7 @@ class Products extends Model
     }
     public function getDescriptionsProduct($id){
         $return=DB::table("descriere")->where("product_id",$id)->get();
-        $product=DB::table("products")->where("id",$id)->get();
+        $product=DB::table("products")->where("id",$id)->first();
         return ["id"=>$id,
                 "description"=>$return,
                 "product"=>$product

@@ -15,6 +15,12 @@
         margin-top:15px;
     }
 </style>
+    <h1 class="calibri text-center">
+        Adauga descriere produsului 
+        <a href="{{URL('product/'.$article["product"]->id)}}" target="_blank" style="text-decoration: none;color:#f44336;">
+            "{{$article["product"]->originalname}}{{$article["product"]->name}}"
+        </a>.
+    </h1>
     <div id="raspuns" class="content">
         @if(!empty($article["description"]) && count($article["description"])>0)
             @foreach($article["description"] as $i)
@@ -31,7 +37,7 @@
     <form id="upload" enctype="multipart/form-data" name="{{$article['id']}}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <label class="file">
-            <a class="btn btn-primary">
+            <a class="btn btn-primary" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Se incarca" id="butonincarca">
                 <span class='glyphicon glyphicon-upload'></span>
                 Incarca imagini
             </a>
@@ -84,6 +90,7 @@
             formData.append("id",$("#upload").attr("name"));
             $("#error").text("");
             $(".loadimage").css("opacity","1");
+            $("#butonincarca").button("loading");
             $.ajax({
                 type:'POST',
                 url: "{{URL('/admin/uploaddescriere')}}",
@@ -107,9 +114,11 @@
                         }
                     });
                     $('#upload')[0].reset();
+                    $("#butonincarca").button("reset");
                 },
                 error:function(){
                     $("#error").text("A aparut o eroare");
+                    $("#butonincarca").button("reset");
                     $('#upload')[0].reset();
                 }
             });
