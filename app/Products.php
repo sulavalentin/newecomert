@@ -9,24 +9,8 @@ use Carbon\Carbon;
 
 class Products extends Model
 {
-    public function getHomeproducts(){
-        return DB::table('itemssubmenu')
-                ->select('itemssubmenu.*', 'submenu.submenu_name','menu.menu_name',DB::raw('COUNT(products.id) as count'))
-                ->leftJoin("submenu",function($join){
-                    $join->on('submenu.id', '=', 'itemssubmenu.submenu_id');
-                })
-                ->leftJoin("menu",function($join){
-                    $join->on('menu.id', '=', 'submenu.menu_id');
-                })
-                ->leftJoin("products",function($join){
-                    $join->on('itemssubmenu.id', '=', 'products.table_id');
-                })
-                ->groupBy("itemssubmenu.id")
-                ->get();
-    }
-    public function getLimit($id){
-        $tables=DB::table("itemssubmenu")->where("submenu_id",$id)->pluck("id");
-        return DB::table("products")
+    public function getHomePopulars(){
+       return DB::table("products")
                 ->select('products.*', 'images.address','favorite.id as idfavorite')
                 ->leftJoin("images",function($join){
                     $join->on('products.id', '=', 'images.product_id');
@@ -36,9 +20,23 @@ class Products extends Model
                     $join->on('products.id', '=', 'favorite.product_id');
                     $join->where('favorite.user_id',session('id'));
                 })
-                ->whereIn("table_id",$tables)
-                ->orderBy(DB::raw('RAND()'))
-                ->take(4)
+                ->orderBy("products.views","asc")
+                ->take(10)
+                ->get();
+    }
+    public function getHomeNewProducts(){
+       return DB::table("products")
+                ->select('products.*', 'images.address','favorite.id as idfavorite')
+                ->leftJoin("images",function($join){
+                    $join->on('products.id', '=', 'images.product_id');
+                    $join->where('images.default','1');
+                })
+                ->leftJoin("favorite",function($join){
+                    $join->on('products.id', '=', 'favorite.product_id');
+                    $join->where('favorite.user_id',session('id'));
+                })
+                ->orderBy("products.id","desc")
+                ->take(10)
                 ->get();
     }
     public function getAllItems(){
@@ -58,20 +56,7 @@ class Products extends Model
         } 
         return $aseaza;
     }
-    public function getProducts($id){
-        $a["products"]=DB::table('products')
-                ->select('products.*', 'images.address')
-                ->leftJoin("images",function($join){
-                            $join->on('products.id', '=', 'images.product_id');
-                            $join->where('images.default','1');
-                        })
-                ->where('table_id',$id)
-                ->orderby("id","desc")
-                ->get();
-        $a["name"]=DB::table("itemssubmenu")->where("id",$id)->value("item_name");
-        $a["id"]=$id;
-        return $a;
-    }
+
     
     public function getOneAdd($table){
         $coloane=DB::table('specificationgroup')

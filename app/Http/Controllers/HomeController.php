@@ -13,18 +13,9 @@ class HomeController extends Controller
 {
     public function home(Products $products,  Slideshow $slideshow)
     {
-        $homepage=$products->getHomeproducts();
-        $arr=[];
-        foreach($homepage as $key => $item)
-        {
-            $arr[$item->menu_name][$item->submenu_name][$item->item_name] = ["id"=>$item->id,"count"=>$item->count];
-            $return=$products->getLimit($item->submenu_id);
-            if(count($return) > 0){
-                $arr[$item->menu_name][$item->submenu_name][0]=$products->getLimit($item->submenu_id);
-            }
-        }
-        return view('home',["post"=>$arr,
-                            "slideshow"=>$slideshow->getSlideshow(),
+        return view('home',["slideshow"=>$slideshow->getSlideshow(),
+                            "newproducts"=>$products->getHomeNewProducts(),
+                            "populars"=>$products->getHomePopulars()
                             ]);
     }
     public function produse(Request $request,Itemssubmenu $item,$ordon, $id_submenu , $den , $pag )
