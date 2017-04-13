@@ -10,6 +10,9 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+/*Logo*/
+Route::get('/admin/logo','Admin\LogoController@logo');
+Route::post('/admin/uploadlogo','Admin\LogoController@uploadlogo');
 /*Comenzi rutes*/
 Route::get('/admin/comenzi','Admin\ComenziAdminController@comenziadmin');
 Route::get('/admin/allcomenzi','Admin\ComenziAdminController@allcomenziadmin');

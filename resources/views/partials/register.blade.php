@@ -23,7 +23,7 @@
 </script>
 <li>
     <img src="{{asset("img/system/user.png")}}" class="user"/>
-    <a data-toggle="modal" data-target="#login">Login</a>
+    <a data-toggle="modal" data-target="#login">Logare</a>
     <div class="modal fade bs-modal-sm" id="login" role="dialog">
         <div class="modal-dialog modal-sm">
           <!-- Modal content-->
@@ -67,7 +67,7 @@
 </li>
 <!--Register form--> 
 <li class="last">
-<a data-toggle="modal" data-target="#registrare">Registrare</a>
+<a data-toggle="modal" data-target="#registrare">Inregistrare</a>
 <div class="modal fade bs-modal-sm" id="registrare" role="dialog">
     <div class="modal-dialog modal-sm">
       <!-- Modal content-->

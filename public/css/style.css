@@ -130,6 +130,7 @@ header {
     width: 100%;
     cursor:pointer;
     margin-left: -11px;
+
 }
 #menu .first_menu{
     list-style-type: none;
@@ -423,7 +424,7 @@ header {
 }
 
 .form-cauta #search {
-    width: 90%;
+    width: 85%;
     padding: 3px 5px;
     border: 1px solid #ccc;
     box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #fff;  
@@ -432,7 +433,7 @@ header {
 .form-cauta #cauta {
     float: right;
     border: 1px solid #167bcb;
-    width: 10%;
+    width: 15%;
     padding: 3px;
     cursor: pointer;
     color: #fafafa;

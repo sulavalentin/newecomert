@@ -18,7 +18,6 @@
                     <li><a href="{{URL("/admin/tables")}}">Tabele</a></li>
                     <li><a href="{{URL("/admin/menu")}}">Meniu</a></li>
                     <li><a href="#">Utilizatori</a></li>
-                    <li><a href="{{URL("/admin/admins")}}">Admini</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" style="cursor: pointer;">
                             Altele
@@ -26,6 +25,8 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="{{URL("/admin/allcomenzi")}}">Toate comenzile</a></li>
+                            <li><a href="{{URL("/admin/logo")}}">Logo</a></li>
+                            <li><a href="{{URL("/admin/admins")}}">Admini</a></li>
                         </ul>
                     </li>
                 </ul>
