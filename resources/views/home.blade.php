@@ -42,7 +42,7 @@
                                 <ul class="allproducts list" id="products">
                                     <?php $count=0 ?>
                                     @foreach($i1[0] as $k)
-                                        <li class="col-lg-3 col-md-3 col-sm-4 col-xs-6"> 
+                                        <li class="col-lg-3 col-md-3 col-sm-4 col-xs-12"> 
                                             <div class="continut_product">
                                                 <div class="continut_image">
                                                     <a href="{{URL("/product/".$k->id)}}">

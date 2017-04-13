@@ -134,7 +134,7 @@
                 <p><b>Produse asemanatoare</b></p>
                 <ul class="allproducts list">
                     @foreach($asemanatoare as $i)
-                        <li class="col-lg-2 col-md-2 col-sm-4 col-xs-6"> 
+                        <li class="col-lg-2 col-md-2 col-sm-4 col-xs-12"> 
                             <div class="continut_product">
                                 <div class="continut_image">
                                     <a href="{{URL("/product/".$i->id)}}">
@@ -247,9 +247,14 @@
                             nume:nume,
                             comentariu:comentariu
                         },
-                        success:function(){
-                            location.reload();
-                                                    
+                        success:function(data){
+                            $("#allcoments").prepend("<div class='coments'>\n\
+                                                        <p class='Nume_coment'>"+data.nume+"</p>\n\
+                                                        <span>"+data.comentariu+"</span>\n\
+                                                        <p class='data_coment'>"+data.created_at+"</p>\n\
+                                                    </div>");
+                            $("input[name=nume]").val("");
+                            $("textarea[name=comentariu]").val("");
                         }
                     });
                 }

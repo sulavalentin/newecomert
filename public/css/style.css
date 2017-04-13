@@ -118,6 +118,8 @@ header {
 #menu{
     outline:none;
     height: 100%;
+    width: 0px;
+    margin: 0 auto;
 }
 
 #menu .dropdown{
@@ -127,15 +129,16 @@ header {
     font-size: 17px;
     width: 100%;
     cursor:pointer;
+    margin-left: -11px;
 }
 #menu .first_menu{
     list-style-type: none;
     padding: 0px;
     margin: 0px;
 }
-#menu .first_menu li{width: 165px;overflow-x: hidden;}
+#menu .first_menu li{overflow-x: hidden;}
 #menu .dropdown-menu{
-    margin: 0px 0px 0px -34px;
+    margin: 0px 0px 0px -55px;
     border-top: none;
     font-size: 15px;
     padding: 0px;
@@ -173,12 +176,17 @@ header {
     color:red;
     text-decoration:underline;
 }
+#menu .secundary_menu a li:hover{
+    background-color:#ccc;
+}
 #menu li{
     cursor: pointer;
     padding-left: 5px;
+    padding: 5px;
+    font-weight: bold;
 }
 #menu li a{
-    color:black;
+    color: #333333;
     text-decoration: none;
 }
 #menu li a:hover{
@@ -916,5 +924,11 @@ header {
     .col-xs-6 .price{
         font-size: 18px !important;
     }
+    #menu .dropdown-menu{
+        margin: 0px 0px 0px -55px;
+    }
+}
+@media screen and (max-width: 991px) {
+   
 }
 /*---------------images product -------------------*/

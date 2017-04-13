@@ -1,6 +1,6 @@
 <ul class="cos">
     <a href="{{URL("/cart")}}">
-        <li class="col-md-4">
+        <li class="col-md-4 col-sm-4 col-xs-4">
             <span>
                 <img src="{{asset("img/system/cart.png")}}"/><br>
                 Cos
@@ -11,7 +11,7 @@
         </li>
     </a>
     <a href="{{URL("/favorite")}}">
-        <li class="col-md-4">
+        <li class="col-md-4 col-sm-4 col-xs-4">
             <span>
                 <img src="{{asset("img/system/favorite.png")}}"/><br>
                 Favorite
@@ -22,7 +22,7 @@
         </li>
     </a>
     <a href="{{URL("/compare")}}">
-        <li class="col-md-4">
+        <li class="col-md-4 col-sm-4 col-xs-4">
             <span>
                 <img src="{{asset("img/system/compare.png")}}"/><br>
                 Compara

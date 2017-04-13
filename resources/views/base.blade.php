@@ -29,38 +29,38 @@
         <!-- Meniu-->
         <div class="container">
             <!-- Descktop-->
-            <div class="hidden-sm hidden-xs">
+            <div class="">
                 <!-- Primul rind-->
                 <div class="content sus"> 
                     <ul class="reglog">
-                        <li class="first">
+                        <li class="first hidden-sm hidden-xs">
                             <a href="#">Cum cumpar?</a>
                         </li>
-                        <li>
+                        <li class="hidden-sm hidden-xs">
                             <a href="#">Despre noi</a>
                         </li>
-                        <li>
+                        <li class="hidden-sm hidden-xs">
                             <a href="#">Ajutor</a>
                         </li>
-                        <li>
+                        <li class="hidden-sm hidden-xs">
                             <a href="https://www.youtube.com/watch?v=1eZpP1IdA5g" target="_black">Video upload</a>
                         </li>
-                        <li>
+                        <li class="hidden-sm hidden-xs">
                             <a href="https://davidwalsh.name/css-flip" target="_black">Rotate image</a>
                         </li>
-                        <li>
+                        <li class="hidden-sm hidden-xs">
                             <a href="http://devartisans.com/articles/image-upload-laravel-5" target="_black">Video upload1</a>
                         </li>
-                        <li>
+                        <li class="hidden-sm hidden-xs">
                             <a href="http://global.reebok.com/Z82032.html" target="_black">Ex pro</a>
                         </li>
-                        <li>
+                        <li class="hidden-sm hidden-xs">
                             <a href="http://www.kipling.com.br/produto/mochila-clas-seoul-estampada-autumm-leaf-kipling-65726" target="_black">Example product1</a>
                         </li>
-                        <li>
+                        <li class="hidden-sm hidden-xs">
                             <a href="https://css-tricks.com/snippets/php/create-url-slug-from-post-title/" target="_black">URL from title</a>
                         </li>
-                        <li>
+                        <li class="hidden-sm hidden-xs">
                             <a href="https://xdorialife.com/products/defense-lux-iphone-7-case?variant=19947838149" target="_black">Example product2</a>
                         </li>
                         <li class="last">
@@ -80,18 +80,18 @@
                 <!-- Al doilea rind cu logo-->
                 <div class="content row">
                     <!-- Logo-->
-                    <div class="col-md-3">
-                        <div class="col-md-5">
-                            @include('partials.menu')
-                        </div>
-                        <div class="col-md-7">
+                    <div class="col-md-3" style="padding-right: 0px;">
+                        <div class="col-md-9 col-sm-12 col-xs-12" style="padding: 0px; margin-bottom:10px;">
                             <a href="{{URL("/")}}">
-                                <h1 style="margin:0px;">Magazin</h1>
+                                <img src="http://www.underconsideration.com/brandnew/archives/panda_security_logo_detail.png" class="img-responsive"/>
                             </a>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12" style="padding: 0px;">
+                            @include('partials.menu')
                         </div>
                     </div>
                     <!--Cauta -->
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
                         <form class="form-cauta" action="{{URL("search")}}">
                             <input type="text" id="search" name="search" placeholder="Cauta" autocomplete="off"/>
                             <input type="submit" value="GO" id="cauta"/>

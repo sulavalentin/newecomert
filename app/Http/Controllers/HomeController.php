@@ -57,13 +57,16 @@ class HomeController extends Controller
                 ]);
     }
     public function addcomentariu(Request $request){
-        DB::table("coments")->insert(
+        $id=DB::table("coments")->insertGetId(
                     [
                         "product_id"=>$request->id,
                         "nume"=>$request->nume,
                         "comentariu"=>$request->comentariu,
                         "created_at"=>carbon::now()
                     ]);
+        $return=DB::table("coments")->where("id",$id)->first();
+        $return->created_at=date('d-m-Y', strtotime($return->created_at));
+        return response()->json($return);
                 
     }
     public function menu($id)
