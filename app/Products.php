@@ -20,7 +20,7 @@ class Products extends Model
                     $join->on('products.id', '=', 'favorite.product_id');
                     $join->where('favorite.user_id',session('id'));
                 })
-                ->orderBy("products.views","asc")
+                ->orderBy("products.views","desc")
                 ->take(10)
                 ->get();
     }
