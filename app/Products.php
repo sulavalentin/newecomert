@@ -174,5 +174,6 @@ class Products extends Model
     public function deleteItem($id){
         DB::table("products")->where('id', $id)->delete();
         DB::table("specifications")->where('product_id', $id)->delete();
+        DB::table("coments")->where("product_id",$id)->delete();
     }
 }
