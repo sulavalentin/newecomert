@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 class ComenziAdminController extends Controller
 {
     
@@ -45,7 +46,14 @@ class ComenziAdminController extends Controller
                 "total"=>$i->cantitateprodus*$i->priceprodus
             ];
         }
-        return view("admin.comenzi",["comenzi"=>$arr]);
+        	
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $col = new Collection($arr);
+        $perPage = 10;
+        $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
+        $return = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
+        $return->setPath(URL('/admin/comenzi'));
+        return view("admin.comenzi",["comenzi"=>$return]);
     }
     public function allcomenziadmin(){
         if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
@@ -82,7 +90,14 @@ class ComenziAdminController extends Controller
                 "total"=>$i->cantitateprodus*$i->priceprodus
             ];
         }
-        return view("admin.allcomenzi",["comenzi"=>$arr]);
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $col = new Collection($arr);
+        $perPage = 10;
+        $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
+        $return = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
+        $return->setPath(URL('/admin/comenzi'));
+        
+        return view("admin.allcomenzi",["comenzi"=>$return]);
     }
     public function movecomanda(Request $request){
         if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){

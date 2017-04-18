@@ -97,6 +97,7 @@
               </div>
             </div>
         </div>
+        {{ $comenzi->links() }}
     <script>
         $("button[name=trececomanda]").on("click",function(){
             var id=$(this).attr("id");
