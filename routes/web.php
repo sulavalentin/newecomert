@@ -10,6 +10,10 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+
+/*Coments rutes*/
+Route::get('/admin/coments','Admin\ComentsController@coments');
+Route::post('/admin/deletecoment','Admin\ComentsController@deletecoment');
 /*Logo*/
 Route::get('/admin/logo','Admin\LogoController@logo');
 Route::post('/admin/uploadlogo','Admin\LogoController@uploadlogo');

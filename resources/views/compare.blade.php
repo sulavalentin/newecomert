@@ -97,7 +97,7 @@
                     success:function(){
                         location.reload();
                     }
-                })
+                });
             });
         </script>
     @else

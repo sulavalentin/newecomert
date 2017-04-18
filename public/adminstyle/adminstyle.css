@@ -340,3 +340,9 @@
     padding: 15px 15px 0px 15px;
     margin-bottom:15px;
 }
+/*Comentarii*/
+.comentimage{
+    width: 70px; 
+    float:left; 
+    margin-right:5px;
+}

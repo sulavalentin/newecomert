@@ -154,6 +154,7 @@
                 @endforeach
             </table>
         </div>
+        {{$article["products"]->links()}}
         @else
             <h1>Nu sunt produse</h1>
         @endif

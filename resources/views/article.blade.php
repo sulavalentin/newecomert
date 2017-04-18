@@ -187,7 +187,11 @@
             <form method="post" style="margin-top:20px;" id="formcomentarii">
                 <div class="form-group">
                     <label>Numele:</label>
-                    <input type="text" name="nume" class="form-control"/>
+                    @if(!empty(session("nume")))
+                        <input type="text" name="nume" value="{{session("nume")}}" class="form-control"/>
+                    @else
+                        <input type="text" name="nume" class="form-control"/>
+                    @endif
                 </div>
                 <div class="form-group">
                     <label>Comentariu:</label>
@@ -197,7 +201,7 @@
                     <input type="submit" class="form-control"/>
                 </div>
             </form>
-            <div class="content" id="allcoments">
+            <div class="content calibri" id="allcoments">
                 @if(!empty($comentarii) && count($comentarii)>0)
                     @foreach($comentarii as $coment)
                         <div class='coments'>
@@ -253,7 +257,6 @@
                                                         <span>"+data.comentariu+"</span>\n\
                                                         <p class='data_coment'>"+data.created_at+"</p>\n\
                                                     </div>");
-                            $("input[name=nume]").val("");
                             $("textarea[name=comentariu]").val("");
                         }
                     });

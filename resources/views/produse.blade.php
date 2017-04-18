@@ -132,6 +132,7 @@
                     case "nameUp":{key=2;  break;}
                     case "nameDown":{key=3; break;}
                     case "created":{key=4; break;}
+                    case "popular":{key=5; break;}
                     default:key=false;
                 }
                 $("#sortall")[0].selectedIndex=key;

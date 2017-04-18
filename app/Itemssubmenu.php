@@ -16,6 +16,7 @@ class Itemssubmenu extends Model
             case "nameUp":{$key="originalname"; $value="asc"; break;}
             case "nameDown":{$key="originalname"; $value="desc"; break;}
             case "created":{$key="created_at"; $value="asc"; break;}
+            case "popular":{$key="views"; $value="desc"; break;}
             default:{$key="price"; $value="asc";}
         }
         $return=DB::table('products')
@@ -59,6 +60,7 @@ class Itemssubmenu extends Model
             case "nameUp":{$key="originalname"; $value="asc"; break;}
             case "nameDown":{$key="originalname"; $value="desc"; break;}
             case "created":{$key="created_at"; $value="desc"; break;}
+            case "popular":{$key="views"; $value="desc"; break;}
             default:{$key="price"; $value="asc";}
         }
             return  DB::table('products')

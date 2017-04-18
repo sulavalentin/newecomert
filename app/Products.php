@@ -56,7 +56,20 @@ class Products extends Model
         } 
         return $aseaza;
     }
-
+    public function getProducts($id){
+        $a["products"]=DB::table('products')
+                ->select('products.*', 'images.address')
+                ->leftJoin("images",function($join){
+                            $join->on('products.id', '=', 'images.product_id');
+                            $join->where('images.default','1');
+                        })
+                ->where('table_id',$id)
+                ->orderby("id","desc")
+                ->paginate(10);
+        $a["name"]=DB::table("itemssubmenu")->where("id",$id)->value("item_name");
+        $a["id"]=$id;
+        return $a;
+    }
     
     public function getOneAdd($table){
         $coloane=DB::table('specificationgroup')
@@ -110,6 +123,7 @@ class Products extends Model
         $arr[$k]=[asset(""),$images];
         return $arr;
     }
+    
     public function getDescriptionsProduct($id){
         $return=DB::table("descriere")->where("product_id",$id)->get();
         $product=DB::table("products")->where("id",$id)->first();
