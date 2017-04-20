@@ -35,17 +35,13 @@
                 <div class="content sus"> 
                     <ul class="reglog">
                         <li class="first hidden-sm hidden-xs">
-                            <a href="#">Cum cumpar?</a>
+                            <a href="{{URL('/helpbuy')}}">Cum cumpar?</a>
                         </li>
                         <li class="hidden-sm hidden-xs">
                             <a href="#">Contact</a>
                         </li>
-                        <li class="hidden-sm hidden-xs">
+                        <li class="hidden-sm hidden-xs last">
                             <a href="#">Despre noi</a>
-                        </li>
-                        
-                        <li class="last">
-                            <a href="{{URL("/test")}}">Test</a>
                         </li>
                         <!--Login si register form-->
                         <div class="pull-right">
@@ -97,7 +93,7 @@
             </div>
         </div>
             
-        <div class='container' style="border-top: 1px solid #ccc;margin-top: 10px;">
+        <div class='container' style="border-top: 1px solid #ccc;">
             <div class="row">
                 @yield('content')
             </div>  

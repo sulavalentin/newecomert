@@ -432,12 +432,12 @@ header {
 }
 .form-cauta #cauta {
     float: right;
-    border: 1px solid #167bcb;
+    border: 1px solid #3F51B5;
     width: 15%;
     padding: 3px;
     cursor: pointer;
     color: #fafafa;
-    background-color: #167bcb;
+    background-color: #2196F3;
     border-radius: 3px;
 }
 /*end forma cauta*/
@@ -911,6 +911,27 @@ header {
 .homeHeader{
     margin-top: 10px !important;
     width: 100%;
+}
+.home_menu{
+    width: 100%;
+    padding:0px;
+    margin:0px;
+    list-style-type: none;
+}
+.home_menu a{
+    color:#333;
+    text-decoration: none;
+}
+.home_menu li{
+    padding: 5px;
+    font-weight: bold;
+    font-size: 17px;
+    border-top: 1px solid #f44336;
+    border-bottom: 1px solid #f44336;
+    margin-top: -1px;
+}
+.home_menu li:hover{
+    background-color: #ccc;
 }
 @media screen and (max-width: 500px) {
     .paginare .pagination li a{

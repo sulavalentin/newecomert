@@ -13,7 +13,7 @@
         @endif
         <ul class="allproducts list" id="products">
             @foreach($post as $i)
-                <li class="col-lg-2 col-md-3 col-sm-4 col-xs-6"> 
+                <li class="col-lg-3 col-md-3 col-sm-4 col-xs-6"> 
                     <div class="continut_product">
                         <div class="continut_image">
                             <a href="{{URL("/product/".$i->id)}}">
@@ -58,6 +58,7 @@
                 </li>
             @endforeach
         </ul>
+        {{$post->links()}}
     @else
         @if(!empty($post2) && count($post2)>0)
             @if(!empty($search))
@@ -112,6 +113,7 @@
                     </li>
                 @endforeach
             </ul>
+            {{$post2->links()}}
         @else
             @if(!empty($search))
                 <div class="container" style="border-top:1px solid #ccc;">

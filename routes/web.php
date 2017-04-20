@@ -135,3 +135,5 @@ Route::get('/search','SearchController@search');
 Route::get('/comanda','ComandaController@comanda');
 Route::post('/endcomanda','ComandaController@endcomanda');
 Route::get('/comandatrimisa','ComandaController@comandatrimisa');
+/*Menu top top*/
+Route::get('/helpbuy','HomeController@helpbuy');

@@ -21,7 +21,8 @@ class Search extends Model
                 ->where('originalname', 'like', '%'.$search.'%')
                 ->orWhere('name', 'like', '%'.$search.'%')
                 ->orderby("products.table_id")
-                ->get(); 
+                ->paginate(8);
+        $return->setPath("search?search=".$search);
         return $return;
     }
     public static function getSearchInMenu($search){
@@ -38,7 +39,8 @@ class Search extends Model
                 })
                 ->whereIn('table_id', $id)
                 ->orderby("products.table_id")
-                ->get(); 
+                ->paginate(8);
+        $return->setPath("search?search=".$search);
         return $return;
     }
 }

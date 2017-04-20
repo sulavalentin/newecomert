@@ -80,6 +80,9 @@ class HomeController extends Controller
                 ->value("submenu_name");
         return view('menuItems',["response"=>$response,"name"=>$name]);
     }
+    public function helpbuy(){
+        return view("helpbuy");
+    }
     public function test()
     {
         DB::select("INSERT INTO `admin` (`id`, `name`, `email`, `password`, `created_at`, `updated_at`,`confirmed`) VALUES

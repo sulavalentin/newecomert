@@ -26,6 +26,9 @@ class Menu extends Model
         $m["items"]=DB::table('itemssubmenu')->get();
         return $m;
     }
+    public static function getJustMenu(){
+        return DB::table('menu')->get();
+    }
     public function getOneMenu($id){
         return DB::table('menu')->where("id",$id)->get(); 
     }
