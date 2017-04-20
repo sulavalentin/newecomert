@@ -56,8 +56,12 @@
                             <img src="{{asset("img/system/google.png")}}"/>
                         </a>
                     </div>
-                    <a href="#" style="color:black; text-decoration: none;">
+                    <a href="{{URL('/reset')}}" style="color:black; text-decoration: none;">
                         Ai uitat parola?
+                    </a>
+                    <br>
+                    <a data-toggle="modal" data-dismiss="modal" data-target="#registrare" style="color:#333; text-decoration: none;">
+                        Inregistrare
                     </a>
                 {!! Form::close() !!}
             </div>
@@ -107,6 +111,9 @@
                         <img src="{{asset("img/system/google.png")}}"/>
                     </a>
                 </div>
+                <a data-toggle="modal" data-dismiss="modal" data-target="#login" style="color:#333; text-decoration: none;">
+                    Logare
+                </a>
             {!! Form::close() !!}
         </div>
       </div>

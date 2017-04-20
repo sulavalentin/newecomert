@@ -118,13 +118,17 @@ Route::post('/deleteallcart','CartController@deleteallcart');
 Route::get('/compare','CompareController@compare');
 Route::post('/addcompare','CompareController@addcompare');
 Route::post('/deletecompare','CompareController@deletecompare');
-/*User*/
+/*User register acount*/
 Route::get("/login-{facebook}", 'RegisterController@goToFacebook');
 Route::get("/login-back/{facebook}",'RegisterController@goToFacebookBack');
 Route::post('/register','RegisterController@register');
 Route::post('/login','RegisterController@login');
 Route::get('/confirm/{email}-{token}','RegisterController@comfirm');
 Route::get('/exit','RegisterController@exituser');
+Route::get('/reset','RegisterController@resetuser');
+Route::post('/reset','RegisterController@sendemailuser');
+Route::post('/setcode','RegisterController@setcodeuser');
+Route::post('/newpass','RegisterController@newpassuser');
 /*Cautare*/
 Route::get('/search','SearchController@search');
 /*Comanda*/

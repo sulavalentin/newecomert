@@ -198,7 +198,7 @@
                     <textarea name="comentariu" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="form-control"/>
+                    <input type="submit" class="form-control" value="Adauga"/>
                 </div>
             </form>
             <div class="content calibri" id="allcoments">
@@ -233,13 +233,17 @@
                 $("textarea[name=comentariu]").css("border-color","#ccc");
                 var trecut=true;
                 var nume=$("input[name=nume]").val();
+                nume=nume.replace(/  +/g, ' ');
                 var comentariu=$("textarea[name=comentariu]").val();
-                if(nume.length<3){
-                    $("input[name=nume]").css("border-color","red");
-                    trecut=false;
-                }
+                comentariu=comentariu.replace(/  +/g, ' ');
                 if(comentariu.length<3){
                     $("textarea[name=comentariu]").css("border-color","red");
+                    $("textarea[name=comentariu]").focus();
+                    trecut=false;
+                }
+                if(nume.length<3){
+                    $("input[name=nume]").css("border-color","red");
+                    $("input[name=nume]").focus();
                     trecut=false;
                 }
                 if(trecut===true){

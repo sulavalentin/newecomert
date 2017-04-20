@@ -72,6 +72,7 @@
             </table>
         </div>
         @endforeach
+        {{ $comenzi->links() }}
     @else
     <h1 class="text-center calibri">Nu sunt comenzi</h1>
     @endif

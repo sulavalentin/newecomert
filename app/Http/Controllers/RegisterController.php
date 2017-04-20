@@ -106,6 +106,7 @@ class RegisterController extends Controller
         }
         return response()->json($register);
     }
+    
     public function comfirm(Users $users , $email,$token){
         $email=Crypt::decrypt($email);
         $confirmation=DB::table("users")
@@ -129,5 +130,51 @@ class RegisterController extends Controller
         session()->forget('nume');
         session()->forget('id');
         return redirect("/");
+    }
+    public function resetuser(){
+        return view("partials.reset");
+    }
+    public function sendemailuser(Request $request){
+        $email=$request->email;
+        $exist=DB::table("users")->where("email",$email)->first();
+        if(!empty($exist) && count($exist) >0){
+            $token=str_random(5);
+            DB::table('users')->where("email",$email)->update([
+                'confirmation_code' => $token,
+                ]);
+            Mail::send('emails.reset', ['token' => $token], function ($m) use ($email) {
+                $m->to($email)->subject('Resetare parola utilizator');
+            });
+            return view("partials.reset",["corect"=>$email]);
+        }
+        else{
+            return view("partials.reset",["error"=>"eroare"]);
+        }
+    }
+    public function setcodeuser(Request $request){
+        $email=$request->email;
+        $code=$request->code;
+        $exist=DB::table("users")->where("email",$email)->value("confirmation_code");
+        
+        if(strcmp($code,$exist)==0){
+            return view("partials.reset",["newpass"=>$email,"corect"=>true]);
+        }
+        else{
+            return view("partials.reset",["corect"=>$email,"codeeror"=>"eror"]);
+        }
+    }
+    public function newpassuser(Request $request){
+        $email=$request->email;
+        $newpass=$request->newpass;
+        if(strlen($newpass)>5 && strlen($newpass)<50){
+            DB::table("users")->where("email",$email)->update([
+                'confirmation_code' => null,
+                'password'=>bcrypt(strtolower($newpass)),
+                ]);
+            return redirect("/");
+        }
+        else{
+            return view("partials.reset",["newpass"=>$email,"corect"=>true,"newpasseror"=>"eror"]);
+        }
     }
 }

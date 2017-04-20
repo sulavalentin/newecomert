@@ -72,26 +72,30 @@
             $("input[name=telefonc]").css("border-color","#ccc");
             $("input[name=adresac]").css("border-color","#ccc");
             var nume=$("input[name=numec]").val();
+            nume=nume.replace(/  +/g, ' ');
             var email=$("input[name=emailc]").val();
+            email=email.replace(/  +/g, ' ');
             var telefon=$("input[name=telefonc]").val();
+            telefon=telefon.replace(/  +/g, ' ');
             var adresa=$("input[name=adresac]").val();
+            adresa=adresa.replace(/  +/g, ' ');
             var trecut=true;
-            if(adresa.length===0){
+            if(adresa.length<=1){
                 $("input[name=adresac]").css("border-color","red");
                 $("input[name=adresac]").focus();
                 trecut=false;
             }
-            if(telefon.length===0){
+            if(telefon.length<=1){
                 $("input[name=telefonc]").css("border-color","red");
                 $("input[name=telefonc]").focus();
                 trecut=false;
             }
-            if(email.length===0){
+            if(email.length<=1){
                 $("input[name=emailc]").css("border-color","red");
                 $("input[name=emailc]").focus();
                 trecut=false;
             }
-            if(nume.length===0){
+            if(nume.length<=1){
                 $("input[name=numec]").css("border-color","red");
                 $("input[name=numec]").focus();
                 trecut=false;

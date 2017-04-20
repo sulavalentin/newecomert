@@ -142,11 +142,11 @@ class RegisterController extends Controller
     
     public function sendemail(Request $request){
         $email=$request->email;
-        $exist=DB::table("admin")->where("email",$email)->first();
+        $exist=DB::table("users")->where("email",$email)->first();
         if(!empty($exist) && count($exist) >0){
             $token=str_random(5);
-            DB::table('admin')->where("email",$email)->update([
-                'token' => $token,
+            DB::table('users')->where("email",$email)->update([
+                'confirmation_code' => $token,
                 ]);
             Mail::send('admin.emails.reset', ['token' => $token], function ($m) use ($email) {
                 $m->to($email)->subject('Resetare parola');

@@ -95,7 +95,7 @@ class ComenziAdminController extends Controller
         $perPage = 10;
         $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
         $return = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
-        $return->setPath(URL('/admin/comenzi'));
+        $return->setPath(URL('/admin/allcomenzi'));
         
         return view("admin.allcomenzi",["comenzi"=>$return]);
     }
