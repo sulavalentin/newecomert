@@ -38,7 +38,7 @@
                             <a href="{{URL('/helpbuy')}}">Cum cumpar?</a>
                         </li>
                         <li class="hidden-sm hidden-xs">
-                            <a href="#">Contact</a>
+                            <a href="{{URL('/contact')}}">Contact</a>
                         </li>
                         <li class="hidden-sm hidden-xs last">
                             <a href="#">Despre noi</a>

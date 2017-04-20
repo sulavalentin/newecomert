@@ -137,3 +137,5 @@ Route::post('/endcomanda','ComandaController@endcomanda');
 Route::get('/comandatrimisa','ComandaController@comandatrimisa');
 /*Menu top top*/
 Route::get('/helpbuy','HomeController@helpbuy');
+Route::get('/contact','ContactController@contact');
+Route::post('/sendproblem','ContactController@sendproblem');
