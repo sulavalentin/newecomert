@@ -21,7 +21,4 @@ class ContactController extends Controller
             "created_at"=>Carbon::now(3)
         ]);
     }
-    public function delproblema(Request $request){
-        DB::table("contact")->where("id",$request->id)->delete();
-    }
 }

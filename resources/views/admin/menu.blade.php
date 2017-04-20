@@ -296,6 +296,8 @@
         e.preventDefault();
         var name=$("input[name=nameadd]").val();
         if (name.length>0 && name.length<30){
+            var buton=$(this).find("button");
+            buton.button("loading");
             $.ajax({  
                 type: 'POST',  
                 url: "{{URL('/admin/addMenu')}}", 
@@ -319,6 +321,8 @@
         if (name.length>0 && name.length<30){
             var form=new FormData($(this)[0]);
             form.append("id",submenu);
+            var buton=$(this).find("button");
+            buton.button("loading");
             $.ajax({
                 url:"{{URL('/admin/addSubmenu')}}",
                 data:form,
@@ -334,6 +338,7 @@
                         location.reload();
                     }else{
                         $("p[name=erorimage]").html("Eroare la incarcarea imaginii");
+                        buton.button("reset");
                     }
                 }
             });
@@ -348,6 +353,8 @@
         if (name.length>0 && name.length<30){
             var form=new FormData($(this)[0]);
             form.append("id",items);
+            var buton=$(this).find("button");
+            buton.button("loading");
             $.ajax({
                 url:"{{URL('/admin/addItemssubmenu')}}",
                 data:form,
@@ -363,6 +370,7 @@
                         location.reload();
                     }else{
                         $("p[name=erorimage]").html("Eroare la incarcarea imaginii");
+                        buton.button("reset");
                     }
                 }
             });
@@ -376,6 +384,8 @@
         var name=$("input[name=name]").val();
         var position=$("select[name=position]").val();
         if (name.length>0 && name.length<30){
+            var buton=$(this).find("button");
+            buton.button("loading");
             $.ajax({  
                 type: 'POST',  
                 url: "{{URL('/admin/modMenu')}}", 
@@ -401,6 +411,8 @@
         if (name.length>0 && name.length<30){
             var form=new FormData($(this)[0]);
             form.append("id",submenu);
+            var buton=$(this).find("button");
+            buton.button("loading");
             $.ajax({
                 url:"{{URL('/admin/modSubmenu')}}",
                 data:form,
@@ -416,6 +428,7 @@
                         location.reload();
                     }else{
                         $("p[name=erorimage").html("Eroare la incarcarea imaginii");
+                        buton.button("reset");
                     }
                 }
               });
@@ -432,6 +445,8 @@
             if(subparinte>0){
                 var form=new FormData($(this)[0]);
                 form.append("id",items);
+                var buton=$(this).find("button");
+                buton.button("loading");
                 $.ajax({
                     url:"{{URL('/admin/modItemssubmenu')}}", 
                     data:form,
@@ -448,6 +463,7 @@
                             location.reload();
                         }else{
                             $("p[name=erorimage").html("Eroare la incarcarea imaginii");
+                            buton.button("reset");
                         }
                     }
                   });

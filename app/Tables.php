@@ -8,7 +8,7 @@ use DB;
 class Tables extends Model
 {
     public function getAllTables(){
-        return DB::table('itemssubmenu')->orderBy("id")->get(); 
+        return DB::table('itemssubmenu')->orderBy("id")->paginate(10); 
     }
     public function getTabele($id){
         $coloane=DB::table('specificationGroup')

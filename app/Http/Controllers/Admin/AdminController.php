@@ -51,6 +51,9 @@ class AdminController extends Controller
         return view("admin.admins",["admins"=>$admin->getAdmins()]);
     }
     public function getLogin(){
+        if (filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
+           return redirect("/admin");
+        }
         $first=DB::table("admin")->where("confirmed",1)->count();
         if($first>0){
             return view('admin.partials.login');

@@ -10,7 +10,9 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
+/*Contact Us*/
+Route::get('/admin/contact','Admin\ContactUsController@getcontact');
+Route::post('/admin/delproblema','Admin\ContactUsController@delproblema');
 /*Coments rutes*/
 Route::get('/admin/coments','Admin\ComentsController@coments');
 Route::post('/admin/deletecoment','Admin\ComentsController@deletecoment');

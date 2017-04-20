@@ -63,27 +63,27 @@
             email.css("border-color","#ccc");
             problema.css("border-color","#ccc");
             var permit=true;
-            if((problema.val()).length===0 || (problema.val()).length>2000){
+            if((problema.val()).length<3 || (problema.val()).length>2000){
                 problema.css("border-color","red");
                 problema.focus();
                 permit=false;
             }
-            if((email.val()).length===0 || (email.val()).length>100){
+            if((email.val()).length<3 || (email.val()).length>100){
                 email.css("border-color","red");
                 email.focus();
                 permit=false;
             }
-            if((telefon.val()).length===0 || (telefon.val()).length>11){
+            if((telefon.val()).length<3 || (telefon.val()).length>11){
                 telefon.css("border-color","red");
                 telefon.focus();
                 permit=false;
             }
-            if((prenume.val()).length===0 || (prenume.val()).length>100){
+            if((prenume.val()).length<3 || (prenume.val()).length>100){
                 prenume.css("border-color","red");
                 prenume.focus();
                 permit=false;
             }
-            if((nume.val()).length===0 || (nume.val()).length>100){
+            if((nume.val()).length<3 || (nume.val()).length>100){
                 nume.css("border-color","red");
                 nume.focus();
                 permit=false;

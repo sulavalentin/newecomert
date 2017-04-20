@@ -59,6 +59,7 @@
                 @endforeach
             </table>
         </div>
+    {{$tabele->links()}}
     @else
         <h1>Nu sunt tabele</h1>
     @endif

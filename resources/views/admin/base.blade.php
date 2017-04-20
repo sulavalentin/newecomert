@@ -24,10 +24,11 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{URL("/admin/allcomenzi")}}">Toate comenzile</a></li>
+                            <li><a href="{{URL("/admin/contact")}}">Contact</a></li>
                             <li><a href="{{URL("/admin/coments")}}">Comentarii</a></li>
                             <li><a href="{{URL("/admin/logo")}}">Logo</a></li>
                             <li><a href="{{URL("/admin/admins")}}">Admini</a></li>
+                            <li><a href="{{URL("/admin/allcomenzi")}}">Toate comenzile</a></li>
                         </ul>
                     </li>
                 </ul>
