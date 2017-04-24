@@ -40,5 +40,19 @@
                 </li>
             </ul>
         </div>
+        @if(!empty(Session('menu')))
+            <div class="col-md-2">
+                <ul class="footerlist">
+                    <li>
+                        <b>Categorii</b>
+                    </li>
+                    @foreach(Session('menu') as $i)
+                        <li>
+                            <a href="{{URL('menu/'.$i->id)}}">{{$i->menu_name}}</a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </div>
 </div>

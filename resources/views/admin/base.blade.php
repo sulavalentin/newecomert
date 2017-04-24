@@ -14,20 +14,20 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{URL("/admin/comenzi")}}">Comenzi</a></li>
                     <li><a href="{{URL("/admin/products")}}">Produse</a></li>
+                    <li><a href="{{URL("/admin/contact")}}">Contact</a></li>
+                    <li><a href="{{URL("/admin/coments")}}">Comentarii</a></li>
                     <li><a href="{{URL("/admin/slideshow")}}">Slideshow</a></li>
-                    <li><a href="{{URL("/admin/tables")}}">Tabele</a></li>
-                    <li><a href="{{URL("/admin/menu")}}">Meniu</a></li>
-                    <li><a href="{{URL("/admin/utilizatori")}}">Utilizatori</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" style="cursor: pointer;">
                             Altele
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{URL("/admin/contact")}}">Contact</a></li>
-                            <li><a href="{{URL("/admin/coments")}}">Comentarii</a></li>
+                            <li><a href="{{URL("/admin/menu")}}">Meniu</a></li>
+                            <li><a href="{{URL("/admin/tables")}}">Tabele</a></li>
                             <li><a href="{{URL("/admin/logo")}}">Logo</a></li>
                             <li><a href="{{URL("/admin/admins")}}">Admini</a></li>
+                            <li><a href="{{URL("/admin/utilizatori")}}">Utilizatori</a></li>
                             <li><a href="{{URL("/admin/allcomenzi")}}">Toate comenzile</a></li>
                         </ul>
                     </li>
@@ -39,7 +39,12 @@
                             {{session("nameAdmin")}}
                         </a>
                     </li>
-                    <li><a href="{{URL("/exitadmin")}}"><span class="glyphicon glyphicon-log-in"></span>Exit</a></li>
+                    <li>
+                        <a href="{{URL("/exitadmin")}}">
+                            <span class="glyphicon glyphicon-log-in"></span>
+                            Iesire
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
