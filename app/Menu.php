@@ -135,7 +135,6 @@ class Menu extends Model
         }else{
             DB::table("submenu")->where("id",$request->id)
                                 ->update(["submenu_name"=>ucwords($request->nameSub),
-                                          "submenu_image"=>"",
                                           "submenu_active"=>$request->activSub,
                                           "menu_id"=>$request->parinteSub,
                                         ]);

@@ -10,6 +10,8 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+/*Utilizatori*/
+Route::get('/admin/utilizatori','Admin\UtilizatoriController@utilizatori');
 /*Contact Us*/
 Route::get('/admin/contact','Admin\ContactUsController@getcontact');
 Route::post('/admin/delproblema','Admin\ContactUsController@delproblema');

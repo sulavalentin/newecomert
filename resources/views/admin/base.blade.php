@@ -17,7 +17,7 @@
                     <li><a href="{{URL("/admin/slideshow")}}">Slideshow</a></li>
                     <li><a href="{{URL("/admin/tables")}}">Tabele</a></li>
                     <li><a href="{{URL("/admin/menu")}}">Meniu</a></li>
-                    <li><a href="#">Utilizatori</a></li>
+                    <li><a href="{{URL("/admin/utilizatori")}}">Utilizatori</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" style="cursor: pointer;">
                             Altele
