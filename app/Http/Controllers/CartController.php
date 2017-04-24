@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\Cart;
-use App\ItemsSubMenu;
+use App\Itemssubmenu;
 use Cookie;
 
 class CartController extends Controller

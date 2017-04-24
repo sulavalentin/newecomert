@@ -40,10 +40,10 @@ class Products extends Model
                 ->get();
     }
     public function getAllItems(){
-        $items=DB::table('itemsSubMenu')
-                    ->select('itemsSubMenu.*','submenu.submenu_name','submenu.submenu_image','submenu.menu_id','menu.menu_name')
+        $items=DB::table('itemssubmenu')
+                    ->select('itemssubmenu.*','submenu.submenu_name','submenu.submenu_image','submenu.menu_id','menu.menu_name')
                     ->leftJoin("submenu",function($join){
-                         $join->on('submenu.id', '=', 'itemsSubMenu.submenu_id');
+                         $join->on('submenu.id', '=', 'itemssubmenu.submenu_id');
                     })
                     ->leftJoin("menu",function($join){
                          $join->on('submenu.menu_id', '=', 'menu.id');
@@ -141,9 +141,11 @@ class Products extends Model
                                       "price"=>$request->rowvalue[1],
                                       "created_at"=>Carbon::now()]);
         for($i=2;$i<sizeof($request->rowvalue);$i++){
-            DB::table("specifications")->insert(["product_id"=>$id,
-                                                "specification_id"=>$request->rowid[$i],
-                                                "value"=>$request->rowvalue[$i]]);
+			if(strlen($request->rowvalue[$i])>0){
+				DB::table("specifications")->insert(["product_id"=>$id,
+													"specification_id"=>$request->rowid[$i],
+													"value"=>$request->rowvalue[$i]]);
+			}
         } 
         DB::table("images")
                 ->where("product_id",-1)

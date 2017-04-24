@@ -126,7 +126,7 @@ class Itemssubmenu extends Model
         $selected=[];
         $val=[];
         foreach($input as $key=>$value){
-            $id[]=DB::table("specificationName")
+            $id[]=DB::table("specificationname")
                     ->where("id",$key)
                     ->where("table_id",$id_submenu)
                     ->where("addsearch",1)
