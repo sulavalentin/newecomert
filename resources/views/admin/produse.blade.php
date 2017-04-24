@@ -4,7 +4,13 @@
     <div class="content">
         <ul class="menuitems" id="menuitems">
             @foreach($items as $key => $submenu)
-                <h1 class="den_menu">{{$key}}</h1>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="den_menu">
+                        {{$key}}
+                    </h1>
+                </div>
+                <div class="panel-body">
                     @foreach($submenu as $k => $itemssubmenu)
                         <li class="submenu_items">
                             <b>{{$k}}</b>
@@ -24,6 +30,8 @@
                             @endforeach 
                         </ul>
                     @endforeach
+                </div>
+            </div>
             @endforeach
         </ul>
     </div>

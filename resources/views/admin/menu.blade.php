@@ -78,7 +78,7 @@
         </div>
         <div class="form-group"> 
             <div class="col-sm-offset-3 col-sm-9">
-                <button type="submit" class="btn btn-default">Adauga</button>
+                <button type="submit" class="btn btn-default" data-loading-text="<i class='fa fa-spinner fa-spin'></i>">Adauga</button>
             </div>
         </div>
     </form>
@@ -119,7 +119,7 @@
         </div>
         <div class="form-group"> 
             <div class="col-sm-offset-3 col-sm-9">
-                <button type="submit" class="btn btn-default">Adauga</button>
+                <button type="submit" class="btn btn-default" data-loading-text="<i class='fa fa-spinner fa-spin'></i>">Adauga</button>
             </div>
         </div>
     </form>
@@ -160,7 +160,7 @@
         </div>
         <div class="form-group"> 
             <div class="col-sm-offset-3 col-sm-9">
-                <button type="submit" class="btn btn-default">Adauga</button>
+                <button type="submit" class="btn btn-default" data-loading-text="<i class='fa fa-spinner fa-spin'></i>">Adauga</button>
             </div>
         </div>
     </form>
@@ -174,7 +174,7 @@
         </div>
         <div class="form-group"> 
             <div class="col-sm-offset-3 col-sm-9">
-                <button type="submit" class="btn btn-default">Salveaza</button>
+                <button type="submit" class="btn btn-default" data-loading-text="<i class='fa fa-spinner fa-spin'></i>">Salveaza</button>
             </div>
         </div>
     </form>
@@ -215,7 +215,7 @@
         </div>
         <div class="form-group"> 
             <div class="col-sm-offset-3 col-sm-9">
-                <button type="submit" class="btn btn-default">Salveaza</button>
+                <button type="submit" class="btn btn-default" data-loading-text="<i class='fa fa-spinner fa-spin'></i>">Salveaza</button>
             </div>
         </div>
     </form>
@@ -266,7 +266,7 @@
         </div>
         <div class="form-group"> 
             <div class="col-sm-offset-3 col-sm-9">
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default" data-loading-text="<i class='fa fa-spinner fa-spin'></i>">Submit</button>
             </div>
         </div>
     </form>
@@ -327,7 +327,7 @@
                 url:"{{URL('/admin/addSubmenu')}}",
                 data:form,
                 dataType:'json',
-                async:false,
+                async:true,
                 type:'post',
                 processData: false,
                 contentType: false,
@@ -359,7 +359,7 @@
                 url:"{{URL('/admin/addItemssubmenu')}}",
                 data:form,
                 dataType:'json',
-                async:false,
+                async:true,
                 type:'post',
                 processData: false,
                 contentType: false,
@@ -417,7 +417,7 @@
                 url:"{{URL('/admin/modSubmenu')}}",
                 data:form,
                 dataType:'json',
-                async:false,
+                async:true,
                 type:'post',
                 processData: false,
                 contentType: false,
@@ -451,7 +451,7 @@
                     url:"{{URL('/admin/modItemssubmenu')}}", 
                     data:form,
                     dataType:'json',
-                    async:false,
+                    async:true,
                     type:'post',
                     processData: false,
                     contentType: false,
