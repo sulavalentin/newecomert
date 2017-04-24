@@ -28,33 +28,49 @@
     </head>
     <body>
         <!-- Meniu-->
-        <div class="container">
-            <!-- Descktop-->
-            <div class="">
+        <div class="content" style="background-color: rgb(53, 90, 99);">
+            <div class="container">
+                <!-- Descktop-->
                 <!-- Primul rind-->
                 <div class="content sus"> 
                     <ul class="reglog">
                         <li class="first hidden-sm hidden-xs">
+                            <a href="{{URL('/')}}">Acasa</a>
+                        </li>
+                        <li class="hidden-sm hidden-xs">
                             <a href="{{URL('/helpbuy')}}">Cum cumpar?</a>
                         </li>
                         <li class="hidden-sm hidden-xs">
                             <a href="{{URL('/contact')}}">Contact</a>
                         </li>
-                        <li class="hidden-sm hidden-xs last">
+                        <li class="hidden-sm hidden-xs">
                             <a href="#">Despre noi</a>
+                        </li>
+                        <li class="hidden-sm hidden-xs">
+                            <a href="{{URL('/cart')}}">Cos</a>
+                        </li>
+                        <li class="hidden-sm hidden-xs">
+                            <a href="{{URL('/favorite')}}">Favorite</a>
+                        </li>
+                        <li class="hidden-sm hidden-xs last">
+                            <a href="{{URL('/compare')}}">Compara</a>
                         </li>
                         <!--Login si register form-->
                         <div class="pull-right">
                             @if(Session::has('nume') && Session::has('id'))
                                 <a href="#">{{Session('nume')}}</a>
-                                <a href="{{URL("/exit")}}">Exit</a>
+                                <a href="{{URL("/exit")}}">Iesire</a>
                             @else
                                 @include('partials.register')
                             @endif 
                         </div>
                     </ul>
                 </div>
-                <!-- Al doilea rind cu logo-->
+            </div>
+        </div>
+        <!-- Al doilea rind cu logo-->
+        <div class="content menutop">
+            <div class="container">
                 <div class="content row">
                     <!-- Logo-->
                     <div class="col-md-3" style="padding-right: 0px;">
@@ -92,19 +108,14 @@
                 </div> 
             </div>
         </div>
-            
-        <div class='container' style="border-top: 1px solid #ccc;">
-            <div class="row">
-                @yield('content')
-            </div>  
-        </div>
+        @yield('content')
         <div class="fullpageload" id="fullpageload">
             <div class="imgload">
                 <img src="{{asset("img/system/spin.gif")}}"/>
             </div>
         </div>
-        <footer style="height: 100px;">
-
+        <footer class="footer">
+             @include('partials.footer')
         </footer>
     </body>
 </html>

@@ -1,5 +1,7 @@
 @extends('base')
 @section('content')
+<div class='container'>
+    <div class="row"> 
     @if(!empty($name))
         <h1 class="text-center">{{$name}}</h1>
     @endif
@@ -17,4 +19,6 @@
             </div>
         @endforeach
     @endif
+    </div>
+</div>
 @endsection

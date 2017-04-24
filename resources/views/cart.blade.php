@@ -1,5 +1,7 @@
 @extends('base')
 @section('content')
+<div class="container">
+    <div class="row">
     @if(!empty($products) && count($products)>0)
         <table id="cart" class="table table-hover table-condensed">
             <thead>
@@ -101,7 +103,9 @@
         </div>
     @else
         <h1 class='text-center'>Cos gol</h1>
-    @endif
+    @endif   
+    </div>
+</div>
     <script>
         $("#golestecos").on("click",function(){
             $("#comfirm_delete_cart").modal(); 

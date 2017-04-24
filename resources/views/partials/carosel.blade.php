@@ -1,10 +1,10 @@
 @if(!empty($slideshow) && count($slideshow)>0)
     <style>
         .item{
-            max-height: 400px;
+            max-height: 450px;
         }
     </style>
-    <div class="row">
+    <div class="content">
         <div id="carousel" class="carousel slide">
         <!--indicatore a slaidurilor -->
             <ol class="carousel-indicators">
@@ -19,13 +19,13 @@
                     @if($i->id==$slideshow[0]->id)
                         <div class="item active">
                             <a href="{{$i->link}}">
-                                <img src="{{asset($i->image)}}" alt="Imaginea lipseste" >
+                                <img src="{{asset($i->image)}}" alt="Imaginea lipseste" style="width:100%">
                             </a>
                         </div>
                     @else
                         <div class="item">
                             <a href="{{$i->link}}">
-                                <img src="{{asset($i->image)}}" alt="Imaginea lipseste" >
+                                <img src="{{asset($i->image)}}" alt="Imaginea lipseste" style="width:100%">
                             </a>
                         </div>
                     @endif

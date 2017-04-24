@@ -1,5 +1,7 @@
 @extends('base')
 @section('content')
+<div class='container'>
+    <div class="row"> 
     @if(!empty($error))
         <div class="container">
             <h3 class="calibri text-center text-danger">Minim 2 caractere</h3>
@@ -122,6 +124,8 @@
             @endif
         @endif
     @endif
+    </div>
+</div>
     @include('partials.addcart')
     @include('partials.scriptcart')
 @endsection

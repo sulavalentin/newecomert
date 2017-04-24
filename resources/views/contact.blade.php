@@ -1,50 +1,54 @@
 @extends("base")
 @section("content")
-<div class="col-md-8 col-md-offset-2">
-    <form class="form-group text-center" name="formproblema">
-        <h3 class="calibri text-center">Datele dvs de contact</h3>
-        <div class="form-group col-md-6" style="padding-left: 0px;">
-            <label>Nume: </label>
-            <input type="text" name="connume" placeholder="Nume" class="form-control"/>
+<div class='container'>
+    <div class="row"> 
+        <div class="col-md-8 col-md-offset-2">
+            <form class="form-group text-center" name="formproblema">
+                <h3 class="calibri text-center">Datele dvs de contact</h3>
+                <div class="form-group col-md-6" style="padding-left: 0px;">
+                    <label>Nume: </label>
+                    <input type="text" name="connume" placeholder="Nume" class="form-control"/>
+                </div>
+                <div class="form-group col-md-6" style="padding-right: 0px;">
+                    <label>Prenume: </label>
+                    <input type="text" name="conprenume" placeholder="Prenume" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Telefon:</label>
+                    <input type="text" name="contelefon" placeholder="Telefon" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>E-mail:</label>
+                    <input type="email" name="conemail" placeholder="E-mail" class="form-control">
+                </div>
+                <div class="form-group">
+                    <b>Problema:</b><br>
+                    <textarea class="form-control" rows="4"  name="conproblema" class="form-control" style="resize: vertical; "></textarea>
+                </div>
+                <button type="submit" id="sendbutton" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Se trimite" class="btn btn-primary">
+                    Transmite
+                </button>
+            </form>
         </div>
-        <div class="form-group col-md-6" style="padding-right: 0px;">
-            <label>Prenume: </label>
-            <input type="text" name="conprenume" placeholder="Prenume" class="form-control">
+        <div class="modal fade" id="sendedmesage" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h3 class="modal-title text-center">Mesaj trimis</h3>
+                </div>
+                <div class="modal-body text-center">
+                    <h2 class="calibri" style="margin: 0px 0px 15px 0px;">
+                        <span class="text-success">
+                            Mesajul a fost trimis cu succes !
+                        </span>
+                    </h2>
+                    <button class="btn btn-default" data-dismiss="modal">Bine</button>
+                </div>
+              </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Telefon:</label>
-            <input type="text" name="contelefon" placeholder="Telefon" class="form-control">
-        </div>
-        <div class="form-group">
-            <label>E-mail:</label>
-            <input type="email" name="conemail" placeholder="E-mail" class="form-control">
-        </div>
-        <div class="form-group">
-            <b>Problema:</b><br>
-            <textarea class="form-control" rows="4"  name="conproblema" class="form-control" style="resize: vertical; "></textarea>
-        </div>
-        <button type="submit" id="sendbutton" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Se trimite" class="btn btn-primary">
-            Transmite
-        </button>
-    </form>
-</div>
-<div class="modal fade" id="sendedmesage" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title text-center">Mesaj trimis</h3>
-        </div>
-        <div class="modal-body text-center">
-            <h2 class="calibri" style="margin: 0px 0px 15px 0px;">
-                <span class="text-success">
-                    Mesajul a fost trimis cu succes !
-                </span>
-            </h2>
-            <button class="btn btn-default" data-dismiss="modal">Bine</button>
-        </div>
-      </div>
     </div>
 </div>
 <script>

@@ -1,5 +1,7 @@
 @extends('base')
 @section('content')
+<div class='container'>
+    <div class="row"> 
     @if(!empty($favorite) && count($favorite)>0)
         @foreach($favorite as $i)
             <div class="col-md-6">
@@ -65,4 +67,6 @@
     @else
         <h1 class='text-center'>Nu aveti produse favorite</h1>
     @endif
+    </div>
+</div>
 @endsection

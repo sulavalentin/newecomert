@@ -1,8 +1,9 @@
-body {
+html,body {
    margin:0;
    padding:0;
    height:100%;
    font-family: Arial,sans-serif !important;
+   height: 100%;
 }
 .calibri{
     font-family: Calibri !important;
@@ -39,6 +40,9 @@ body {
     margin-bottom: 10px;
     width: 100%;
     float:left;
+}
+.sus a{
+    color:white;
 }
 header {
     border-bottom: 1px solid black;
@@ -139,10 +143,11 @@ header {
 }
 #menu .first_menu li{overflow-x: hidden;}
 #menu .dropdown-menu{
-    margin: 0px 0px 0px -55px;
+    margin: 0px 0px 0px -75px;
     border-top: none;
     font-size: 15px;
     padding: 0px;
+    width: 180px;
 }
 .sub-menu{
     display:none;
@@ -182,8 +187,7 @@ header {
 }
 #menu li{
     cursor: pointer;
-    padding-left: 5px;
-    padding: 5px;
+    padding: 5px 5px 5px 10px;
     font-weight: bold;
 }
 #menu li a{
@@ -207,9 +211,12 @@ header {
 .first_menu .component_first:hover{
     background-color: #ccc;
 }
+.first_menu .component_first:hover a{
+    color: red !important;
+}
 /*alt css*/
 .reglog{
-    margin: 0px;
+    margin: 5px 0px -5px 0px;
     padding:0px;
 }
 .reglog li{
@@ -427,17 +434,18 @@ header {
     width: 85%;
     padding: 3px 5px;
     border: 1px solid #ccc;
-    box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #fff;  
+    box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #fff;
     outline: 0;
+    float: left;
 }
 .form-cauta #cauta {
     float: right;
-    border: 1px solid #3F51B5;
-    width: 15%;
+    border: 1px solid #355a63;
+    width: 14%;
     padding: 3px;
     cursor: pointer;
     color: #fafafa;
-    background-color: #2196F3;
+    background-color: #355a63;
     border-radius: 3px;
 }
 /*end forma cauta*/
@@ -908,6 +916,10 @@ header {
 	
 }
 /*-----------------Home----------------------*/
+.menutop{
+    padding-top: 10px;
+    border-bottom: 1px solid gray;
+}
 .homeHeader{
     margin-top: 10px !important;
     width: 100%;
@@ -932,6 +944,29 @@ header {
 }
 .home_menu li:hover{
     background-color: #ccc;
+}
+.footer{
+    min-height: 180px; 
+    background-color: #355a63;
+    margin-top:25px;
+    padding:20px 0px;
+    position:absolute;
+    width: 100%;
+    display: block;
+}
+.footerlist{
+   list-style-type: none;
+   padding:0px;
+}
+.footerlist a{
+    color:white;
+}
+.footer b{
+    color:white;
+    font-size:17px;
+}
+.container{
+    min-height: 100% !important;
 }
 @media screen and (max-width: 500px) {
     .paginare .pagination li a{

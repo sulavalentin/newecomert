@@ -1,7 +1,7 @@
 @extends("admin.base")
 @section("content")
     <div class="col-md-6">
-        <label class="text-info">Adresa pe care doriti sa duca imaginea: (400x1200px)</label> 
+        <label class="text-info">Adresa pe care doriti sa duca imaginea: (1200x400px 3x1)</label> 
         <input type="text" name="link" class="form-control" placeholder="Link" style="margin-bottom: 10px;"/>
         <label class="text-info">Imaginea</label>
         <form id="upload" enctype="multipart/form-data" style="width: 100%;">
