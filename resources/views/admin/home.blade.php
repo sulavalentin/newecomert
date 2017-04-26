@@ -54,7 +54,7 @@
                 <a href="{{URL('/admin/slideshow')}}">
                     <i class="fa fa-slideshare fa-fw"></i>
                     Slideshow
-                    <span class="badge badge-info">{{$countslideshow}}</span>
+                    <span class="badge badge-info">Total {{$countslideshow}}</span>
                 </a>
             </li>
             
@@ -62,21 +62,21 @@
                 <a href="{{URL('/admin/utilizatori')}}">
                     <i class="fa fa fa-user fa-fw"></i>
                     Utilizatori
-                    <span class="badge badge-info">{{$countusers}}</span>
+                    <span class="badge badge-info">Total {{$countusers}}</span>
                 </a>
             </li>
             <li>
                 <a href="{{URL('/admin/admins')}}">
                     <i class="fa fa-male fa-fw"></i>
                     Admini
-                    <span class="badge badge-info">{{$countadmins}}</span>
+                    <span class="badge badge-info">Total {{$countadmins}}</span>
                 </a>
             </li>
             <li>
                 <a href="{{URL('/admin/products')}}">
                     <i class="fa fa-file-o fa-fw"></i>
                     Produse
-                    <span class="badge badge-info">{{$countproducts}}</span>
+                    <span class="badge badge-info">Total {{$countproducts}}</span>
                 </a>
             </li>
             <li>
@@ -89,14 +89,14 @@
                 <a href="{{URL('/admin/tables')}}">
                     <i class="fa fa-table fa-fw"></i>
                     Tabele
-                    <span class="badge badge-info">{{$counttabele}}</span>
+                    <span class="badge badge-info">Total {{$counttabele}}</span>
                 </a>
             </li>
             <li>
                 <a href="{{URL('/admin/allcomenzi')}}">
                     <i class="fa fa-unlock-alt fa-fw"></i>
                     Toate comenzile
-                    <span class="badge badge-info">{{$countallcomenzi}}</span>
+                    <span class="badge badge-info">Total {{$countallcomenzi}}</span>
                 </a>
             </li>
             <li>

@@ -6,11 +6,14 @@
                 <th>Nume</th>
                 <th>Produs</th>
                 <th>Comentariu</th>
-                <th>Sterge</th>
+                <th>Setari</th>
             </tr>
             @foreach($post as $i)
             <tr idcom="{{$i->id}}">
                 <td>
+                    @if($i->new==1)
+                    <button class="btn btn-xs btn-danger">Nou</button>
+                    @endif
                     {{$i->nume}}
                 </td>
                 <td>

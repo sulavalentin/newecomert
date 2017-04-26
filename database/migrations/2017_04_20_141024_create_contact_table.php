@@ -20,6 +20,7 @@ class CreateContactTable extends Migration
             $table->string("telefon");
             $table->string("email");
             $table->text("problema");
+            $table->boolean('new')->default(1);
             $table->timestamp("created_at");
         });
     }

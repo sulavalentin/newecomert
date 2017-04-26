@@ -48,11 +48,11 @@ class Admin extends Model
     public function getHomepage(){
         $countproducts=DB::table("products")->count("id");
         $counttabele=DB::table("itemssubmenu")->count("id");
-        $countcomenzi=DB::table("comenzi")->where("trecut",0)->count("id");
-        $countcontact=DB::table("contact")->count("id");
-        $countcomentarii=DB::table("coments")->count("id");
+        $countcomenzi=DB::table("comenzi")->where("trecut",0)->where("new",1)->count("id");
+        $countcontact=DB::table("contact")->where("new",1)->count("id");
+        $countcomentarii=DB::table("coments")->where("new",1)->count("id");
         $countslideshow=DB::table("slideshow")->count("id");
-        $countcontact=DB::table("contact")->count("id");
+        $countcontact=DB::table("contact")->where("new",1)->count("id");
         $countusers=DB::table("users")->count("id");
         $countadmins=DB::table("admin")->count("id");
         $countallcomenzi=DB::table("comenzi")->count("id");

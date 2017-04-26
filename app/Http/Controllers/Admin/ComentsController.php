@@ -23,6 +23,11 @@ class ComentsController extends Controller
                 })
                 ->orderBy("coments.id","desc")
                 ->paginate(20);
+        $vazut=[];
+        foreach($post as $i){
+            $vazut[]=$i->id;
+        }
+        DB::table("coments")->whereIn("id",$vazut)->update(["new"=>0]);
         return view("admin.coments",["post"=>$post]);
     }
     public function deletecoment(Request $request){

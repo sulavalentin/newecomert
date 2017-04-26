@@ -13,6 +13,11 @@ class ContactUsController extends Controller
             return redirect("/admin/login");
         }
         $post=DB::table("contact")->paginate(10);
+        $vazut=[];
+        foreach($post as $i){
+            $vazut[]=$i->id;
+        }
+        DB::table("contact")->whereIn("id",$vazut)->update(["new"=>0]);
         return view('admin.contact',['post'=>$post]);
     }
     public function delproblema(Request $request){

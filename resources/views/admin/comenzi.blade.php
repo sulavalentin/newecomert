@@ -4,7 +4,12 @@
     @if(!empty($comenzi) && count($comenzi)>0)
         @foreach($comenzi as $i)
         <div class="comenzidiv" idmoved="{{$i["nume"]["id"]}}">
-            <b style="color:gray;">#{{$i["nume"]["id"]}}</b>
+            <b style="color:gray;">
+                #{{$i["nume"]["id"]}}
+                @if($i["nume"]["new"]==1)
+                <button class="btn btn-xs btn-danger">Nou</button>
+                @endif
+            </b>
             <button class="btn btn-danger btn-xs pull-right" 
                     style="margin-bottom:15px;" 
                     id="{{$i["nume"]["id"]}}"

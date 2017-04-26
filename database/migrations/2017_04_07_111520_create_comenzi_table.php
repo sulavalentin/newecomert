@@ -20,6 +20,7 @@ class CreateComenziTable extends Migration
             $table->string('telefon')->nullable();
             $table->string('adresa')->nullable();
             $table->boolean('trecut')->default(0);
+            $table->boolean('new')->default(1);
             $table->timestamp("created_at");
         });
     }

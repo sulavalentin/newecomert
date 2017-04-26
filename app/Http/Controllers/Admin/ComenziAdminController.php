@@ -25,6 +25,7 @@ class ComenziAdminController extends Controller
                 })
                 ->where('comenzi.trecut',0)
                 ->orderby('comenzi.id','desc')
+                
                 ->get();
         $arr=[];
         foreach($return as $i){
@@ -34,7 +35,8 @@ class ComenziAdminController extends Controller
                 "nume"=>$i->nume,
                 "email"=>$i->email,
                 "telefon"=>$i->telefon,
-                "adresa"=>$i->adresa
+                "adresa"=>$i->adresa,
+                "new"=>$i->new
             ];
             $arr[$i->id]["produse"][$i->idmarfuri]=[
                 "imagine"=>$i->address,
@@ -46,13 +48,17 @@ class ComenziAdminController extends Controller
                 "total"=>$i->cantitateprodus*$i->priceprodus
             ];
         }
-        	
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
         $col = new Collection($arr);
         $perPage = 10;
         $currentPageSearchResults = $col->slice(($currentPage - 1) * $perPage, $perPage)->all();
         $return = new LengthAwarePaginator($currentPageSearchResults, count($col), $perPage);
         $return->setPath(URL('/admin/comenzi'));
+        $vazut=[];
+        foreach($return as $i){
+            $vazut[]=$i["nume"]["id"];
+        }
+        DB::table("comenzi")->whereIn("id",$vazut)->update(["new"=>0]);
         return view("admin.comenzi",["comenzi"=>$return]);
     }
     public function allcomenziadmin(){

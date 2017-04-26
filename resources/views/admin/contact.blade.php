@@ -12,7 +12,12 @@
             </tr>
             @foreach($post as $i)
                 <tr>
-                    <td>{{$i->nume}} {{$i->prenume}}</td>
+                    <td>
+                        @if($i->new==1)
+                        <button class="btn btn-xs btn-danger">Nou</button>
+                        @endif
+                        {{$i->nume}} {{$i->prenume}}
+                    </td>
                     <td>{{$i->telefon}}</td>
                     <td>{{$i->email}}</td>
                     <td>{{$i->problema}}</td>

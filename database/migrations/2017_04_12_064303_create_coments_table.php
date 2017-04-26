@@ -18,6 +18,7 @@ class CreateComentsTable extends Migration
             $table->integer("product_id");
             $table->string("nume")->nullable();
             $table->text("comentariu")->nullable();
+            $table->boolean('new')->default(1);
             $table->timestamp("created_at");
         });
     }

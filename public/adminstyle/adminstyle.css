@@ -317,6 +317,7 @@
     text-align: center;
     padding: 15px;
     border-radius:20px;
+    border:1px solid #ccc;
 }
 .menuitems li:hover{
     box-shadow: 0px 0px 10px #3c763d;
