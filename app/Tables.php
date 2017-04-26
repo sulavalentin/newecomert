@@ -35,9 +35,13 @@ class Tables extends Model
         $addsearch=$request->addsearch;
         for($i=3;$i<count($id);$i++){
             if($id[$i]=="new"){
-                $id[$i]=DB::table("specificationname")->insertGetId(["table_id"=>$table,
-                    "group_id"=>$group[$i],
-                    "specification_name"=>$update[$i]]);
+                if(!empty($name[$i]) && $name[$i]=="delete"){
+                    
+                }else{
+                    $id[$i]=DB::table("specificationname")->insertGetId(["table_id"=>$table,
+                        "group_id"=>$group[$i],
+                        "specification_name"=>$update[$i]]);
+                }
             }else{
                 DB::table("specificationname")
                         ->where("id",$id[$i])
