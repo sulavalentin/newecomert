@@ -104,11 +104,14 @@
             </div>
         </div>
         @yield('content')
+        <!--Modal -->
+        @include('partials.preview')
         <div class="fullpageload" id="fullpageload">
             <div class="imgload">
                 <img src="{{asset("img/system/spin.gif")}}"/>
             </div>
         </div>
+        <!--Footer -->
         <footer class="footer">
              @include('partials.footer')
         </footer>

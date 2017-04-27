@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Search;
+use App\Products;
 use DB;
 
 class SearchController extends Controller
@@ -11,31 +12,28 @@ class SearchController extends Controller
     public function search(Request $request){
         $search=$request->search;
         $error="";
-        if(strlen($search)>=2){
+        if(strlen($search)>=1){
             $result=Search::getSearch($search);
-            $result2=Search::getSearchInMenu($search);
             
         }else{
             $result="";
-            $result2="";
             $error="error";
         }
         return view("search",
                     [
                         "post"=>$result,
-                        "post2"=>$result2,
                         "search"=>$search,
                         "error"=>$error
                     ]);
     }
     public function searchajax(Request $request){
         $search=$request->search;
-        $return=DB::table("products")
-                ->where('originalname', 'like', '%'.$search.'%')
-                ->orWhere('name', 'like', '%'.$search.'%')
-                ->orderby("products.table_id")
-                ->take(20)
-                ->get();
-        return response()->json($return);
+        $words = explode(' ', $search);
+        $result = Products::query();
+        foreach ($words as $word) {
+            $result = $result->where('originalname', 'like', '%'.$word.'%');
+        }
+        $result = $result->orderby("products.table_id")->take(5)->get();
+        return response()->json($result);
     }
 }

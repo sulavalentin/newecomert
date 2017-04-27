@@ -4,20 +4,16 @@
         <span class="glyphicon glyphicon-search"></span>
     </button>
 </form>
-<div class='searchresult'>
+<div class='searchresult' id="searchresult">
     <ul class='listitemsresult' id='itemssearch'>
-        <a href='#'>
-            <li>
-                INTEL Celeron G3900 , LGA 1151 , 2,8 GHz , 2 Mb , 51 W , Intel HD Graphics 510
-            </li>
-        </a>
+        <li class="text-center">Cauta</li>
     </ul>
 </div>
 <script>
     $("#search").on("keyup",function(){
         var search=$("#search").val();
         search=search.replace(/  +/g, ' ');
-        if(search.length>=2){
+        if(search.length>=1){
             $.ajax({  
                 type: 'POST',  
                 url: "{{URL('/searchajax')}}", 
@@ -26,20 +22,30 @@
                         search:search
                     },
                 success: function(data) {
+                    $("#searchresult").css("display","block");
                     if(data.length>0){
                         $("#itemssearch").text("");
                         $.each(data, function( index, value ) {
-                             $("#itemssearch").append("<a href='{{URL('product/1')}}'>\
-                                                            <li>"+value.originalname+value.name+"</li>\n\
-                                                        </a>\n\
-                                                        ");
-                        });
+                            $("#itemssearch").append("<a href='{{URL('/product')}}/"+value.id+"'>\
+                                                        <li>"+value.originalname+value.name+"</li>\n\
+                                                    </a>");
+                            });
                     }else{
                         $("#itemssearch").text("");
                         $("#itemssearch").append("<li>Nu s-a gasit nimic pentru '"+search+"'</li>");
                     }
                 }
             });
+        }else{
+            $("#itemssearch").text("");
+            $("#itemssearch").append("<li>Cauta</li>");
         }
+    });
+    $("body").on("click",function(){
+        $("#searchresult").css("display","none");
+    });
+    $(".form-cauta , #search , #cauta").on("click",function(e){
+        e.stopPropagation();
+        $("#searchresult").css("display","block");
     });
 </script>
