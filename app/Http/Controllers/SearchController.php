@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Search;
+use DB;
 
 class SearchController extends Controller
 {
@@ -26,5 +27,15 @@ class SearchController extends Controller
                         "search"=>$search,
                         "error"=>$error
                     ]);
+    }
+    public function searchajax(Request $request){
+        $search=$request->search;
+        $return=DB::table("products")
+                ->where('originalname', 'like', '%'.$search.'%')
+                ->orWhere('name', 'like', '%'.$search.'%')
+                ->orderby("products.table_id")
+                ->take(20)
+                ->get();
+        return response()->json($return);
     }
 }

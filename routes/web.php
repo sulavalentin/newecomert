@@ -135,6 +135,7 @@ Route::post('/setcode','RegisterController@setcodeuser');
 Route::post('/newpass','RegisterController@newpassuser');
 /*Cautare*/
 Route::get('/search','SearchController@search');
+Route::post('/searchajax','SearchController@searchajax');
 /*Comanda*/
 Route::get('/comanda','ComandaController@comanda');
 Route::post('/endcomanda','ComandaController@endcomanda');

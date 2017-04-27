@@ -14,7 +14,32 @@
     </ul>
 </div>
 <script>
-    $("#search").on("change",function(){
-        alert("123");
+    $("#search").on("keyup",function(){
+        var search=$("#search").val();
+        search=search.replace(/  +/g, ' ');
+        if(search.length>=2){
+            $.ajax({  
+                type: 'POST',  
+                url: "{{URL('/searchajax')}}", 
+                data: 
+                    { 
+                        search:search
+                    },
+                success: function(data) {
+                    if(data.length>0){
+                        $("#itemssearch").text("");
+                        $.each(data, function( index, value ) {
+                             $("#itemssearch").append("<a href='{{URL('product/1')}}'>\
+                                                            <li>"+value.originalname+value.name+"</li>\n\
+                                                        </a>\n\
+                                                        ");
+                        });
+                    }else{
+                        $("#itemssearch").text("");
+                        $("#itemssearch").append("<li>Nu s-a gasit nimic pentru '"+search+"'</li>");
+                    }
+                }
+            });
+        }
     });
 </script>
