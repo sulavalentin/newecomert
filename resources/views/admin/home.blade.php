@@ -4,6 +4,9 @@
     .badge{
        background-color: #e23939;
     }
+    .badgeblue{
+       background-color: #00ad25;
+    }
 </style>
 <div class="homepage">
     <div class="col-md-3">
@@ -18,7 +21,7 @@
                 <a href="{{URL('/')}}" target="_blank">
                     <i class="fa fa-check fa-fw"></i>
                     Vezi siteul
-                    <span class="badge badge-info">
+                    <span class="badge">
                         <i class="fa fa-arrow-right"></i>
                     </span>
                 </a>
@@ -27,21 +30,21 @@
                 <a href="{{URL('/admin/comenzi')}}">
                     <i class="fa fa-money fa-fw"></i>
                     Comenzi
-                    <span class="badge badge-info">{{$countcomenzi}}</span>
+                    <span class="badge">{{$countcomenzi}}</span>
                 </a>
             </li>
             <li>
                 <a href="{{URL('/admin/contact')}}">
                     <i class="fa fa-volume-control-phone fa-fw"></i>
                     Contact
-                    <span class="badge badge-info">{{$countcontact}}</span>
+                    <span class="badge">{{$countcontact}}</span>
                 </a>
             </li>
             <li>
                 <a href="{{URL('/admin/coments')}}">
                     <i class="fa fa-comment fa-fw"></i>
                     Comentarii
-                    <span class="badge badge-info">{{$countcomentarii}}</span>
+                    <span class="badge">{{$countcomentarii}}</span>
                 </a>
             </li>
             <li>
@@ -54,7 +57,7 @@
                 <a href="{{URL('/admin/slideshow')}}">
                     <i class="fa fa-slideshare fa-fw"></i>
                     Slideshow
-                    <span class="badge badge-info">Total {{$countslideshow}}</span>
+                    <span class="badge badgeblue">Total {{$countslideshow}}</span>
                 </a>
             </li>
             
@@ -62,21 +65,21 @@
                 <a href="{{URL('/admin/utilizatori')}}">
                     <i class="fa fa fa-user fa-fw"></i>
                     Utilizatori
-                    <span class="badge badge-info">Total {{$countusers}}</span>
+                    <span class="badge badgeblue">Total {{$countusers}}</span>
                 </a>
             </li>
             <li>
                 <a href="{{URL('/admin/admins')}}">
                     <i class="fa fa-male fa-fw"></i>
                     Admini
-                    <span class="badge badge-info">Total {{$countadmins}}</span>
+                    <span class="badge badgeblue">Total {{$countadmins}}</span>
                 </a>
             </li>
             <li>
                 <a href="{{URL('/admin/products')}}">
                     <i class="fa fa-file-o fa-fw"></i>
                     Produse
-                    <span class="badge badge-info">Total {{$countproducts}}</span>
+                    <span class="badge badgeblue">Total {{$countproducts}}</span>
                 </a>
             </li>
             <li>
@@ -89,14 +92,14 @@
                 <a href="{{URL('/admin/tables')}}">
                     <i class="fa fa-table fa-fw"></i>
                     Tabele
-                    <span class="badge badge-info">Total {{$counttabele}}</span>
+                    <span class="badge badgeblue">Total {{$counttabele}}</span>
                 </a>
             </li>
             <li>
                 <a href="{{URL('/admin/allcomenzi')}}">
                     <i class="fa fa-unlock-alt fa-fw"></i>
                     Toate comenzile
-                    <span class="badge badge-info">Total {{$countallcomenzi}}</span>
+                    <span class="badge badgeblue">Total {{$countallcomenzi}}</span>
                 </a>
             </li>
             <li>

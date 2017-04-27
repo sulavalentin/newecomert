@@ -92,12 +92,7 @@
                     </div>
                     <!--Cauta -->
                     <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
-                        <form class="form-cauta" action="{{URL("search")}}">
-                            <input type="text" id="search" name="search" placeholder="Cauta" autocomplete="off"/>
-                            <button type="submit" id="cauta">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </form>
+                        @include('partials.search')
                     </div>
                     <!-- cos register-->
                     <div class="col-md-3">
