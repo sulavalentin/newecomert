@@ -415,6 +415,10 @@ $(document).ready(function (e) {
                     $("#close").click();
                     $("#addMod").button("reset");
                     $("#saveMod").button("reset");
+                },
+                error:function(){
+                    $("#addMod").button("reset");
+                    $("#saveMod").button("reset");
                 }
             });
         }

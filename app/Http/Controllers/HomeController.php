@@ -47,6 +47,27 @@ class HomeController extends Controller
                                "comentarii"=>$item->getComentarii($id_item)
                 ]);
     }
+    public function oneproduspreview(Request $request , Itemssubmenu $item)
+    {
+        $id_item=$request->id;
+        $getitem=$item->getItem($id_item);
+        $getitem["price"]=[
+            "lei"=>number_format(floor($getitem[0]->price), 0, '.', ' '),
+            "capici"=>str_replace("0.","",(string)number_format(round($getitem[0]->price - (int)$getitem[0]->price,2),2))
+        ];
+        $images=$item->getImages($id_item);
+        $imagesreturn=[];
+        foreach($images as $i){
+            if(\File::exists($i->address)){
+                $imagesreturn[]=$i;
+            }
+        }
+        $return = ["item"=>$getitem,
+                   "images"=>$imagesreturn,
+                   "descriere"=>$item->getDescription($id_item)
+                ];
+        return response()->json($return);
+    }
     public function addcomentariu(Request $request){
         $id=DB::table("coments")->insertGetId(
                     [

@@ -3,159 +3,52 @@
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content modal-lg">
-            @if(!empty($item[0]))
-                <div class="content ProducteImagine" style="padding: 25px 15px 15px 15px;">
-                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 itemborder">
-                        <!-- Imagini slide-->
-                        <div class="item_imagine">
-                            @if(!empty($images))
-                                <div class="image-preview">
-                                    @if(\File::exists($item[0]->address))
-                                        <img src="{{ asset($item[0]->address) }}" class="img-responsive" id="default"/>
-                                    @else
-                                        <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive" id="default"/>
-                                    @endif
-                                </div>
-                                @if(count($images)>1)
-                                    <div class="content_images">
-                                        <ul class="list_images" id="list_images">
-                                            @foreach($images as $i)
-                                                @if(\File::exists($i->address))
-                                                <li>
-                                                    <img src="{{ asset($i->address) }}" class="img-responsive"/>
-                                                </li>
-                                                @endif
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                            @endif
+            <div class="content ProducteImagine" style="padding: 20px 15px 15px 15px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 itemborder">
+                    <!-- Imagini slide-->
+                    <div class="item_imagine">
+                        <div class="image-preview">
+                            <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive" id="jdefault"/>
                         </div>
-                    </div>
-                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 continut">
-                        <h4 class="itemName calibri">
-                            {{$item[0]->originalname}}{{$item[0]->name}}
-                        </h4>
-                        <div class="pretEtc">
-                            <div class="pret_Produs calibri"> 
-                                <span>
-                                    {{number_format(floor($item[0]->price), 0, '.', ' ')}}
-                                    <sup class="price_dec">
-                                        ,{{str_replace("0.","",(string)number_format(round($item[0]->price - (int)$item[0]->price,2),2))}}
-                                    </sup>
-                                    Lei
-                                </span>
-                            </div>  
-                            <div class="item_margin">
-                                <button class="btn_add calibri" name="addcart" prod="{{$item[0]->id}}">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span>
-                                    Adauga in cos
-                                </button>
-                                <br>
-                                <button class="favorite calibri" name="addfavorite" prod="{{$item[0]->id}}">
-                                    @if(is_null($item[0]->idfavorite))
-                                        <span class="icon-heart-empty"></span>
-                                    @else
-                                        <span class="icon-heart"></span>
-                                    @endif
-                                    Adauga la favorite
-                                </button>
-                                <br>
-                                <button class="compare calibri" name="addcompare" prod="{{$item[0]->id}}">
-                                    <span class="glyphicon glyphicon-sort"></span>
-                                    Compara
-                                </button>
-                            </div>
-                       </div>
-                    </div>
-                    @if(!empty($item[1]))
-                        <div class="col-lg-12 detalii">
-                            <h1 class="text-center calibri" style="margin: 0px 0px 15px 0px;">Caracteristici</h1>
-                                @foreach($item[1] as $key => $spec)
-                                    <div class="desSearch">
-                                        <div class="specification">
-                                            <p class="denumire">{{$key}}</p>
-                                            <div class="spec_value">
-                                               @foreach($spec as $i)
-                                                    <div style="width:100%; float:left">
-                                                        <p class="value_spec">{{$i->specification_name}}:</p>
-                                                        <p class="value_spec">{{$i->value}}</p> 
-                                                    </div>
-                                                    @if($i->addsearch==1 || $i->addname==1)
-                                                        <script>
-                                                            addinname("{{$i->specification_name}}","{{$i->value}}");
-                                                        </script>
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div> 
-                                @endforeach        
-                        </div>
-                    @endif
-                    <div class="col-xs-12 info">
-                        @if(!empty($descriere) && count($descriere)>0)
-                            @foreach($descriere as $img)
-                                <img class="img-responsive" src="{{asset($img->image)}}"/>
-                            @endforeach
-                        @endif
-                    </div>
-                    @if(!empty($asemanatoare) && count($asemanatoare)>0)
-                        <div class="col-md-12 produse_asemanatoare">
-                            <p><b>Produse asemanatoare</b></p>
-                            <ul class="allproducts list">
-                                @foreach($asemanatoare as $i)
-                                    <li class="col-lg-3 col-md-3 col-sm-4 col-xs-12"> 
-                                        <div class="continut_product">
-                                            <div class="continut_image">
-                                                <a href="{{URL("/product/".$i->id)}}">
-                                                    @if(\File::exists($i->address))
-                                                        <img  src="{{asset($i->address)}}" class="img-responsive"/>
-                                                    @else
-                                                        <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive"/>
-                                                    @endif
-                                                </a>
-                                            </div>
-                                            <div class="name">
-                                                <a class="NumeProduct" href="{{URL("/product/".$i->id)}}">
-                                                    <p>
-                                                        {{$i->originalname}}{{$i->name}}
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <p class="price calibri">
-                                                {{number_format(floor($i->price), 0, '.', ' ')}}
-                                                <sup class="price_dec">
-                                                    ,{{str_replace("0.","",(string)number_format(round($i->price - (int)$i->price,2),2))}}
-                                                </sup>
-                                                <span>Lei</span>
-                                            </p>
-                                            <button class="addcart" name="addcart" prod="{{$i->id}}">
-                                                <span class="glyphicon glyphicon-shopping-cart"></span>
-                                                Adauga in cos
-                                            </button>
-                                            <button class="favorite calibri" name="addfavorite" prod="{{$i->id}}">
-                                                @if(is_null($i->idfavorite))
-                                                    <span class="icon-heart-empty"></span>
-                                                @else
-                                                    <span class="icon-heart"></span>
-                                                @endif
-                                                Adauga la favorite
-                                            </button>
-                                            <button class="compare calibri" name="addcompare" prod="{{$i->id}}" title="Compara">
-                                                <span class="glyphicon glyphicon-sort"></span>
-                                            </button>
-                                            <button class="compare previewbutton" prod="{{$i->id}}" name="peview" title="Preview">
-                                                <span class="fa fa-eye"></span>
-                                            </button>
-                                        </div>
-                                    </li>
-                                @endforeach
+                        <div class="content_images">
+                            <ul class="list_images" id="jlist_images">
                             </ul>
                         </div>
-                    @endif
+                    </div>
                 </div>
-            @endif
+                <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 continut">
+                    <h4 class="itemName calibri" id="jname"></h4>
+                    <div class="pretEtc">
+                        <div class="pret_Produs calibri"> 
+                            <span id="jlei">
+                                <sup class="price_dec">
+                                </sup>
+                            </span>
+                        </div>  
+                        <div class="item_margin">
+                            <button class="btn_add calibri" name="addcart" prod="" id="jaddcard">
+                                <span class="glyphicon glyphicon-shopping-cart"></span>
+                                Adauga in cos
+                            </button>
+                            <br>
+                            <button class="favorite calibri" name="addfavorite" prod="" id="jaddfavorite">
+                                    <span class="" id="jheart"></span>
+                                Adauga la favorite
+                            </button>
+                            <br>
+                            <button class="compare calibri" name="addcompare" prod="" id="jaddcompare">
+                                <span class="glyphicon glyphicon-sort"></span>
+                                Compara
+                            </button>
+                        </div>
+                   </div>
+                </div>
+                <div class="col-lg-12 detalii" id="jdetalii">
+                </div>
+                <div class="col-xs-12 info" id="jinfo">
+                </div>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Inchide</button>
             </div>
@@ -163,7 +56,95 @@
     </div>
 </div>
 <script>
-    $("button[name=peview]").on("click",function(){
+    var asset="{{asset('/')}}";
+    $('body').on("click","#jlist_images li img",function () {
+        $("#jdefault").attr("src",$(this).attr("src"));
+    });
+    function UrlExists(url)
+    {
+        var http = new XMLHttpRequest();
+        http.open('HEAD', asset+url, false);
+        http.send();
+        return http.status!=404;
+    }
+    function adddata(data){
+        if(data.item[0]){
+            $("#jname").text(data.item[0].originalname+data.item[0].name);
+            $("#jlei").html(data.item["price"].lei+" <sup class='price_dec'>,"+data.item["price"].capici+"</sup> Lei");
+            if(UrlExists(data.item[0].address))
+            {
+                $("#jdefault").attr("src",asset+data.item[0].address);
+            }
+            else
+            {
+                $("#jdefault").attr("src",asset+"img/system/default.jpg");
+            }
+            $("#jlist_images").text("");
+            $.each(data.images,function(i,v){
+                $("#jlist_images").append("<li>\n\
+                                                <img src='"+asset+v.address+"' class='img-responsive'/>\n\
+                                            </li>");
+            });
+            $("#jaddcard").attr("prod",data.item[0].id);
+            $("#jaddfavorite").attr("prod",data.item[0].id);
+            $("#jaddcompare").attr("prod",data.item[0].id);
+            if(data.item[0].idfavorite===null){
+                $("#jheart").removeClass("icon-heart-empty icon-heart").addClass("icon-heart-empty");
+            }else{
+                $("#jheart").removeClass("icon-heart-empty icon-heart").addClass("icon-heart");
+            }
+            if(data.item[1]){
+                var count=0;
+                $.each(data.item[1],function(i,v){
+                    count++;
+                    $("#jdetalii").append("<div class='desSearch'>\n\
+                                            <div class='specification'>\n\
+                                                <p class='denumire'>"+i+"</p>\n\
+                                                <div class='spec_value' id='count"+count+"'>");
+                                                   $.each(v,function(i1,v1){
+                                                        $("#count"+count).append("<div style='width:100%; float:left'>\n\
+                                                                    <p class='value_spec'>"+v1.specification_name+":</p>\n\
+                                                                    <p class='value_spec'>"+v1.value+"</p> \n\
+                                                                </div>");
+                                                    });
+                    $("#jdetalii").append("</div>\n\
+                                        </div>\n\
+                                    </div> ");
+                });
+            }
+            if(data.descriere){
+                $.each(data.descriere,function(i,v){
+                    $("#jinfo").append("<img class='img-responsive' src='"+asset+v.image+"'/>");
+                });
+            }
+        }
+        return 0;
+    }
+    function closeloader(){
+        $("#fullpageload").hide();
         $("#preview").modal();
+    }
+    $("button[name=peview]").on("click",function(){
+        $("#fullpageload").show();
+        $("#jdetalii").html("<h1 class='text-center calibri' style='margin: 0px 0px 15px 0px;'>Caracteristici</h1>");
+        $("#jinfo").text("");
+        $("#jlei").text("");
+        $("#jcapici").text("");
+        var id=$(this).attr("prod");
+        $.ajax({  
+            type: 'POST',  
+            url: '{{ URL("/preview") }}', 
+            data: 
+                { 
+                    id:id
+                },
+            success: function(data) {
+                adddata(data).then(closeloader());
+                
+            },
+            error:function(){
+                $("#fullpageload").hide();
+            }
+        });
     });
 </script>

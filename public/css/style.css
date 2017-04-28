@@ -662,6 +662,9 @@ header {
 .ProducteImagine .info li{
     margin-bottom: 15px;
 }
+.info .img-responsive{
+    width:100%;
+}
 .continut .descriere{
     margin-top:10px;
 }
