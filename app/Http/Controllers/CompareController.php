@@ -13,7 +13,8 @@ class CompareController extends Controller
         $specificationsname=$compare->getSpecificationsname();
         return view("compare",[
                 "compare"=>$return,
-                "specificationsname"=>$specificationsname
+                "specificationsname"=>$specificationsname["arr"],
+                "cantitate"=>$specificationsname["session"],
             ]);
     }
     public function addcompare(Request $request){

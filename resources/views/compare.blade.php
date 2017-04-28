@@ -70,10 +70,10 @@
                                     <td class="width">
                                         <b>{{$key1}}</b>
                                     </td>
-                                    @foreach($i1 as $key2=>$i2)
+                                    @foreach($cantitate as $i2)
                                         <td class="width calibri fontsize">
-                                            @if($i2->value!=null)
-                                                {{$i2->value}}
+                                            @if(!empty($i1[$i2]->value) && $i1[$i2]->value!=null)
+                                                {{$i1[$i2]->value}}
                                             @else
                                                 -
                                             @endif

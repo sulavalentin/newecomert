@@ -9,7 +9,7 @@ class Compare extends Model
 {
     public function getCompare(){
         if(!empty(session('idcompare'))){
-            return DB::table('products')
+            $return=DB::table('products')
                     ->select('products.*', 'images.address')
                     ->leftJoin("images",function($join){
                                 $join->on('products.id', '=', 'images.product_id');
@@ -17,6 +17,15 @@ class Compare extends Model
                             })
                     ->whereIn('products.id',session("idcompare"))
                     ->get();
+            $arr=[];
+            foreach(session("idcompare") as $i){
+                foreach($return as $j) {
+                    if ($i == $j->id) {
+                        $arr[] = $j;
+                    }
+                }
+            }
+            return $arr;
         }else{
             return null;
         }
@@ -37,9 +46,13 @@ class Compare extends Model
             $arr=[];
             foreach($return as $key => $item)
             {
-                $arr[$item->name_group][$item->specification_name][$key] = $item;
+                foreach(session("idcompare") as $i){
+                    if($item->product_id==$i){
+                        $arr[$item->name_group][$item->specification_name][$i] = $item;
+                    }
+                }
             }
-            return $arr;
+            return ["arr"=>$arr,"session"=>session("idcompare")];
         }else{
             return null;
         }

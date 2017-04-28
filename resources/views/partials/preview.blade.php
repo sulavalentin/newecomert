@@ -69,10 +69,10 @@
                        </div>
                     </div>
                     @if(!empty($item[1]))
-                        <div class="col-lg-12 detalii" id="detalii">
+                        <div class="col-lg-12 detalii">
                             <h1 class="text-center calibri" style="margin: 0px 0px 15px 0px;">Caracteristici</h1>
                                 @foreach($item[1] as $key => $spec)
-                                    <div class="desSearch" name="desSearch">
+                                    <div class="desSearch">
                                         <div class="specification">
                                             <p class="denumire">{{$key}}</p>
                                             <div class="spec_value">
