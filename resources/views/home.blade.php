@@ -155,9 +155,11 @@
                                             @endif
                                             Adauga la favorite
                                         </button>
-                                        <button class="compare calibri" name="addcompare" prod="{{$k->id}}">
+                                        <button class="compare calibri" name="addcompare" prod="{{$i->id}}" title="Compara">
                                             <span class="glyphicon glyphicon-sort"></span>
-                                            Compara
+                                        </button>
+                                        <button class="compare previewbutton" prod="{{$i->id}}" name="peview" title="Preview">
+                                            <span class="fa fa-eye"></span>
                                         </button>
                                     </div>
                                 </li>
@@ -252,9 +254,11 @@
                                             @endif
                                             Adauga la favorite
                                         </button>
-                                        <button class="compare calibri" name="addcompare" prod="{{$k->id}}">
+                                        <button class="compare calibri" name="addcompare" prod="{{$i->id}}" title="Compara">
                                             <span class="glyphicon glyphicon-sort"></span>
-                                            Compara
+                                        </button>
+                                        <button class="compare previewbutton" prod="{{$i->id}}" name="peview" title="Preview">
+                                            <span class="fa fa-eye"></span>
                                         </button>
                                     </div>
                                 </li>

@@ -142,9 +142,11 @@
                                                 @endif
                                                 Adauga la favorite
                                             </button>
-                                            <button class="compare calibri" name="addcompare" prod="{{$i->id}}">
+                                            <button class="compare calibri" name="addcompare" prod="{{$i->id}}" title="Compara">
                                                 <span class="glyphicon glyphicon-sort"></span>
-                                                Compara
+                                            </button>
+                                            <button class="compare previewbutton" prod="{{$i->id}}" name="peview" title="Preview">
+                                                <span class="fa fa-eye"></span>
                                             </button>
                                         </div>
                                     </li>
@@ -161,7 +163,6 @@
     </div>
 </div>
 <script>
-    $("#preview").modal();
     $("button[name=peview]").on("click",function(){
         $("#preview").modal();
     });

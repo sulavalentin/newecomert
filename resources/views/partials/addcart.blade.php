@@ -1,3 +1,4 @@
+
 <div class="modal fade" id="cosAdded" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -61,3 +62,27 @@
       </div>
     </div>
 </div>
+<!--Modal preview-->
+@include('partials.preview')
+
+
+<script>
+$(document).ready(function () {
+	$(document).on({
+		'show.bs.modal': function () {
+			var zIndex = 1040 + (10 * $('.modal:visible').length);
+			$(this).css('z-index', zIndex);
+			setTimeout(function() {
+				$('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+			}, 0);
+		},
+		'hidden.bs.modal': function() {
+			if ($('.modal:visible').length > 0) {
+				setTimeout(function() {
+					$(document.body).addClass('modal-open');
+				}, 0);
+			}
+		}
+    }, '.modal');
+});
+</script>
