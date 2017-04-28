@@ -58,7 +58,7 @@
                         height: 0px;
                         padding: 0px;
                         margin: 55px 0px 0px 0px;
-                        z-index: 2;">
+                        z-index: 2; border: 1px;">
                 @if(!empty(Session('menu')))
                     @foreach(Session('menu') as $i)
                         <li class="dropdown-submenu">
@@ -155,10 +155,10 @@
                                             @endif
                                             Adauga la favorite
                                         </button>
-                                        <button class="compare calibri" name="addcompare" prod="{{$i->id}}" title="Compara">
+                                        <button class="compare calibri" name="addcompare" prod="{{$k->id}}" title="Compara">
                                             <span class="glyphicon glyphicon-sort"></span>
                                         </button>
-                                        <button class="compare previewbutton" prod="{{$i->id}}" name="peview" title="Preview">
+                                        <button class="compare previewbutton" prod="{{$k->id}}" name="peview" title="Preview">
                                             <span class="fa fa-eye"></span>
                                         </button>
                                     </div>
@@ -254,10 +254,10 @@
                                             @endif
                                             Adauga la favorite
                                         </button>
-                                        <button class="compare calibri" name="addcompare" prod="{{$i->id}}" title="Compara">
+                                        <button class="compare calibri" name="addcompare" prod="{{$k->id}}" title="Compara">
                                             <span class="glyphicon glyphicon-sort"></span>
                                         </button>
-                                        <button class="compare previewbutton" prod="{{$i->id}}" name="peview" title="Preview">
+                                        <button class="compare previewbutton" prod="{{$k->id}}" name="peview" title="Preview">
                                             <span class="fa fa-eye"></span>
                                         </button>
                                     </div>

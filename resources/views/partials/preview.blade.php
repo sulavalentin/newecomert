@@ -67,63 +67,6 @@
         http.send();
         return http.status!=404;
     }
-    function adddata(data){
-        if(data.item[0]){
-            $("#jname").text(data.item[0].originalname+data.item[0].name);
-            $("#jlei").html(data.item["price"].lei+" <sup class='price_dec'>,"+data.item["price"].capici+"</sup> Lei");
-            if(UrlExists(data.item[0].address))
-            {
-                $("#jdefault").attr("src",asset+data.item[0].address);
-            }
-            else
-            {
-                $("#jdefault").attr("src",asset+"img/system/default.jpg");
-            }
-            $("#jlist_images").text("");
-            $.each(data.images,function(i,v){
-                $("#jlist_images").append("<li>\n\
-                                                <img src='"+asset+v.address+"' class='img-responsive'/>\n\
-                                            </li>");
-            });
-            $("#jaddcard").attr("prod",data.item[0].id);
-            $("#jaddfavorite").attr("prod",data.item[0].id);
-            $("#jaddcompare").attr("prod",data.item[0].id);
-            if(data.item[0].idfavorite===null){
-                $("#jheart").removeClass("icon-heart-empty icon-heart").addClass("icon-heart-empty");
-            }else{
-                $("#jheart").removeClass("icon-heart-empty icon-heart").addClass("icon-heart");
-            }
-            if(data.item[1]){
-                var count=0;
-                $.each(data.item[1],function(i,v){
-                    count++;
-                    $("#jdetalii").append("<div class='desSearch'>\n\
-                                            <div class='specification'>\n\
-                                                <p class='denumire'>"+i+"</p>\n\
-                                                <div class='spec_value' id='count"+count+"'>");
-                                                   $.each(v,function(i1,v1){
-                                                        $("#count"+count).append("<div style='width:100%; float:left'>\n\
-                                                                    <p class='value_spec'>"+v1.specification_name+":</p>\n\
-                                                                    <p class='value_spec'>"+v1.value+"</p> \n\
-                                                                </div>");
-                                                    });
-                    $("#jdetalii").append("</div>\n\
-                                        </div>\n\
-                                    </div> ");
-                });
-            }
-            if(data.descriere){
-                $.each(data.descriere,function(i,v){
-                    $("#jinfo").append("<img class='img-responsive' src='"+asset+v.image+"'/>");
-                });
-            }
-        }
-        return 0;
-    }
-    function closeloader(){
-        $("#fullpageload").hide();
-        $("#preview").modal();
-    }
     $("button[name=peview]").on("click",function(){
         $("#fullpageload").show();
         $("#jdetalii").html("<h1 class='text-center calibri' style='margin: 0px 0px 15px 0px;'>Caracteristici</h1>");
@@ -139,8 +82,58 @@
                     id:id
                 },
             success: function(data) {
-                adddata(data).then(closeloader());
-                
+                if(data.item[0]){
+                    $("#jname").text(data.item[0].originalname+data.item[0].name);
+                    $("#jlei").html(data.item["price"].lei+" <sup class='price_dec'>,"+data.item["price"].capici+"</sup> Lei");
+                    if(UrlExists(data.item[0].address))
+                    {
+                        $("#jdefault").attr("src",asset+data.item[0].address);
+                    }
+                    else
+                    {
+                        $("#jdefault").attr("src",asset+"img/system/default.jpg");
+                    }
+                    $("#jlist_images").text("");
+                    $.each(data.images,function(i,v){
+                        $("#jlist_images").append("<li>\n\
+                                                        <img src='"+asset+v.address+"' class='img-responsive'/>\n\
+                                                    </li>");
+                    });
+                    $("#jaddcard").attr("prod",data.item[0].id);
+                    $("#jaddfavorite").attr("prod",data.item[0].id);
+                    $("#jaddcompare").attr("prod",data.item[0].id);
+                    if(data.item[0].idfavorite===null){
+                        $("#jheart").removeClass("icon-heart-empty icon-heart").addClass("icon-heart-empty");
+                    }else{
+                        $("#jheart").removeClass("icon-heart-empty icon-heart").addClass("icon-heart");
+                    }
+                    if(data.item[1]){
+                        var count=0;
+                        $.each(data.item[1],function(i,v){
+                            count++;
+                            $("#jdetalii").append("<div class='desSearch'>\n\
+                                                    <div class='specification'>\n\
+                                                        <p class='denumire'>"+i+"</p>\n\
+                                                        <div class='spec_value' id='count"+count+"'>");
+                                                           $.each(v,function(i1,v1){
+                                                                $("#count"+count).append("<div style='width:100%; float:left'>\n\
+                                                                            <p class='value_spec'>"+v1.specification_name+":</p>\n\
+                                                                            <p class='value_spec'>"+v1.value+"</p> \n\
+                                                                        </div>");
+                                                            });
+                            $("#jdetalii").append("</div>\n\
+                                                </div>\n\
+                                            </div> ");
+                        });
+                    }
+                    if(data.descriere){
+                        $.each(data.descriere,function(i,v){
+                            $("#jinfo").append("<img class='img-responsive' src='"+asset+v.image+"'/>");
+                        });
+                    }
+                }
+                $("#fullpageload").hide();
+                $("#preview").modal();
             },
             error:function(){
                 $("#fullpageload").hide();
