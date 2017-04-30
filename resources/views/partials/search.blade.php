@@ -1,4 +1,20 @@
-<form class="form-cauta" action="{{URL("search")}}">
+<Style>
+    .previewcauta{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: 3;
+        display: none;
+    }
+    .cautafrumos{
+        z-index: 100;
+        position: relative;
+    }
+</style>
+<form class="form-cauta cautafrumos" action="{{URL("search")}}">
     <input type="text" id="search" name="search" placeholder="Cauta" autocomplete="off"/>
     <button type="submit" id="cauta">
         <span class="glyphicon glyphicon-search"></span>
@@ -6,9 +22,9 @@
 </form>
 <div class='searchresult' id="searchresult">
     <ul class='listitemsresult' id='itemssearch'>
-        <li class="text-center">Cauta</li>
     </ul>
 </div>
+<div class="previewcauta" id="previewcauta"></div>
 <script>
     $("#search").on("keyup",function(){
         var search=$("#search").val();
@@ -38,14 +54,14 @@
             });
         }else{
             $("#itemssearch").text("");
-            $("#itemssearch").append("<li>Cauta</li>");
         }
     });
-    $("body").on("click",function(){
+    $("#previewcauta").on("click",function(){
         $("#searchresult").css("display","none");
+        $("#previewcauta").hide();
     });
-    $(".form-cauta , #search , #cauta").on("click",function(e){
-        e.stopPropagation();
+    $("#search").on("click",function(e){
         $("#searchresult").css("display","block");
+        $("#previewcauta").show();
     });
 </script>

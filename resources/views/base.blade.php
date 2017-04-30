@@ -9,7 +9,7 @@
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>-->
         <script src="{{ asset("js/jquery.min.js") }}"></script>
         <script src="{{ asset("js/bootstrap.min.js") }}"></script>
-        
+
         <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset("css/bootstrap.min.css") }}" rel="stylesheet" >
         <link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet" type="text/css">
@@ -25,8 +25,15 @@
            headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
         });
         </script>
+        <!--src for img from http://smallenvelop.com/display-loading-icon-page-loads-completely/ -->
+        <script>
+            $(window).load(function() {
+                $("#afterpreload").fadeOut("slow");;
+            });
+        </script>
     </head>
     <body>
+        <div id="afterpreload"></div>
         <!-- Meniu-->
         <div class="content" style="background-color: rgb(53, 90, 99);">
             <div class="container">
@@ -91,8 +98,12 @@
                         </div>
                     </div>
                     <!--Cauta -->
-                    <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
-                        @include('partials.search')
+                    <div class="content searchtelefon">
+                        <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
+                            <div class="row">
+                                @include('partials.search')
+                            </div>
+                        </div>
                     </div>
                     <!-- cos register-->
                     <div class="col-md-3">
@@ -106,7 +117,7 @@
         @yield('content')
         <div class="fullpageload" id="fullpageload">
             <div class="imgload">
-                <img src="{{asset("img/system/spin.gif")}}"/>
+                <img src="{{asset("img/system/preloader.gif")}}"/>
             </div>
         </div>
         <!--Footer -->
@@ -114,4 +125,5 @@
              @include('partials.footer')
         </footer>
     </body>
+    
 </html>

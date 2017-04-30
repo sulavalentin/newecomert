@@ -16,7 +16,7 @@ class SearchController extends Controller
             $result=Search::getSearch($search);
             
         }else{
-            $result="";
+            $result=null;
             $error="error";
         }
         return view("search",

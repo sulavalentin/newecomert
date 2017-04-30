@@ -52,12 +52,13 @@
 
                 }
             </style>
+            <h3 class="calibri text-center">Produse</h3>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" 
                 style=" display: block;
                         width: 100%;
                         height: 0px;
                         padding: 0px;
-                        margin: 55px 0px 0px 0px;
+                        margin: 0px 0px 0px 0px;
                         z-index: 2; border: 1px;">
                 @if(!empty(Session('menu')))
                     @foreach(Session('menu') as $i)
@@ -103,7 +104,7 @@
             <div class="col-md-12 text-center">
                 <h3>Cele intrebate produse</h3>
             </div>
-            <div class="carousel slide" id="myCarousel1" name='carousel1'>
+            <div class="carousel carousel-showmanymoveone slide" id="myCarousel1" name='carousel1'>
                 <div class="carousel-inner allproducts" style='float:none;'>
                         <?php $nr=0;?>
                         @foreach($populars as $k)
@@ -177,32 +178,34 @@
                 $('#myCarousel1').carousel({
                     interval: 4000
                 });
+                $('div[name=carousel1] div[name=item1]').each(function(){
+                    var itemToClone = $(this);
 
-            $('div[name=carousel1] div[name=item1]').each(function(){
-                var next = $(this).next();
-                if (!next.length) {
-                    next = $(this).siblings(':first');
-                }
-                next.children(':first-child').clone().appendTo($(this));
+                    for (var i=1;i<4;i++) {
+                      itemToClone = itemToClone.next();
 
-                for (var i=0;i<2;i++) {
-                    next=next.next();
-                    if (!next.length) {
-                        next = $(this).siblings(':first');
+                      // wrap around if at end of item collection
+                      if (!itemToClone.length) {
+                        itemToClone = $(this).siblings(':first');
+                      }
+
+                      // grab item, clone, add marker class, add to collection
+                      itemToClone.children(':first-child').clone()
+                        .addClass("cloneditem-"+(i))
+                        .appendTo($(this));
                     }
-                    next.children(':first-child').clone().appendTo($(this));
-                }
-            });
+                });
             </script>
             @endif
         </div>
         <div class="clearfix"></div>
         <!-- cele mai noi-->
+        <div class="col-md-12">
         @if(!empty($newproducts) && count($newproducts)>0)
             <div class="col-md-12 text-center">
                 <h3>Cele mai noi produse</h3>
             </div>
-            <div class="carousel slide" id="myCarousel" name='carousel'>
+            <div class="carousel carousel-showmanymoveone slide" id="myCarousel" name='carousel'>
                 <div class="carousel-inner allproducts" style='float:none;'>
                         <?php $nr=0;?>
                         @foreach($newproducts as $k)
@@ -217,7 +220,7 @@
                                 ?>
                                 name='item'
                                 >
-                                <li class="col-lg-2 col-md-4 col-sm-6 col-xs-12"> 
+                                <li class="col-lg-3 col-md-4 col-sm-6 col-xs-12"> 
                                     <div class="continut_product">
                                         <div class="continut_image">
                                             <a href="{{URL("/product/".$k->id)}}">
@@ -277,24 +280,27 @@
                     interval: 4000
                 });
 
-            $('div[name=carousel] div[name=item]').each(function(){
-                var next = $(this).next();
-                if (!next.length) {
-                    next = $(this).siblings(':first');
-                }
-                next.children(':first-child').clone().appendTo($(this));
+                $('div[name=carousel] div[name=item]').each(function(){
+                    var itemToClone = $(this);
 
-                for (var i=0;i<4;i++) {
-                    next=next.next();
-                    if (!next.length) {
-                        next = $(this).siblings(':first');
+                    for (var i=1;i<4;i++) {
+                      itemToClone = itemToClone.next();
+
+                      // wrap around if at end of item collection
+                      if (!itemToClone.length) {
+                        itemToClone = $(this).siblings(':first');
+                      }
+
+                      // grab item, clone, add marker class, add to collection
+                      itemToClone.children(':first-child').clone()
+                        .addClass("cloneditem-"+(i))
+                        .appendTo($(this));
                     }
-                    next.children(':first-child').clone().appendTo($(this));
-                }
-            });
+                });
             </script>
 
         @endif
+        </div>
     </div>
 </div>
     @include('partials.addcart')

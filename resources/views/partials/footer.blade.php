@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container text-center">
     <div class="row">
         <div class="col-md-2">
             <ul class="footerlist">
@@ -26,7 +26,7 @@
                 </li>
                 <li>
                     <form action="{{URL('search')}}">
-                        <input type="text" name="search" placeholder="Cauta"/>
+                        <input type="text" name="search" placeholder="Cauta" class="text-center"/>
                     </form>
                 </li>
                 <li>
