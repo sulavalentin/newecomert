@@ -26,15 +26,8 @@
            headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
         });
         </script>
-        <!--src for img from http://smallenvelop.com/display-loading-icon-page-loads-completely/ -->
-        <script>
-            $(window).load(function() {
-                $("#afterpreload").fadeOut("slow");;
-            });
-        </script>
     </head>
     <body>
-        <div id="afterpreload"></div>
         <!-- Meniu-->
         <div class="content" style="background-color: rgb(53, 90, 99);">
             <div class="container">
@@ -126,4 +119,11 @@
              @include('partials.footer')
         </footer>
     </body>
+    <script>
+        $(window).on("load",function() {
+            $.each($("img[originalsrc]"),function(i,v){
+                $(v).attr("src",$(v).attr("originalsrc"));
+            });
+        });
+    </script>
 </html>

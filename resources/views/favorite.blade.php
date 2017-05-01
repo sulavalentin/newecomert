@@ -9,7 +9,7 @@
                     <div class="col-xs-5 imagefavorite">
                         <a href="{{URL("product/".$i->id)}}">
                             @if(\File::exists($i->address))
-                                <img src="{{ asset($i->address) }}" class="img-responsive"/>
+                                <img src="{{ asset('img/system/spin.gif') }}" originalsrc="{{asset($i->address)}}" class="img-responsive"/>
                             @else
                                 <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive"/>
                             @endif

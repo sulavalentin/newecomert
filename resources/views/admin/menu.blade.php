@@ -491,6 +491,7 @@
     }
     $("body").on("click",".modmenu",function() {
         menu=$(this).attr("id").replace('mod','');
+        $("#fullpageload").show();
         $.ajax({  
             type: 'POST',  
             url: "{{URL('/admin/getOnemenu')}}", 
@@ -501,11 +502,16 @@
                 $("input[name=name]").val(data[0].menu_name);
                 inchideDeschide("formmenu");
                 $("input[name=name]").focus();
+                $("#fullpageload").hide();
+            },
+            error:function(){
+                $("#fullpageload").hide();
             }
         });
     });
     $("body").on("click",".modsubmenu",function() {
         submenu=$(this).attr("id").replace('mod','');
+        $("#fullpageload").show();
         $.ajax({  
             type: 'POST',  
             url: "{{URL('/admin/getOnesubmenu')}}", 
@@ -519,12 +525,17 @@
                 $("select[name=activSub] option[value="+data[0].submenu_active+"]").prop('selected', true);
                 inchideDeschide("formsubmenu");
                 $("input[name=nameSub]").focus();
+                $("#fullpageload").hide();
+            },
+            error:function(){
+                $("#fullpageload").hide();
             }
         });
     });
     $("body").on("click",".moditem",function() {
         items=$(this).attr("id").replace('mod','');
         $("select[name=subparinteItem] option").hide();
+        $("#fullpageload").show();
         $.ajax({  
             type: 'POST',  
             url: "{{URL('/admin/getOneitemssubmenu')}}", 
@@ -540,6 +551,10 @@
                 $("select[name=subparinteItem] option[name="+data[1].menu_id+"]").show();
                 inchideDeschide("formitemsmenu");
                 $("input[name=nameItem]").focus();
+                $("#fullpageload").hide();
+            },
+            error:function(){
+                $("#fullpageload").hide();
             }
         });
     });

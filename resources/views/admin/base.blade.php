@@ -52,6 +52,11 @@
 <div class="container">
     @yield("content")
 </div>
+<div class="fullpageload" id="fullpageload">
+    <div class="imgload">
+        <img src="{{asset("img/system/preloader.gif")}}"/>
+    </div>
+</div>
 <footer style="height: 100px;">
     
 </footer>
@@ -59,6 +64,11 @@
     $(document).ready(function(){
         $('.dropdown-menu').click(function (e) {
             e.stopPropagation();
+        });
+        $(window).on("load",function() {
+            $.each($("img[originalsrc]"),function(i,v){
+                $(v).attr("src",$(v).attr("originalsrc"));
+            });
         });
     });
 </script>

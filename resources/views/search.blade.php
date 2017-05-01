@@ -20,7 +20,7 @@
                             <div class="continut_image">
                                 <a href="{{URL("/product/".$i->id)}}">
                                     @if(\File::exists($i->address))
-                                        <img  src="{{asset($i->address)}}" class="img-responsive"/>
+                                        <img src="{{ asset('img/system/spin.gif') }}" originalsrc="{{asset($i->address)}}" class="img-responsive"/>
                                     @else
                                         <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive"/>
                                     @endif
@@ -67,7 +67,6 @@
                 $(window).load(function() {
                     $("#products").find(".name").mark("{{$search}}");
                 });
-                
             </script>
         @else
             <div class="container" style="border-top:1px solid #ccc;">

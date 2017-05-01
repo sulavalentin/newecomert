@@ -132,7 +132,7 @@
                                         <div class="continut_image">
                                             <a href="{{URL("/product/".$k->id)}}">
                                                 @if(\File::exists($k->address))
-                                                    <img  src="{{asset($k->address)}}" class="img-responsive"/>
+                                                    <img src="{{ asset('img/system/spin.gif') }}" originalsrc="{{asset($k->address)}}" class="img-responsive"/>
                                                 @else
                                                     <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive"/>
                                                 @endif
@@ -233,7 +233,7 @@
                                         <div class="continut_image">
                                             <a href="{{URL("/product/".$k->id)}}">
                                                 @if(\File::exists($k->address))
-                                                    <img  src="{{asset($k->address)}}" class="img-responsive"/>
+                                                    <img src="{{ asset('img/system/spin.gif') }}" originalsrc="{{asset($k->address)}}" class="img-responsive"/>
                                                 @else
                                                     <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive"/>
                                                 @endif

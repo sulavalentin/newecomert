@@ -10,7 +10,7 @@
             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
                 <a href="{{URL("submenu/".$i->id)}}" class="name_submenu">
                     @if(\File::exists($i->submenu_image))
-                        <img  src="{{asset($i->submenu_image)}}" class="img-responsive"/>
+                        <img src="{{ asset('img/system/spin.gif') }}" originalsrc="{{asset($i->submenu_image)}}" class="img-responsive"/>
                     @else
                         <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive"/>
                     @endif

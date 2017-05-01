@@ -32,7 +32,7 @@
                         @if(!empty($images))
                             <div class="image-preview">
                                 @if(\File::exists($item[0]->address))
-                                    <img src="{{ asset($item[0]->address) }}" class="img-responsive" id="default"/>
+                                    <img src="{{ asset('img/system/spin.gif') }}" originalsrc="{{ asset($item[0]->address) }}" class="img-responsive" id="default"/>
                                 @else
                                     <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive" id="default"/>
                                 @endif
@@ -43,7 +43,7 @@
                                         @foreach($images as $i)
                                             @if(\File::exists($i->address))
                                             <li>
-                                                <img src="{{ asset($i->address) }}" class="img-responsive"/>
+                                                <img src="{{ asset('img/system/spin.gif') }}" originalsrc="{{asset($i->address)}}" class="img-responsive"/>
                                             </li>
                                             @endif
                                         @endforeach
@@ -127,7 +127,7 @@
                 <div class="col-xs-12 info">
                     @if(!empty($descriere) && count($descriere)>0)
                         @foreach($descriere as $img)
-                            <img class="img-responsive" src="{{asset($img->image)}}"/>
+                            <img class="img-responsive" src="{{ asset('img/system/spin.gif') }}" originalsrc="{{asset($img->image)}}"/>
                         @endforeach
                     @endif
                 </div>
@@ -141,7 +141,7 @@
                                         <div class="continut_image">
                                             <a href="{{URL("/product/".$i->id)}}">
                                                 @if(\File::exists($i->address))
-                                                    <img  src="{{asset($i->address)}}" class="img-responsive"/>
+                                                    <img src="{{ asset('img/system/spin.gif') }}" originalsrc="{{asset($i->address)}}" class="img-responsive"/>
                                                 @else
                                                     <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive"/>
                                                 @endif

@@ -20,7 +20,7 @@
                             <a href="{{URL("admin/products/".$i->id)}}"/>
                                 <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
                                     @if(\File::exists($i->item_image))
-                                        <img src="{{ asset($i->item_image) }}" class="img-responsive"/>
+                                        <img src="{{ asset('img/system/spin.gif') }}" originalsrc="{{asset($i->item_image)}}" class="img-responsive"/>
                                     @else
                                         <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive"/>
                                     @endif

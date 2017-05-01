@@ -126,6 +126,7 @@
         $(".coloanedintabele").css("display","none");
         mod=$(this).attr("id").replace('mod','');
         $(".adaugat").remove();
+        $("#fullpageload").show();
         $.ajax({  
             type: 'POST',  
             url: "{{URL('/admin/getTabele')}}", 
@@ -138,6 +139,10 @@
                 });
                 $("#col"+mod).fadeIn(500);
                 $("#t"+mod).addClass("activeadmin");
+                $("#fullpageload").hide();
+            },
+            error:function(){
+                $("#fullpageload").hide();
             }
         });
     });
@@ -283,7 +288,6 @@
                             $(".savecimp").button("reset");
                         }
                     });
-                    
                 }
             });
         }else{
