@@ -9,7 +9,8 @@
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>-->
         <script src="{{ asset("js/jquery.min.js") }}"></script>
         <script src="{{ asset("js/bootstrap.min.js") }}"></script>
-
+        <script src="{{ asset("js/jquery.mark.min.js") }}"></script>
+        
         <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset("css/bootstrap.min.css") }}" rel="stylesheet" >
         <link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet" type="text/css">
@@ -125,5 +126,4 @@
              @include('partials.footer')
         </footer>
     </body>
-    
 </html>

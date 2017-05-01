@@ -63,6 +63,9 @@
                 @endforeach
             </ul>
             {{$post->links()}}
+            <script>
+                $("#products").find(".name").mark("{{$search}}");
+            </script>
         @else
             <div class="container" style="border-top:1px solid #ccc;">
                 <h1 class="calibri text-center text-danger"> Nu sa gasit asa produse "{{$search}}" </h1>

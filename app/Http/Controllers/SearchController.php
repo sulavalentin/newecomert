@@ -33,7 +33,8 @@ class SearchController extends Controller
         foreach ($words as $word) {
             $result = $result->where('originalname', 'like', '%'.$word.'%');
         }
-        $result = $result->orderby("products.table_id")->take(5)->get();
+        $result = $result->orderby("products.table_id")->take(10)->get();
+        
         return response()->json($result);
     }
 }

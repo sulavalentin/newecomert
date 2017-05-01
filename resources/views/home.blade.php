@@ -6,6 +6,11 @@
         <div class="col-md-3 hidden-sm hidden-xs">
             <style>
                 .dropdown-submenu{position:relative;}
+                .dropdown-submenu img{
+                    float:left;
+                    width: 15px;
+                    margin: 3px 5px 0px 0px;
+                }
                 .dropdown-submenu>.dropdown-menu{
                     top:0;
                     left:100%;
@@ -63,7 +68,10 @@
                 @if(!empty(Session('menu')))
                     @foreach(Session('menu') as $i)
                         <li class="dropdown-submenu">
-                            <a class="cpointer">{{$i->menu_name}}</a>
+                            <a class="cpointer">
+                                <img src="{{asset('img/system/list_menu.png')}}"/>
+                                {{$i->menu_name}}
+                            </a>
                             @if(!empty(Session('submenu')))
                                 <ul class="dropdown-menu">
                                     @foreach(Session('submenu') as $j)

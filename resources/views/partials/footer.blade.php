@@ -48,7 +48,9 @@
                     </li>
                     @foreach(Session('menu') as $i)
                         <li>
-                            <a href="{{URL('menu/'.$i->id)}}">{{$i->menu_name}}</a>
+                            <a href="{{URL('menu/'.$i->id)}}">
+                                {{$i->menu_name}}
+                            </a>
                         </li>
                     @endforeach
                 </ul>

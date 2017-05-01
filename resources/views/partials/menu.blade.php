@@ -13,7 +13,10 @@
                 <ul class="first_menu" id="first_menu">
                     @foreach(Session('menu') as $i)
                         <li class="component_first" id="m{{$i->id}}">
-                            <a class="link">{{$i->menu_name}}</a>
+                            <a class="link">
+                                <img src="{{asset('img/system/list_menu.png')}}"/>
+                                {{$i->menu_name}}
+                            </a>
                         </li> 
                         <div class="sub-menu" id="m{{$i->id}}s">
                             @if(!empty(Session('submenu')))

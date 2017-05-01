@@ -44,6 +44,10 @@ html,body {
 .fullpageload .imgload img{
     width: 100%;
 }
+mark{
+    background-color: transparent !important;
+    font-weight: bold !important;
+}
 .sus{
     font-size: 13px;
     margin-bottom: 10px;
@@ -64,16 +68,7 @@ header {
     text-decoration: none;
 }
 /*css pentru meniu desktop*/
-.menu{
 
-    height: 50px;
-    width:100%;
-    -moz-user-select: none;  
-    -webkit-user-select: none;  
-    -ms-user-select: none;  
-    -o-user-select: none;  
-    user-select: none;
-}
 /*meniu deschidere*/
 /*Button*/
 .menubutton {
@@ -135,7 +130,11 @@ header {
     margin: 0 auto;
     margin-left: 10px;
 }
-
+#menu img{
+    float:left;
+    width: 15px;
+    margin: 3px 5px 0px 0px;
+}
 #menu .dropdown{
     text-align: center;
     border: 3px solid transparent;
@@ -518,6 +517,9 @@ header {
     background-color: #355a63;
     color: white;
 }
+.listitemsresult li:hover mark{
+    color: white !important;
+}
 /*end forma cauta*/
 .ProducteImagine{
     width: 100%;
@@ -831,7 +833,7 @@ header {
     float:left;
     border:1px solid transparent;
     border-left: 1px solid #ccc;
-    padding: 0px 10px;
+    padding: 0px 5px;
     text-align: center;
     cursor:pointer;
     font-size:13px;

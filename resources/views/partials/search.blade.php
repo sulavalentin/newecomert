@@ -45,7 +45,8 @@
                             $("#itemssearch").append("<a href='{{URL('/product')}}/"+value.id+"'>\
                                                         <li>"+value.originalname+value.name+"</li>\n\
                                                     </a>");
-                            });
+                        });
+                        $("#itemssearch").mark(search);
                     }else{
                         $("#itemssearch").text("");
                         $("#itemssearch").append("<li>Nu s-a gasit nimic pentru '"+search+"'</li>");
