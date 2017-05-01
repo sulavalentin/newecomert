@@ -64,7 +64,10 @@
             </ul>
             {{$post->links()}}
             <script>
-                $("#products").find(".name").mark("{{$search}}");
+                $(window).load(function() {
+                    $("#products").find(".name").mark("{{$search}}");
+                });
+                
             </script>
         @else
             <div class="container" style="border-top:1px solid #ccc;">
