@@ -13,6 +13,9 @@
 .carousel-showmanymoveone .cloneditem-3 {
   display: none;
 }
+.carousel .carousel-control{
+    background-image: none !important;
+}
 @media all and (min-width: 768px) {
   .carousel-showmanymoveone .carousel-inner > .active.left,
   .carousel-showmanymoveone .carousel-inner > .prev {

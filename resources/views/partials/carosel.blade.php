@@ -19,23 +19,23 @@
                     @if($i->id==$slideshow[0]->id)
                         <div class="item active">
                             <a href="{{$i->link}}">
-                                <img src="{{ asset('img/system/spin.gif') }}" originalsrc="{{asset($i->image)}}" alt="Imaginea lipseste" style="width:100%">
+                                <img src="{{ asset('img/system/spinslideshow.gif') }}" originalsrc="{{asset($i->image)}}" alt="Imaginea lipseste" style="width:100%">
                             </a>
                         </div>
                     @else
                         <div class="item">
                             <a href="{{$i->link}}">
-                                <img src="{{ asset('img/system/spin.gif') }}" originalsrc="{{asset($i->image)}}" alt="Imaginea lipseste" style="width:100%">
+                                <img src="{{ asset('img/system/spinslideshow.gif') }}" originalsrc="{{asset($i->image)}}" alt="Imaginea lipseste" style="width:100%">
                             </a>
                         </div>
                     @endif
                 @endforeach
             </div>
             <!--Sagetile de pornire a slaidului -->
-            <a href="#carousel" class="left carousel-control" data-slide="prev">
+            <a href="#carousel" class="left carousel-control" data-slide="prev" style="color:black;">
                 <span class="glyphicon glyphicon-chevron-left"></span>	
             </a>
-            <a href="#carousel" class="right carousel-control" data-slide="next">
+            <a href="#carousel" class="right carousel-control" data-slide="next" style="color:black;">
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </a>
         </div>
