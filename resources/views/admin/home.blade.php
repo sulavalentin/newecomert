@@ -8,6 +8,9 @@
        background-color: #00ad25;
     }
 </style>
+<p class="text-right text-warning">
+    <span id="time"></span>
+</p>
 <div class="homepage">
     <div class="col-md-3">
         <ul class="nav nav-pills nav-stacked">
@@ -204,4 +207,19 @@
         @endif
     </div>
 </div>
+<Script>
+    $(document).ready(function(){
+        function timefunc() {
+            var dt = new Date();
+            if(dt.getSeconds()>9){
+                var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+            }else{
+                var time = dt.getHours() + ":" + dt.getMinutes() + ":0" + dt.getSeconds();
+            }
+            $("#time").html(time);
+            setTimeout(timefunc, 1000);
+        }
+        timefunc();
+    });
+</script>
 @endsection

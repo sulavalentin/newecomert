@@ -66,6 +66,12 @@
 .tabelehome:hover{
     background-color: #ff8800;
 }
+#time{
+    font-size:18px;
+    border: 1px solid gray;
+    padding: 5px 20px;
+    font-weight: bold;
+}
 /*End homepage*/
 .comfirm-div , .comfirm-div1{
     position: fixed;
