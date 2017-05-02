@@ -84,6 +84,9 @@ Route::post('/admin/addItemssubmenu','Admin\MenuController@addItemssubmenu');
 Route::post('/admin/modMenu','Admin\MenuController@modMenu');
 Route::post('/admin/modSubmenu','Admin\MenuController@modSubmenu');
 Route::post('/admin/modItemssubmenu','Admin\MenuController@modItemssubmenu');
+Route::post('/admin/deletemenu','Admin\MenuController@deletemenu');
+Route::post('/admin/deletesubmenu','Admin\MenuController@deletesubmenu');
+Route::post('/admin/deleteitem','Admin\MenuController@deleteitem');
 
 /*Slideshow rutes*/
 Route::get('/admin/slideshow','Admin\AdminController@slideshow');

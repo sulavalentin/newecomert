@@ -30,7 +30,7 @@
                 <span class="pull-right">
                     <span class="glyphicon glyphicon-plus addmenu" id="add{{$i->id}}"></span>
                     <span class="glyphicon glyphicon-pencil modmenu" id="mod{{$i->id}}"></span>
-                    <span class="glyphicon glyphicon-remove"></span>
+                    <span class="glyphicon glyphicon-remove" name="deletemenu" iddel="{{$i->id}}"></span>
                 </span>
             </li> 
             <ol id="menu{{$i->id}}" class="list_submenu">
@@ -41,7 +41,7 @@
                             <span class="pull-right">
                                 <span class="glyphicon glyphicon-plus additem" id="addsub{{$j->id}}"></span>
                                 <span class="glyphicon glyphicon-pencil modsubmenu" id="mod{{$j->id}}"></span>
-                                <span class="glyphicon glyphicon-remove"></span>
+                                <span class="glyphicon glyphicon-remove" name="deletesubmenu" iddel="{{$j->id}}"></span>
                             </span>
                         </li>
                         <ol id="submenu{{$j->id}}" class="list_items">
@@ -51,7 +51,7 @@
                                         {{$k->item_name}}
                                         <span class="pull-right">
                                             <span class="glyphicon glyphicon-pencil moditem" id="mod{{$k->id}}"></span>
-                                            <span class="glyphicon glyphicon-remove"></span>
+                                            <span class="glyphicon glyphicon-remove" name="deleteitem" iddel="{{$k->id}}"></span>
                                         </span>
                                     </li>
                                 @else
@@ -270,6 +270,52 @@
             </div>
         </div>
     </form>
+</div>
+<div class="modal fade" id="potisterge" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center">Atentie</h4>
+        </div>
+        <div class="modal-body text-center">
+            <h2 class="calibri" style="margin: 0px 0px 15px 0px;">Nu puteti sterge acest item cat timp sunt produse!</h2>
+            <h2 class="calibri" style="margin: 0px 0px 15px 0px;">Stergeti mai intii toate produsele apoi meniul.</h2>
+            <button class="btn btn-default" data-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="modal fade" id="potistergesubmenu" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center">Atentie</h4>
+        </div>
+        <div class="modal-body text-center">
+            <h2 class="calibri" style="margin: 0px 0px 15px 0px;">Stergeti mai intii toate itemele apoi meniul.</h2>
+            <button class="btn btn-default" data-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="modal fade" id="potistergemenu" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center">Atentie</h4>
+        </div>
+        <div class="modal-body text-center">
+            <h2 class="calibri" style="margin: 0px 0px 15px 0px;">Stergeti mai intii toate submeniurile apoi meniul.</h2>
+            <button class="btn btn-default" data-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
 </div>
 @endif
 <style>
@@ -579,6 +625,74 @@
     $("body").on("click",".list_submenu .lsubmenu" ,function() {
         $("#submenu"+$(this).attr("id")).slideToggle(500);
     });
-    
+    $("span[name=deleteitem]").on("click",function(){
+        var iddel=$(this).attr("iddel");
+        $("#fullpageload").show();
+        $.ajax({  
+            type: 'POST',  
+            url: "{{URL('/admin/deleteitem')}}", 
+            data: 
+                { 
+                    id:iddel
+                },
+            success: function(data) {
+                if(data===true){
+                    location.reload();
+                }else{
+                    $("#potisterge").modal();
+                }
+                $("#fullpageload").hide();
+            },
+            error:function(){
+                $("#fullpageload").hide();
+            }
+        });
+    });
+    $("span[name=deletesubmenu]").on("click",function(){
+        var iddel=$(this).attr("iddel");
+        $("#fullpageload").show();
+        $.ajax({  
+            type: 'POST',  
+            url: "{{URL('/admin/deletesubmenu')}}", 
+            data: 
+                { 
+                    id:iddel
+                },
+            success: function(data) {
+                if(data===true){
+                    location.reload();
+                }else{
+                    $("#potistergesubmenu").modal();
+                }
+                $("#fullpageload").hide();
+            },
+            error:function(){
+                $("#fullpageload").hide();
+            }
+        });
+    });
+    $("span[name=deletemenu]").on("click",function(){
+        var iddel=$(this).attr("iddel");
+        $("#fullpageload").show();
+        $.ajax({  
+            type: 'POST',  
+            url: "{{URL('/admin/deletemenu')}}", 
+            data: 
+                { 
+                    id:iddel
+                },
+            success: function(data) {
+                if(data===true){
+                    location.reload();
+                }else{
+                    $("#potistergemenu").modal();
+                }
+                $("#fullpageload").hide();
+            },
+            error:function(){
+                $("#fullpageload").hide();
+            }
+        });
+    });
 </script>
 @endsection

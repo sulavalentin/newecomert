@@ -64,4 +64,22 @@ class MenuController extends Controller
         }
         return $menu->modItemMenu($request);
     }
+    public function deletemenu(Request $request , Menu $menu){
+        if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
+            return redirect("/admin");
+        }
+        return $menu->deletemenu($request);
+    }
+    public function deletesubmenu(Request $request , Menu $menu){
+        if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
+            return redirect("/admin");
+        }
+        return $menu->deletesubmenu($request);
+    }
+    public function deleteitem(Request $request , Menu $menu){
+        if (!filter_var(session("emailAdmin"), FILTER_VALIDATE_EMAIL)){
+            return redirect("/admin");
+        }
+        return $menu->deleteitem($request);
+    }
 }

@@ -57,6 +57,15 @@ class Menu extends Model
             return '0';
         }
     }
+    public function deletemenu($request){
+        $id=$request->id;
+        $count=DB::table("submenu")->where("menu_id",$id)->count("id");
+        if($count==0){
+            DB::table("menu")->where("id",$id)->delete();
+            return response()->json(true);
+        }
+        return response()->json(false);
+    }
     public function addSubmenu($request){
         $files=$request->imageSubadd;
         $extensii=["jpeg","jpg","png","svg"];
@@ -141,6 +150,19 @@ class Menu extends Model
             return array('succes'=>true);
         }
     }
+    public function deletesubmenu($request){
+        $id=$request->id;
+        $count=DB::table("itemssubmenu")->where("submenu_id",$id)->count("id");
+        if($count==0){
+            $item=DB::table("submenu")->where("id",$id)->first();
+            if(File::exists($item->submenu_image)){
+                File::delete($item->submenu_image);
+            }
+            DB::table("submenu")->where("id",$id)->delete();
+            return response()->json(true);
+        }
+        return response()->json(false);
+    }
     public function addItems($request){
         $files=$request->imageItemadd;
         $extensii=["jpeg","jpg","png","svg"];
@@ -224,5 +246,18 @@ class Menu extends Model
                                         ]);
             return array('succes'=>true);
         }
+    }
+    public function deleteitem($request){
+        $id=$request->id;
+        $count=DB::table("products")->where("table_id",$id)->count("id");
+        if($count==0){
+            $item=DB::table("itemssubmenu")->where("id",$id)->first();
+            if(File::exists($item->item_image)){
+                File::delete($item->item_image);
+            }
+            DB::table("itemssubmenu")->where("id",$id)->delete();
+            return response()->json(true);
+        }
+        return response()->json(false);
     }
 }
