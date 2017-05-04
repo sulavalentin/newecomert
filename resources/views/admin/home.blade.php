@@ -211,11 +211,19 @@
     $(document).ready(function(){
         function timefunc() {
             var dt = new Date();
-            if(dt.getSeconds()>9){
-                var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
-            }else{
-                var time = dt.getHours() + ":" + dt.getMinutes() + ":0" + dt.getSeconds();
+            var ora=dt.getHours();
+            var minute=dt.getMinutes();
+            var secunde=dt.getSeconds();
+            if(ora<9){
+                ora="0"+ora;
             }
+            if(minute<9){
+                minute="0"+minute;
+            }
+            if(secunde<9){
+                secunde="0"+secunde;
+            }
+            var time = ora + ":" + minute + ":" + secunde;
             $("#time").html(time);
             setTimeout(timefunc, 1000);
         }
