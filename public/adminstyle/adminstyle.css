@@ -72,6 +72,12 @@
     padding: 5px 20px;
     font-weight: bold;
 }
+#total{
+    margin-left:15px; 
+    float:left;
+    font-size:18px;
+    font-weight: bold;
+}
 /*End homepage*/
 .comfirm-div , .comfirm-div1{
     position: fixed;

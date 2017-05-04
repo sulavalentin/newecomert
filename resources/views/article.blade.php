@@ -202,7 +202,7 @@
                             <textarea name="comentariu" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="form-control" value="Adauga"/>
+                            <input type="submit" class="form-control" value="Adauga" id="addcoment" data-loading-text="Se adauga..." />
                         </div>
                     </form>
                     <div class="content calibri" id="allcoments">
@@ -253,6 +253,7 @@
                 trecut=false;
             }
             if(trecut===true){
+                $("#addcoment").button("loading");
                 $.ajax({
                     type:"post",
                     url:"{{URL('addcomentariu')}}",
@@ -268,6 +269,10 @@
                                                     <p class='data_coment'>"+data.created_at+"</p>\n\
                                                 </div>");
                         $("textarea[name=comentariu]").val("");
+                        $("#addcoment").button("reset");
+                    },
+                    error:function(){
+                        $("#addcoment").button("reset");
                     }
                 });
             }

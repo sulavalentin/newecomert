@@ -68,23 +68,24 @@ $(document).ready(function() {
                   id:idprod
                 },
             success: function(data) {
-                if(data===true){
+                console.log(data);
+                if(data.truefalse===true){
                     $("#mesagecompare").html("Produsul a fost adaugat");
                     $("#mesagecompare").css("color","#333");
                 }
-                if(data===false){
+                if(data.truefalse===false){
                     $("#mesagecompare").html("!!! Puteti compara maxim 4 produse");
                     $("#mesagecompare").css("color","red");
                 }
-                if(data===1){
+                if(data.truefalse===1){
                     $("#mesagecompare").html("Produsul este deja in comparare");
                     $("#mesagecompare").css("color","red");
                 }
-                if(data===2){
+                if(data.truefalse===2){
                     $("#mesagecompare").html("Toate produsele trebuie sa fie la fel !");
                     $("#mesagecompare").css("color","red");
                 }
-                $("#comparecount").html("{{count(session('idcompare'))}}");
+                $("#comparecount").html(data.countcompare);
                 $("button[name=addcompare]").removeAttr('disabled');
                 $("#fullpageload").hide();
                 $("#compareAdded").modal();

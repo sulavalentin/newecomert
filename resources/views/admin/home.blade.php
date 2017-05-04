@@ -9,6 +9,16 @@
     }
 </style>
 <p class="text-right text-warning">
+    <?php
+        $views=App\Logo::getviews();
+    ?>
+    <span id="total">
+        @if(!empty($views) && count($views)>0)
+            Total: {{$views->valuevariable}} views
+        @else
+            Total: 0 views
+        @endif
+    </span>
     <span id="time"></span>
 </p>
 <div class="homepage">

@@ -110,17 +110,20 @@ Route::get('/sort={sort}/[{id_submenu}]-{numeitem}/page={pag}','HomeController@p
 Route::get('/product/{id_item}','HomeController@oneprodus');
 Route::post('/preview','HomeController@oneproduspreview');
 Route::post('/addcomentariu','HomeController@addcomentariu');
+/*Profil user*/
+Route::get('/profil','ProfilController@profil');
+Route::post('/changenameuser','ProfilController@changenameuser');
+Route::post('/profil','ProfilController@changepassworduser');
+Route::post('/stergecomanda','ProfilController@stergecomanda');
 /*Favorite*/
 Route::get('/favorite','FavoriteController@favorite');
 Route::post('/addfavorite','FavoriteController@addfavorite');
 Route::post('/deletefavorite','FavoriteController@deletefavorite');
-Route::post('/getCountFavorite','FavoriteController@getCountFavorite');
 /*Cos*/
 Route::get('/cart','CartController@cart');
 Route::post('/addcart','CartController@addcart');
 Route::post('/delcart','CartController@delcart');
 Route::post('/updatecart','CartController@updatecart');
-Route::post('/getCountCart','CartController@getCountCart');
 Route::post('/deleteallcart','CartController@deleteallcart');
 /*Compare*/
 Route::get('/compare','CompareController@compare');

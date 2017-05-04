@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+
 class ComenziAdminController extends Controller
 {
     

@@ -50,6 +50,10 @@ class ComandaController extends Controller
             $telefon=$request->telefon;
             $adresa=$request->adresa;
             $data=Carbon::now(3);
+            $session=0;
+            if(session("id")>0){
+                $session=session("id");
+            }
             $produse=DB::table('products')
                     ->select('products.*','cart.cantitate')
                     ->leftJoin("cart",function($join){
@@ -64,6 +68,7 @@ class ComandaController extends Controller
                     "email"=>$email,
                     "telefon"=>$telefon,
                     "adresa"=>$adresa,
+                    "user_id"=>$session,
                     "created_at"=>$data
                 ]);
             foreach($produse as $i){

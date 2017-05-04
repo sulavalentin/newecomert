@@ -26,20 +26,24 @@ class CompareController extends Controller
         
         if(count($session) <4){
             if(in_array($id,$session)){
-                return response()->json(1);
+                $data=["truefalse"=>1,"countcompare"=>count(session("idcompare"))];
+                return response()->json($data);
             }
             if(count($session)>0){
                 $lafel=DB::table("products")->where("id",session("idcompare")[0])->value("table_id");
                 $curent=DB::table("products")->where("id",$id)->value("table_id");
                 if($lafel!=$curent){
-                    return response()->json(2);
+                    $data=["truefalse"=>2,"countcompare"=>count(session("idcompare"))];
+                    return response()->json($data);
                 }
             }
             $session[]=$id;
             session(["idcompare"=>$session]);
-            return response()->json(true);
+            $data=["truefalse"=>true,"countcompare"=>count(session("idcompare"))];
+            return response()->json($data);
         }else{
-            return response()->json(false);
+            $data=["truefalse"=>false,"countcompare"=>count(session("idcompare"))];
+            return response()->json($data);
         }  
     }
     public function deletecompare(Request $request){

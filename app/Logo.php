@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
-
+use Session;
 class Logo extends Model
 {
     public static function getInfo(){
@@ -20,5 +20,8 @@ class Logo extends Model
             $endviews=$views->valuevariable+1;
             DB::table("logo")->where("variable","views")->update(["valuevariable"=>$endviews]);
         }
+    }
+    public static function getviews(){
+        return DB::table("logo")->where("variable","views")->first();
     }
 }

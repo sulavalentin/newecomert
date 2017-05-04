@@ -54,9 +54,5 @@ class FavoriteController extends Controller
                 ->where("id",$request->id)
                 ->delete();
     }
-    public function getCountFavorite()
-    {
-        $response=DB::table("favorite")->where("user_id",session("id"))->count("id");
-        return $response;
-    }
+    
 }

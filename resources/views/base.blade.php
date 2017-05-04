@@ -59,7 +59,7 @@
                         <!--Login si register form-->
                         <div class="pull-right">
                             @if(Session::has('nume') && Session::has('id'))
-                                <a href="#">{{Session('nume')}}</a>
+                                <a href="{{URL('/profil')}}">{{Session('nume')}}</a>
                                 <a href="{{URL("/exit")}}">Iesire</a>
                             @else
                                 @include('partials.register')
@@ -118,7 +118,7 @@
         <footer class="footer">
              @include('partials.footer')
         </footer>
-        @if(session('views')==true)
+        @if(!Session::has('views'))
             <?php
                 App\Logo::views();
             ?>

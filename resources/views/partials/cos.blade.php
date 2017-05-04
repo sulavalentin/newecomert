@@ -6,7 +6,9 @@
                 Cos
             </span>
             <span class="badge countproducts" id="carcount">
-                0
+                <?php 
+                    echo App\Cart::getCountCart();
+                ?>
             </span>
         </li>
     </a>
@@ -17,7 +19,9 @@
                 Favorite
             </span>
             <span class="badge countproducts" id="favoritecount">
-                0
+                <?php 
+                    echo App\Favorite::getCountFavorite();
+                ?>
             </span>
         </li>
     </a>
@@ -33,27 +37,3 @@
         </li>
     </a>
 </ul>
-<script>
-    function countcart(){
-        $.ajax({  
-            type: 'POST',  
-            url: "{{URL('/getCountCart')}}", 
-            success: function(data) {
-                $("#carcount").html(data);
-            }
-        }); 
-    }
-    function countfavorite(){
-        $.ajax({  
-            type: 'POST',  
-            url: "{{URL('/getCountFavorite')}}", 
-            success: function(data) {
-                $("#favoritecount").html(data);
-            }
-        });
-    }
-    $(window).on("load", function() {
-        countcart();
-        countfavorite();
-    });
-</script>

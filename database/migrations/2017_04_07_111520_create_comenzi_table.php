@@ -21,6 +21,8 @@ class CreateComenziTable extends Migration
             $table->string('adresa')->nullable();
             $table->boolean('trecut')->default(0);
             $table->boolean('new')->default(1);
+            $table->integer('user_id')->default(0);
+            $table->boolean('deleteduser')->default(0);
             $table->timestamp("created_at");
         });
     }

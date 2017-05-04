@@ -128,15 +128,6 @@ class CartController extends Controller
             }
         }
     }
-    public function getCountCart()
-    {
-        $response=0;
-        if( Cookie::get('cart')!==null ){
-            $anonim=Cookie::get('cart');
-            $response=DB::table("cart")->where("anonim",$anonim)->sum("cantitate");
-        }
-        return $response;
-    }
     public function deleteallcart(){
         $anonim=Cookie::get('cart');
         DB::table("cart")->where("anonim",$anonim)->delete();

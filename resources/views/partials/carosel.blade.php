@@ -19,13 +19,13 @@
                     @if($i->id==$slideshow[0]->id)
                         <div class="item active">
                             <a href="{{$i->link}}">
-                                <img src="{{ asset('img/system/spinslideshow.gif') }}" originalsrc="{{asset($i->image)}}" alt="Imaginea lipseste" style="width:100%">
+                                <img src="{{asset($i->image)}}" alt="Imaginea lipseste" style="width:100%">
                             </a>
                         </div>
                     @else
                         <div class="item">
                             <a href="{{$i->link}}">
-                                <img src="{{ asset('img/system/spinslideshow.gif') }}" originalsrc="{{asset($i->image)}}" alt="Imaginea lipseste" style="width:100%">
+                                <img src="{{asset($i->image)}}" alt="Imaginea lipseste" style="width:100%">
                             </a>
                         </div>
                     @endif
