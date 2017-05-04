@@ -45,9 +45,6 @@
                             <a href="{{URL('/contact')}}">Contact</a>
                         </li>
                         <li class="hidden-sm hidden-xs">
-                            <a href="#">Despre noi</a>
-                        </li>
-                        <li class="hidden-sm hidden-xs">
                             <a href="{{URL('/cart')}}">Cos</a>
                         </li>
                         <li class="hidden-sm hidden-xs">

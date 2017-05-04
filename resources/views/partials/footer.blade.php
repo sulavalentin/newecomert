@@ -1,5 +1,6 @@
 <div class="container text-center">
     <div class="row">
+        <div class="col-md-1"></div>
         <div class="col-md-2">
             <ul class="footerlist">
                 <li>
@@ -14,11 +15,9 @@
                 <li>
                     <a href="{{URL('contact')}}">Contact</a>
                 </li>
-                <li>
-                    <a href="#">Despre noi</a>
-                </li>
             </ul>
         </div>
+        <div class="col-md-2"></div>
         <div class="col-md-2">
             <ul class="footerlist">
                 <li>
@@ -40,6 +39,7 @@
                 </li>
             </ul>
         </div>
+        <div class="col-md-2"></div>
         @if(!empty(Session('menu')))
             <div class="col-md-2">
                 <ul class="footerlist">

@@ -101,8 +101,6 @@ Route::post('/admin/delslideshow','Admin\SlideshowController@delslideshow');
 
 
 /*Generale -----------------------------*/
-Route::get('/test','HomeController@test');
-
 Route::get('/','HomeController@home');
 Route::get('/menu/{id}','HomeController@menu');
 Route::get('/submenu/{id}','HomeController@submenu');
