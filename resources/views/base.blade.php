@@ -118,6 +118,11 @@
         <footer class="footer">
              @include('partials.footer')
         </footer>
+        @if(session('views')==true)
+            <?php
+                App\Logo::views();
+            ?>
+        @endif
     </body>
     <script>
         $(window).on("load",function() {
