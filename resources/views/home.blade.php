@@ -63,13 +63,15 @@
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" 
                 style=" display: block;
                         width: 100%;
-                        height: 0px;
                         padding: 0px;
                         margin: 0px 0px 0px 0px;
-                        z-index: 2; border: 1px;">
+                        z-index: 2;
+                        border-top: 1px;
+                        box-shadow: none;">
                 @if(!empty(Session('menu')))
                 <h3 class="calibri text-center">Produse</h3>
                     @foreach(Session('menu') as $i)
+                    <li class="divider"></li>
                         <li class="dropdown-submenu">
                             <a class="cpointer">
                                 <img src="{{asset('img/system/list_menu.png')}}"/>
@@ -104,8 +106,8 @@
                                 </ul>
                             @endif
                         </li>
-                        <li class="divider"></li>
                     @endforeach
+                    <li class="divider" style='margin-bottom: -1px;'></li>
                 @endif  
             </ul>
         </div>

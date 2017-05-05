@@ -1,6 +1,7 @@
 @extends("admin.base")
 @section("content")
 <div class="col-md-12">
+    <p class='text-info'>Recomandat 1000x300px</p>
     <p id='curentlogo'>
         @if(!empty($post) && count($post['logo'])>0)
             <img src='{{asset($post['logo']->valuevariable)}}' class='img-responsive'/>
