@@ -57,7 +57,9 @@
 
                 }
             </style>
-            <h3 class="calibri text-center">Produse</h3>
+            @if(empty(Session('menu')))
+                {{App\Menu::menu()}}
+            @endif
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" 
                 style=" display: block;
                         width: 100%;
@@ -66,6 +68,7 @@
                         margin: 0px 0px 0px 0px;
                         z-index: 2; border: 1px;">
                 @if(!empty(Session('menu')))
+                <h3 class="calibri text-center">Produse</h3>
                     @foreach(Session('menu') as $i)
                         <li class="dropdown-submenu">
                             <a class="cpointer">

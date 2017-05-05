@@ -22,6 +22,7 @@
 </form>
 <div class='searchresult' id="searchresult">
     <ul class='listitemsresult' id='itemssearch'>
+        <li class='text-center'>Cauta</li>
     </ul>
 </div>
 <div class="previewcauta" id="previewcauta"></div>
@@ -49,12 +50,12 @@
                         $("#itemssearch").mark(search);
                     }else{
                         $("#itemssearch").text("");
-                        $("#itemssearch").append("<li>Nu s-a gasit nimic pentru '"+search+"'</li>");
+                        $("#itemssearch").append("<li class='text-center'>Nu s-a gasit nimic pentru '"+search+"'</li>");
                     }
                 }
             });
         }else{
-            $("#itemssearch").text("");
+            $("#itemssearch").html("<li class='text-center'>Cauta</li>");
         }
     });
     $("#previewcauta").on("click",function(){

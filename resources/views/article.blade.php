@@ -1,5 +1,7 @@
 @extends('base')
 @section('content')
+<link href="{{ asset("css/viewbox.css") }}" rel="stylesheet">
+
 <div class='container'>
     <div class="row">
             @if(!empty($item[0]))
@@ -20,9 +22,9 @@
             <div class="urllink">
                 <ul class="breadcrumb">
                     <li><a href="{{URL("/")}}">Pagina principala</a></li>
-                        <li><a href="{{URL("/menu/".$link["0"]["address"])}}">{{$link["0"]["name"]}}</a></li>
-                        <li><a href="{{URL("/submenu/".$link["1"]["address"])}}">{{$link["1"]["name"]}}</a></li>
-                        <li><a href="{{URL("sort=priceUp/[".$link[2]["address"]."]-".$link[2]["name"]."/page=1")}}">{{$link[2]["name"]}}</a></li>
+                    <li><a href="{{URL("/menu/".$link["0"]["address"])}}">{{$link["0"]["name"]}}</a></li>
+                    <li><a href="{{URL("/submenu/".$link["1"]["address"])}}">{{$link["1"]["name"]}}</a></li>
+                    <li><a href="{{URL("sort=priceUp/[".$link[2]["address"]."]-".$link[2]["name"]."/page=1")}}">{{$link[2]["name"]}}</a></li>
                 </ul>
             </div>
             <div class="content ProducteImagine">
@@ -32,9 +34,13 @@
                         @if(!empty($images))
                             <div class="image-preview">
                                 @if(\File::exists($item[0]->address))
-                                    <img src="{{ asset('img/system/spin.gif') }}" originalsrc="{{ asset($item[0]->address) }}" class="img-responsive" id="default"/>
+                                    <a href="{{ asset ( $item[0]->address ) }}" class="image-link">
+                                        <img src="{{ asset('img/system/spin.gif') }}" originalsrc="{{ asset($item[0]->address) }}" class="img-responsive" id="default"/>
+                                    </a>
                                 @else
-                                    <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive" id="default"/>
+                                    <a href="{{ asset ('img/system/default.jpg') }}" class="image-link">
+                                        <img src="{{ asset('img/system/default.jpg') }}" class="img-responsive" id="default"/>
+                                    </a>
                                 @endif
                             </div>
                             @if(count($images)>1)
@@ -43,7 +49,9 @@
                                         @foreach($images as $i)
                                             @if(\File::exists($i->address))
                                             <li>
-                                                <img src="{{ asset('img/system/spin.gif') }}" originalsrc="{{asset($i->address)}}" class="img-responsive"/>
+                                                <a href="{{ asset ( $i->address ) }}" class="image-link">
+                                                    <img src="{{ asset('img/system/spin.gif') }}" originalsrc="{{asset($i->address)}}" class="img-responsive"/>
+                                                </a>
                                             </li>
                                             @endif
                                         @endforeach
@@ -228,7 +236,9 @@
             @endif
     </div>
 </div>
+<script src="{{ asset("js/jquery.viewbox.min.js") }}"></script>
 <script>
+    $('.image-link').viewbox();
     $(document).ready(function(){
         $('#list_images li img').hover(function () {
             $("#default").attr("src",$(this).attr("src"));

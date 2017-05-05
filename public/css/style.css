@@ -681,6 +681,9 @@ header {
     padding:0px;
     list-style-type: none;
 }
+.info img{
+    width: 100%;
+}
 .ProducteImagine .info .spatiu{
     width:80px;
     float:left;
