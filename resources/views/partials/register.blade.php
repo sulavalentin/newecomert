@@ -55,13 +55,9 @@
                             <img src="{{asset("img/system/google.png")}}"/>
                         </a>
                     </div>
-                    <a data-toggle="modal" data-dismiss="modal" data-target="#registrare" style="color:#333; text-decoration: none;">
-                        Inregistrare
-                    </a> |
                     <a href="{{URL('/reset')}}" style="color:black; text-decoration: none;">
                         Ai uitat parola?
                     </a>
-                    
                 {!! Form::close() !!}
             </div>
           </div>
