@@ -28,7 +28,7 @@
     </head>
     <body>
         <!-- Meniu-->
-        <div class="content" style="background-color: rgb(53, 90, 99);">
+        <div class="content" style="background-color: #355a63;">
             <div class="container">
                 <!-- Descktop-->
                 <!-- Primul rind-->
