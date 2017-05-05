@@ -43,12 +43,11 @@
                         <label for="parola">Parola</label>
                         {!! Form::password('password',array('name'=>'parola','class'=>'form-control','placeholder' => 'Parola')) !!}
                     </div>
-                    <div style="width: 130px;margin: 0 auto; text-align: center;">
+                    <div style="margin: 0 auto; text-align: center;">
                         <img id="logloading" style="display:none; margin:0 auto;" src="{{asset("img/system/loadingreglog.gif")}}"/>
                         {!! Form::button('Login', array('class'=>'btn-sign','style'=>'margin:10px 0px 10px 0px;','id'=>'trimitelog')) !!}
                     </div>
                     <div class="social">
-                        <label>Sau :</label>
                         <a onclick="facebook()">
                             <img src="{{asset("img/system/fb.png")}}"/>
                         </a>
@@ -56,13 +55,13 @@
                             <img src="{{asset("img/system/google.png")}}"/>
                         </a>
                     </div>
+                    <a data-toggle="modal" data-dismiss="modal" data-target="#registrare" style="color:#333; text-decoration: none;">
+                        Inregistrare
+                    </a> |
                     <a href="{{URL('/reset')}}" style="color:black; text-decoration: none;">
                         Ai uitat parola?
                     </a>
-                    <br>
-                    <a data-toggle="modal" data-dismiss="modal" data-target="#registrare" style="color:#333; text-decoration: none;">
-                        Inregistrare
-                    </a>
+                    
                 {!! Form::close() !!}
             </div>
           </div>
@@ -98,12 +97,11 @@
                     <label id="rrparola">Repeta parola</label>
                     {!! Form::password('password',array('name'=>'rrparola','class'=>'form-control','placeholder' => 'Repeta parola')) !!}
                 </div>
-                <div style="width: 130px;margin: 0 auto; text-align: center;">
+                <div style="margin: 0 auto; text-align: center;">
                     <img id="regloading" style="display:none; margin:0 auto;" src="{{asset("img/system/loadingreglog.gif")}}"/>
                     {!! Form::button('Registrare', array('class'=>'btn-sign','id'=>'trimitereg')) !!} 
                 </div>
                 <div class="social">
-                    <label>Sau :</label>
                     <a onclick="facebook()">
                         <img src="{{asset("img/system/fb.png")}}"/>
                     </a>
@@ -111,9 +109,6 @@
                         <img src="{{asset("img/system/google.png")}}"/>
                     </a>
                 </div>
-                <a data-toggle="modal" data-dismiss="modal" data-target="#login" style="color:#333; text-decoration: none;">
-                    Logare
-                </a>
             {!! Form::close() !!}
         </div>
       </div>

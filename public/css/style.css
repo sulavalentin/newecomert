@@ -709,8 +709,8 @@ header {
 }
 /* LOgarea*/
 .login{
-    text-align: center !important;
     padding-top:0px !important;
+    padding-bottom: 0px;
 }
 .login .form-group{
     margin-bottom:5px;
@@ -729,17 +729,16 @@ header {
     display:none;
 }
 .login form input{
-    text-align: center;
-    height: 30px;
+    height: 35px;
+    border-radius: 0px;
     font-size: 1em;
     color: #3A3A3A;
-   
 }
 .login form .btn-sign{
     height: 40px;
-    width: 130px;
+    width: 100%;
     border: none;
-    background-color: #5bb75b;
+    background-color: #355a63;
     color: white;
     text-align: center;
     font-size: 1.4em;
@@ -747,8 +746,7 @@ header {
     margin:10px 0px 10px 0px;
 }
 .login form .btn-sign:hover{
-   background-color: #4e9c4e;
-   
+   background-color: #2e525a;
 }
 .login .social{
     text-align: center;
