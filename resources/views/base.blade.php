@@ -11,7 +11,6 @@
         <script src="{{ asset("js/bootstrap.min.js") }}"></script>
         <script src="{{ asset("js/jquery.mark.min.js") }}"></script>
         
-        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset("css/bootstrap.min.css") }}" rel="stylesheet" >
         <link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">

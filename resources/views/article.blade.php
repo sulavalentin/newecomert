@@ -135,7 +135,9 @@
                 <div class="col-xs-12 info">
                     @if(!empty($descriere) && count($descriere)>0)
                         @foreach($descriere as $img)
-                            <img class="img-responsive" src="{{ asset('img/system/spin.gif') }}" originalsrc="{{asset($img->image)}}"/>
+                            @if(\File::exists($img->image))
+                                <img class="img-responsive" src="{{ asset('img/system/spin.gif') }}" originalsrc="{{asset($img->image)}}"/>
+                            @endif
                         @endforeach
                     @endif
                 </div>
