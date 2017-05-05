@@ -33,6 +33,7 @@
                 contentType: false,
                 processData: false,
                 success:function(data){
+                    $("#upload")[0].reset();
                     if(data.succes===true){
                         $("#curentlogo").html("<img src='{{asset('/')}}"+data.image+"' class='img-responsive'/>");
                     }else{
@@ -41,6 +42,7 @@
                     $("#logosite").button("reset");
                 },
                 error:function(){
+                    $("#upload")[0].reset();
                     $("#imageeror").html("A aparut o eroare");
                     $("#logosite").button("reset");
                 }
