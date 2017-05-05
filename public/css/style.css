@@ -120,6 +120,7 @@ header {
     height: 100%;
     width: 1px;
     margin: 0 auto;
+    margin-top:5px;
 }
 #menu img{
     float:left;
