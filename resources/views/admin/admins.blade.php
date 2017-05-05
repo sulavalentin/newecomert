@@ -47,6 +47,7 @@
                     <th>Nume:</th>
                     <th>Email:</th>
                     <th>Activ:</th>
+                    <th>Ultima vizita:</th>
                     <th>Setari:</th>
                 </tr>
             @foreach($admins as $i)
@@ -60,6 +61,7 @@
                             Dezactivat
                         @endif
                     </td>
+                    <td>{{$i->updated_at}}</td>
                     <td>
                         <button class="btn btn-danger" id="{{$i->id}}" name="deleteadmin">Sterge</button>
                     </td>

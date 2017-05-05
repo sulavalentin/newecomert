@@ -50,6 +50,7 @@ class RegisterController extends Controller
                         "nameAdmin"=>$admin->name,
                         "emailAdmin"=>$admin->email,
                        ]);
+                DB::table('admin')->where('email', $email)->update(["updated_at"=>Carbon::now(3)]);
                 return redirect("/admin");
                 
             }else{

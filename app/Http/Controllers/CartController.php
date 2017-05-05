@@ -8,6 +8,7 @@ use Session;
 use App\Cart;
 use App\Itemssubmenu;
 use Cookie;
+use Carbon\Carbon;
 
 class CartController extends Controller
 {
@@ -55,6 +56,7 @@ class CartController extends Controller
             }else{
                 DB::table("cart")->insert(["anonim"=>$anonim,"product_id"=>$id]);
             }
+            DB::table("cart")->where("anonim",$anonim)->update(["created_at"=>Carbon::now()]);
             $count=DB::table("cart")->where("anonim",$anonim)->sum("cantitate");
             return [$count,$prod];
         }else{
@@ -114,6 +116,10 @@ class CartController extends Controller
                     ->where("anonim",$anonim)
                     ->where("product_id",$id)
                     ->delete();
+            $date = Carbon::now(3);
+            $date->modify('-14 day');
+            $formatted_date = $date->format('Y-m-d H:i:s');
+            DB::table('cart')->where('created_at','<=',$formatted_date)->delete();
             $total=DB::table('cart')
                 ->select(DB::raw('sum(products.price*cart.cantitate) AS totalprice'))
                 ->leftJoin("products",function($join){

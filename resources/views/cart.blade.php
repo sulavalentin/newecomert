@@ -157,7 +157,6 @@
                     },
                 success: function(data) {
                     $("#"+idprod).remove();
-                    countcart();
                     $("#total").html(data);
                     if(data==0){
                         $("#cart").html("<h1 class='text-center'>Cos gol</h1>")
