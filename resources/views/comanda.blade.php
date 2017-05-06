@@ -40,7 +40,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-5 col-sm-12 col-xs-12">
                 <p class="produseincos">Produse in cos</p>
                 @foreach($return["produse"] as $i)
                     <a href="{{URL("product/".$i->id)}}">
